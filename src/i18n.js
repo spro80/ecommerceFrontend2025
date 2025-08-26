@@ -21,7 +21,31 @@ const resources = {
         home: 'Inicio',
         search: 'Buscar',
         next: 'Siguiente',
-        previous: 'Anterior'
+        previous: 'Anterior',
+        login: 'Iniciar sesión',
+        logout: 'Cerrar sesión',
+        register: 'Registrarse',
+        account: 'Cuenta'
+      },
+      auth: {
+        titleLogin: 'Bienvenido de nuevo',
+        titleRegister: 'Crear una cuenta',
+        email: 'Correo electrónico',
+        password: 'Contraseña',
+        name: 'Nombre',
+        rememberMe: 'Recuérdame',
+        forgotPassword: '¿Olvidaste tu contraseña?',
+        noAccount: '¿No tienes cuenta?',
+        haveAccount: '¿Ya tienes cuenta?',
+        or: 'o',
+        continueWithGoogle: 'Continuar con Google',
+        signIn: 'Entrar',
+        signUp: 'Crear cuenta',
+        googleClientMissing: 'Falta configurar Google Client ID',
+        invalidCredentials: 'Credenciales inválidas',
+        emailExists: 'El correo ya está registrado',
+        registeredSuccess: 'Cuenta creada, puedes iniciar sesión',
+        welcome: '¡Hola, {{name}}!'
       },
       home: {
         heroTitle: 'Descubre nuestra colección',
