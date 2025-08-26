@@ -4,6 +4,7 @@ import Footer from './Footer.jsx';
 import Breadcrumbs from './Breadcrumbs.jsx';
 import { Helmet } from 'react-helmet-async';
 import { useSEO } from '../../contexts/SEOContext.jsx';
+import AuthModal from '../../ui/AuthModal.jsx';
 
 export default function Layout({ children }) {
   const { title, description } = useSEO();
@@ -22,6 +23,7 @@ export default function Layout({ children }) {
         </div>
       </main>
       <Footer />
+      <AuthModal />
     </div>
   );
 }
