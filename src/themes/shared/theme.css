@@ -1,0 +1,80 @@
+:root {
+  --color-gold: #D4AF37;
+  --color-jade: #2E6B57;
+  --color-offwhite: #F8F5F0;
+  --color-black: #1E1E1E;
+
+  --bs-primary: var(--color-gold);
+  --bs-secondary: var(--color-jade);
+  --bs-body-bg: var(--color-offwhite);
+  --bs-body-color: #222;
+}
+
+body {
+  background-color: var(--color-offwhite);
+  color: var(--bs-body-color);
+}
+
+.navbar {
+  background-color: var(--color-black) !important;
+}
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-toggler {
+  color: var(--color-offwhite) !important;
+}
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: var(--color-gold) !important;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--color-gold);
+  --bs-btn-border-color: var(--color-gold);
+  --bs-btn-hover-bg: #c09d31;
+  --bs-btn-hover-border-color: #c09d31;
+  --bs-btn-color: #1E1E1E;
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--color-jade);
+  --bs-btn-border-color: var(--color-jade);
+  --bs-btn-hover-bg: #255946;
+  --bs-btn-hover-border-color: #255946;
+}
+
+.card {
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.card-title {
+  color: var(--color-black);
+}
+.card .price {
+  color: var(--color-jade);
+  font-weight: 600;
+}
+
+.footer {
+  background-color: var(--color-black);
+  color: var(--color-offwhite);
+}
+.footer a {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb a {
+  color: var(--color-jade);
+}
+.breadcrumb .active {
+  color: var(--color-black);
+}
+
+main:focus {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 4px;
+}
