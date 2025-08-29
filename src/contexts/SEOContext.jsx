@@ -3,7 +3,7 @@ import React, { createContext, useContext, useMemo, useState } from 'react';
 const SEOContext = createContext(null);
 
 export function SEOProvider({ children }) {
-  const [title, setTitle] = useState('Ecommerce');
+  const [title, setTitle] = useState('Mundo Belleza');
   const [description, setDescription] = useState('');
 
   const value = useMemo(

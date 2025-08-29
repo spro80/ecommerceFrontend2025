@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function WhatsAppBot() {
   const openChat = () => {
-    const phone = '0000000000';
+    const phone = '56989194282';
     const message = encodeURIComponent('Hello! I need help.');
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank', 'noopener');
   };

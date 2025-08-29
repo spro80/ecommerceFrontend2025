@@ -5,7 +5,7 @@ const resources = {
   es: {
     translation: {
       common: {
-        siteName: import.meta.env.VITE_APP_SITE_NAME || 'eCommerce',
+        siteName: import.meta.env.VITE_APP_SITE_NAME || 'Mundo Belleza',
         currency: 'CLP',
         addToCart: 'Agregar al carrito',
         remove: 'Eliminar',

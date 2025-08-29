@@ -9,6 +9,38 @@ export default function Header() {
   const { cartItemsCount } = useCart();
   const { user, openAuthModal, logout } = useUser();
 
+  const categories = [
+    {
+      name: "Cabello",
+      slug: "cabello",
+      subcategories: [
+        { name: "Shampoo", slug: "shampoo" },
+        { name: "Acondicionador", slug: "acondicionador" },
+        { name: "Tratamientos", slug: "tratamientos" },
+        { name: "Aceites capilares", slug: "aceites" },
+        { name: "Mascarillas", slug: "mascarillas" },
+        { name: "Ampollas", slug: "ampollas" }
+      ]
+    },
+    {
+      name: "Accesorios",
+      slug: "accesorios",
+      subcategories: [
+        { name: "Peines y cepillos", slug: "peines-cepillos" },
+        { name: "Tijeras", slug: "tijeras" },
+        { name: "Planchas y secadores", slug: "planchas-seca" }
+      ]
+    },
+    {
+      name: "Ofertas",
+      slug: "ofertas",
+      subcategories: [
+        { name: "Promociones", slug: "promociones" },
+        { name: "Combos", slug: "combos" }
+      ]
+    }
+  ];
+
   return (
     <nav className="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
       <div className="container">
@@ -25,17 +57,53 @@ export default function Header() {
                 {t('common.home')}
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink to="/products" className="nav-link">
                 {t('common.products')}
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink to="/blog" className="nav-link">
                 {t('common.blog')}
               </NavLink>
             </li>
+
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                Categorías
+              </button>
+              <ul className="dropdown-menu">
+                {categories.map(cat => (
+                  <li key={cat.slug} className="dropdown-submenu">
+                    <NavLink className="dropdown-item" to={`/products/${cat.slug}`}>
+                      {cat.name}
+                    </NavLink>
+                    {cat.subcategories && (
+                      <ul className="dropdown-menu">
+                        {cat.subcategories.map(sub => (
+                          <li key={sub.slug}>
+                            <NavLink
+                              className="dropdown-item"
+                              to={`/products/${cat.slug}/${sub.slug}`}
+                            >
+                              {sub.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+
+
+
           </ul>
+
           <ul className="navbar-nav ms-auto">
             <li className="nav-item me-2">
               <NavLink to="/cart" className="nav-link position-relative">

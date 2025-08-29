@@ -23,7 +23,7 @@ export default function Footer() {
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">Instagram</a></li>
               <li><a href="https://x.com" target="_blank" rel="noreferrer" aria-label="X">X</a></li>
             </ul>
-            <small className="text-muted">© {new Date().getFullYear()} eCommerce</small>
+            <small className="text-muted">© {new Date().getFullYear()} Mundo Belleza</small>
           </div>
         </div>
       </div>
