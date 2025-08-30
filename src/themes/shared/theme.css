@@ -78,3 +78,20 @@ main:focus {
   outline: 3px solid var(--color-gold);
   outline-offset: 4px;
 }
+
+/* Home hero */
+.hero {
+  background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(212,175,55,0.25));
+}
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px 400px at 100% 0%, rgba(212,175,55,0.25), transparent 60%),
+              radial-gradient(600px 300px at 0% 100%, rgba(46,107,87,0.25), transparent 60%);
+  pointer-events: none;
+}
+
+/* Category overlay */
+.category-card .category-overlay {
+  background: linear-gradient(to top, rgba(30,30,30,0.75), rgba(30,30,30,0.0));
+}
