@@ -88,7 +88,7 @@ export default function Home() {
             <div key={cat.slug} className="col-12 col-md-4">
               <Link to={`/products/${cat.slug}`} className="text-decoration-none">
                 <div className="card category-card h-100 overflow-hidden">
-                  <img src={cat.image} className="card-img-top" alt={cat.title} loading="lazy" style={{ objectFit: 'cover', aspectRatio: '4 / 3' }} />
+                  <img src={cat.image} className="card-img-top" alt={cat.title} loading="lazy" style={{ objectFit: 'contain', aspectRatio: '4 / 3', backgroundColor: '#fff' }} />
                   <div className="card-img-overlay d-flex align-items-end p-0">
                     <div className="w-100 p-3 category-overlay">
                       <h3 className="h5 mb-0 text-white">{cat.title}</h3>
