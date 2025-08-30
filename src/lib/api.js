@@ -37,11 +37,14 @@ async function safeReadJson(response) {
 
 export async function getProducts() {
   try {
-    return await fetchJson('/api/products');
+    const data = await fetchJson('/api/products');
+    const { enhanceProductsWithImage } = await import('./images.js');
+    return enhanceProductsWithImage(data);
   } catch (error) {
     if (shouldFallbackToMock(error)) {
       const { products } = await import('../data/products.js');
-      return products;
+      const { enhanceProductsWithImage } = await import('./images.js');
+      return enhanceProductsWithImage(products);
     }
     throw error;
   }
@@ -49,11 +52,15 @@ export async function getProducts() {
 
 export async function getProductByIdApi(id) {
   try {
-    return await fetchJson(`/api/products/${encodeURIComponent(id)}`);
+    const data = await fetchJson(`/api/products/${encodeURIComponent(id)}`);
+    const { enhanceProductWithImage } = await import('./images.js');
+    return enhanceProductWithImage(data);
   } catch (error) {
     if (shouldFallbackToMock(error)) {
       const { getProductById } = await import('../data/products.js');
-      return getProductById(id);
+      const product = getProductById(id);
+      const { enhanceProductWithImage } = await import('./images.js');
+      return enhanceProductWithImage(product);
     }
     throw error;
   }
