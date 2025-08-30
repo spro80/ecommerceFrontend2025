@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSEO } from '../../contexts/SEOContext.jsx';
+import { sendOrderConfirmationEmail, buildOrderEmailPayload } from '../../lib/email.js';
 
 function useQuery() {
   const { search } = useLocation();
@@ -28,6 +29,29 @@ export default function OrderSuccess() {
       navigate('/');
     }
   }, [order, orderId, navigate]);
+
+  // Auto-send confirmation email once per order (if email configured)
+  useEffect(() => {
+    if (!order || !orderId) return;
+    const key = `email_sent_for_${orderId}`;
+    try {
+      const sent = sessionStorage.getItem(key);
+      if (sent === '1') return;
+    } catch {}
+
+    async function maybeSend() {
+      try {
+        await sendOrderConfirmationEmail(order);
+        try { sessionStorage.setItem(key, '1'); } catch {}
+      } catch (err) {
+        // Silently ignore to avoid blocking UI; user still has mailto fallback
+        // Optionally, we could log to console for debugging
+        // console.warn('Email send skipped/failure:', err);
+      }
+    }
+
+    maybeSend();
+  }, [order, orderId]);
 
   if (!order) return null;
 
@@ -61,7 +85,7 @@ export default function OrderSuccess() {
   lines.push('Gracias');
 
   const emailBody = encodeURIComponent(lines.join('\n'));
-  const mailtoHref = `mailto:?subject=${emailSubject}&body=${emailBody}`;
+  const mailtoHref = `mailto:${customer.email || ''}?subject=${emailSubject}&body=${emailBody}`;
 
   return (
     <div className="container py-4">

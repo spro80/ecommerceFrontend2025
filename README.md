@@ -1,12 +1,25 @@
-# React + Vite
+# Tienda React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de tienda con carrito, checkout y confirmación de pedido.
 
-Currently, two official plugins are available:
+## Variables de entorno (Email de confirmación)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para enviar automáticamente el correo de confirmación al finalizar el pago se usa EmailJS. Crea un archivo `.env.local` en la raíz con:
 
-## Expanding the ESLint configuration
+```
+VITE_EMAILJS_PUBLIC_KEY=tu_public_key
+VITE_EMAILJS_SERVICE_ID=tu_service_id
+VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El template de EmailJS debe aceptar al menos estas variables:
+
+- `order_id`
+- `to_email`
+- `to_name`
+- `subject`
+- `message`
+- `total_amount`
+- `payment_method`
+
+Si no configuras estas variables, la app no bloqueará el flujo; el botón "Preparar correo de confirmación" abrirá tu cliente de email con el detalle prellenado.
