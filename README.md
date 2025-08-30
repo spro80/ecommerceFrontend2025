@@ -23,3 +23,14 @@ El template de EmailJS debe aceptar al menos estas variables:
 - `payment_method`
 
 Si no configuras estas variables, la app no bloqueará el flujo; el botón "Preparar correo de confirmación" abrirá tu cliente de email con el detalle prellenado.
+
+## Imágenes de productos
+
+- Las imágenes locales viven en `public/images`.
+- Fallback por categoría:
+  - `public/images/category/cabello.svg`
+  - `public/images/category/tazon.svg`
+- Imágenes por producto (si existen):
+  - `public/images/products/{PRODUCT_ID}.svg` (por ejemplo `public/images/products/CAB-SHA-001.svg`)
+- El mapeo se implementa en `src/utils/imageMapper.js` y se aplica al cargar productos en `src/lib/api.js`.
+- Si no existe una imagen específica por ID, se usará la de la categoría.
