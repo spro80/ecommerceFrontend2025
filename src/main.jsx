@@ -11,6 +11,7 @@ import WhatsAppBot from './components/WhatsAppBot.jsx';
 import { UserProvider } from './contexts/UserContext.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
 import { SEOProvider } from './contexts/SEOContext.jsx';
+import { installDevConsoleFilter } from './utils/devConsoleFilter.js';
 
 async function enableMocks() {
   if (import.meta.env.DEV || ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
@@ -19,6 +20,7 @@ async function enableMocks() {
   }
 }
 
+installDevConsoleFilter();
 enableMocks().finally(() => {
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
