@@ -13,7 +13,7 @@ import { CartProvider } from './contexts/CartContext.jsx';
 import { SEOProvider } from './contexts/SEOContext.jsx';
 
 async function enableMocks() {
-  if (import.meta.env.MODE === 'development') {
+  if (import.meta.env.DEV || ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
     const { worker } = await import('./mocks/browser');
     await worker.start({ serviceWorker: { url: '/mockServiceWorker.js' } });
   }
