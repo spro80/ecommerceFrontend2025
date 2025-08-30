@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../contexts/UserContext.jsx';
+import './AuthModal.css';
 
 export default function AuthModal() {
   const { t } = useTranslation();
@@ -73,76 +74,117 @@ export default function AuthModal() {
   };
 
   return (
-    <dialog ref={dialogRef} aria-labelledby="auth-title" className="rounded-3 border-0 p-0" style={{ width: 'min(520px, 92vw)' }}>
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 id="auth-title" className="modal-title">
+    <dialog
+      ref={dialogRef}
+      aria-labelledby="auth-title"
+      className="auth-modal border-0"
+    >
+      <div className="auth-card">
+        <div className="auth-side" aria-hidden="true">
+          <div className="brand-badge">
+            <span className="brand-dot" />
+            <span className="brand-name">{t('common.siteName')}</span>
+          </div>
+          <h2 className="side-title">
             {activeTab === 'login' ? t('auth.titleLogin') : t('auth.titleRegister')}
-          </h5>
-          <button type="button" className="btn-close" aria-label="Close" onClick={closeAuthModal} />
+          </h2>
+          <p className="side-subtitle">
+            {t('auth.or')} {t('auth.continueWithGoogle')}
+          </p>
         </div>
-        <div className="modal-body">
-          <div className="mb-3 d-flex gap-2">
+        <div className="auth-main">
+          <div className="auth-header">
+            <h3 id="auth-title" className="auth-title">
+              {activeTab === 'login' ? t('auth.titleLogin') : t('auth.titleRegister')}
+            </h3>
+            <button type="button" className="auth-close" aria-label="Close" onClick={closeAuthModal}>
+              <span aria-hidden>×</span>
+            </button>
+          </div>
+
+          <div className="segmented" role="tablist" aria-label="Auth tabs">
             <button
-              className={`btn ${activeTab === 'login' ? 'btn-primary' : 'btn-outline-primary'} flex-fill`}
+              role="tab"
+              className={`segment ${activeTab === 'login' ? 'active' : ''}`}
               onClick={() => setActiveTab('login')}
-              aria-pressed={activeTab === 'login'}
+              aria-selected={activeTab === 'login'}
+              id="tab-login"
+              aria-controls="panel-login"
             >
               {t('common.login')}
             </button>
             <button
-              className={`btn ${activeTab === 'register' ? 'btn-primary' : 'btn-outline-primary'} flex-fill`}
+              role="tab"
+              className={`segment ${activeTab === 'register' ? 'active' : ''}`}
               onClick={() => setActiveTab('register')}
-              aria-pressed={activeTab === 'register'}
+              aria-selected={activeTab === 'register'}
+              id="tab-register"
+              aria-controls="panel-register"
             >
               {t('common.register')}
             </button>
           </div>
 
-          {error && (
-            <div className="alert alert-danger" role="alert">{error}</div>
-          )}
-          {success && (
-            <div className="alert alert-success" role="alert">{success}</div>
+          {(error || success) && (
+            <div className="feedback" aria-live="assertive">
+              {error && <div className="alert error" role="alert">{error}</div>}
+              {success && <div className="alert success" role="alert">{success}</div>}
+            </div>
           )}
 
+          <button type="button" className="provider-btn google" onClick={onGoogle}>
+            <span className="provider-icon" aria-hidden>
+              <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
+                <path fill="#EA4335" d="M12 11.999h10.545c.101.546.155 1.128.155 1.727 0 6.004-4.017 10.274-10.7 10.274C5.7 24 0 18.627 0 12S5.7 0 12 0c3.24 0 5.95 1.19 8.02 3.13l-3.26 3.13C15.52 4.76 13.9 4.2 12 4.2 7.9 4.2 4.5 7.62 4.5 12s3.4 7.8 7.5 7.8c4.8 0 6.6-3.447 6.9-5.223H12v-2.578z"/>
+              </svg>
+            </span>
+            {t('auth.continueWithGoogle')}
+          </button>
+
           {activeTab === 'login' && (
-            <form onSubmit={onLoginSubmit}>
-              <div className="mb-3">
-                <label htmlFor="login-email" className="form-label">{t('auth.email')}</label>
-                <input id="login-email" type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <form onSubmit={onLoginSubmit} id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+              <div className="field">
+                <label htmlFor="login-email" className="field-label">{t('auth.email')}</label>
+                <div className="field-control">
+                  <span className="field-icon" aria-hidden>✉</span>
+                  <input id="login-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="name@email.com" />
+                </div>
               </div>
-              <div className="mb-3">
-                <label htmlFor="login-password" className="form-label">{t('auth.password')}</label>
-                <input id="login-password" type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div className="field">
+                <label htmlFor="login-password" className="field-label">{t('auth.password')}</label>
+                <div className="field-control">
+                  <span className="field-icon" aria-hidden>•</span>
+                  <input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="••••••••" />
+                </div>
               </div>
-              <div className="d-grid gap-2">
-                <button type="submit" className="btn btn-primary" disabled={!canSubmitLogin}>{t('auth.signIn')}</button>
-                <div className="text-center text-muted">{t('auth.or')}</div>
-                <button type="button" className="btn btn-outline-secondary" onClick={onGoogle}>{t('auth.continueWithGoogle')}</button>
-              </div>
+              <button type="submit" className="cta" disabled={!canSubmitLogin}>{t('auth.signIn')}</button>
             </form>
           )}
 
           {activeTab === 'register' && (
-            <form onSubmit={onRegisterSubmit}>
-              <div className="mb-3">
-                <label htmlFor="register-name" className="form-label">{t('auth.name')}</label>
-                <input id="register-name" type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
+            <form onSubmit={onRegisterSubmit} id="panel-register" role="tabpanel" aria-labelledby="tab-register">
+              <div className="field">
+                <label htmlFor="register-name" className="field-label">{t('auth.name')}</label>
+                <div className="field-control">
+                  <span className="field-icon" aria-hidden>👤</span>
+                  <input id="register-name" type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder={t('auth.name')} />
+                </div>
               </div>
-              <div className="mb-3">
-                <label htmlFor="register-email" className="form-label">{t('auth.email')}</label>
-                <input id="register-email" type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <div className="field">
+                <label htmlFor="register-email" className="field-label">{t('auth.email')}</label>
+                <div className="field-control">
+                  <span className="field-icon" aria-hidden>✉</span>
+                  <input id="register-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="name@email.com" />
+                </div>
               </div>
-              <div className="mb-3">
-                <label htmlFor="register-password" className="form-label">{t('auth.password')}</label>
-                <input id="register-password" type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div className="field">
+                <label htmlFor="register-password" className="field-label">{t('auth.password')}</label>
+                <div className="field-control">
+                  <span className="field-icon" aria-hidden>•</span>
+                  <input id="register-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="••••••••" />
+                </div>
               </div>
-              <div className="d-grid gap-2">
-                <button type="submit" className="btn btn-primary" disabled={!canSubmitRegister}>{t('auth.signUp')}</button>
-                <div className="text-center text-muted">{t('auth.or')}</div>
-                <button type="button" className="btn btn-outline-secondary" onClick={onGoogle}>{t('auth.continueWithGoogle')}</button>
-              </div>
+              <button type="submit" className="cta" disabled={!canSubmitRegister}>{t('auth.signUp')}</button>
             </form>
           )}
         </div>
