@@ -1,172 +1,16 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
+import { products as catalog } from '../../data/products.js';
 
 
 
-export default function Products(items) {
+export default function Products() {
   const { addItem } = useCart();
   const PRODUCTS_PER_PAGE = 9;
+  const allProducts = useMemo(() => catalog, []);
 
-  const allProducts = useMemo(() => {
-
-    /*
-    const items = [];
-    for (let index = 1; index <= 48; index += 1) {
-      items.push({
-        id: index,
-        name: `Producto ${index}`,
-        category: "cabello",
-        price: (Math.random() * 90 + 10).toFixed(2),
-        image: `https://picsum.photos/seed/product-${index}/600/600`,
-        description: 'Un producto de alta calidad con excelente diseño y rendimiento.'
-      });
-    }*/
-
-      const items = [
-        {
-          id: "CAB-SHA-001",
-          name: `Shampoo Collagen - 1000 ml`,
-          brand: "Plus Vinge",
-          category: "cabello",
-          subcategory: "shampoo",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-1/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 0
-        },
-        {
-          id: "CAB-ACO-001",
-          name: `Acondicionador Collagen - 1000 ml`,
-          brand: "Plus Vinge",
-          category: "cabello",
-          subcategory: "conditioner",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-2/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 0
-        },
-        {
-          id: "CAB-ACE-001",
-          name: `Aceite de Argan con Colageno - 1000 ml`,
-          brand: "Plus Vinge",
-          category: "cabello",
-          subcategory: "aceite",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-3/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-SHA-002",
-          name: `Shampoo Curl Perfect 3 en 1 - 500 ml`,
-          brand: "Rocco",
-          category: "cabello",
-          subcategory: "shampoo",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-4/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-ACO-002",
-          name: `Acondicionador Curl Perfect 3 en 1 - 500 ml`,
-          brand: "Rocco",
-          category: "cabello",
-          subcategory: "conditioner",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-5/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-SHA-003",
-          name: `Shampoo Jalea Real Anticaida - 400 ml`,
-          brand: "Rocco",
-          category: "cabello",
-          subcategory: "shampoo",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-6/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-ACO-003",
-          name: `Acondicionador Jalea Real Anticaida 400 ml`,
-          brand: "Rocco",
-          category: "cabello",
-          subcategory: "conditioner",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-7/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-ACE-002",
-          name: `Aceite Luxury Moroccan Argan Oil - 60 ml`,
-          brand: "Moroccan",
-          category: "cabello",
-          subcategory: "aceite",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-8/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-ACE-003",
-          name: `Aceite extreme caviar Haircare Luxe Line - 100 ml`,
-          brand: "Luxe Line",
-          category: "cabello",
-          subcategory: "aceite",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-9/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "CAB-ACE-004",
-          name: `Aceite de Nuez Marroqui Profesional - 55 ml`,
-          brand: "Marca",
-          category: "cabello",
-          subcategory: "aceite",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-10/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "TAZ-SCH-001",
-          name: `Tazon Schopero de Cobre Kunstmann 485 ml`,
-          brand: "Kunstmann",
-          category: "tazon",
-          subcategory: "schopero",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-11/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        },
-        {
-          id: "TAZ-SCH-002",
-          name: `Tazon Schopero Acero Inoxidable Kunstmann 485 ml`,
-          brand: "Kunstmann",
-          category: "tazon",
-          subcategory: "schopero",
-          price: (Math.random() * 90 + 10).toFixed(2),
-          image: `https://picsum.photos/seed/product-12/600/600`,
-          description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-          stock: 1
-        }
-      ]
-    
-    return items;
-
-  }, []);
-
-  const [stock, setStock] = useState(items ? items.stock : 0);
-
-  if (!items) {
-    return <h2 className="text-center text-red-600 mt-16">Producto no encontrado</h2>;
-  }
+  const [stock, setStock] = useState(0);
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
@@ -224,7 +68,7 @@ const handleAddToCart = (product) => {
                 )}
 
                 <div className="mt-auto d-flex align-items-center justify-content-between">
-                        <span className="price h6 mb-0">${product.price}</span>
+                        <span className="price h6 mb-0">${product.price.toFixed(2)}</span>
                         <button
                           className="btn btn-sm btn-primary"
                           disabled={product.stock === 0}

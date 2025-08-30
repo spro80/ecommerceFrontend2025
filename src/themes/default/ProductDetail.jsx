@@ -1,58 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
-
-const products = [
-  {
-    id: "CAB-SHA-001",
-    name: `Shampoo Collagen - 1000 ml`,
-    brand: "Plus Vinge",
-    category: "cabello",
-    subcategory: "shampoo",
-    price: 100,
-    image: `https://picsum.photos/seed/product-1/600/600`,
-    description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-    stock: 0
-  },
-  {
-    id: "CAB-ACO-001",
-    name: `Acondicionador Collagen - 1000 ml`,
-    brand: "Plus Vinge",
-    category: "cabello",
-    subcategory: "conditioner",
-    price: 200,
-    image: `https://picsum.photos/seed/product-2/600/600`,
-    description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-    stock: 0
-  },
-  {
-    id: "CAB-ACE-001",
-    name: `Aceite de Argan con Colageno - 1000 ml`,
-    brand: "Plus Vinge",
-    category: "cabello",
-    subcategory: "oil",
-    price: 300,
-    image: `https://picsum.photos/seed/product-3/600/600`,
-    description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-    stock: 1
-  },
-  {
-    id: "CAB-SHA-002",
-    name: `Shampoo Curl Perfect 3 en 1 - 500 ml`,
-    brand: "Rocco",
-    category: "cabello",
-    subcategory: "shampoo",
-    price: 400,
-    image: `https://picsum.photos/seed/product-4/600/600`,
-    description: 'Un producto de alta calidad con excelente diseño y rendimiento.',
-    stock: 1
-  }
-];
+import { getProductById } from '../../data/products.js';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const { addItem } = useCart();
-  const product = products.find((p) => p.id === id);
+  const product = getProductById(id);
 
   if (!product) {
     return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">Producto no encontrado</h2>;
