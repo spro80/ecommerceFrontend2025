@@ -1,19 +1,42 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
-import { products as catalog } from '../../data/products.js';
+import { getProducts } from '../../lib/api.js';
 
 
 
 export default function Products() {
   const { addItem } = useCart();
   const PRODUCTS_PER_PAGE = 9;
-  const allProducts = useMemo(() => catalog, []);
+  const [allProducts, setAllProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+    getProducts()
+      .then((data) => {
+        if (!isMounted) return;
+        setAllProducts(Array.isArray(data) ? data : []);
+      })
+      .catch((err) => {
+        if (!isMounted) return;
+        setError(err?.message || 'Error cargando productos');
+      })
+      .finally(() => {
+        if (!isMounted) return;
+        setIsLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const [stock, setStock] = useState(0);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(allProducts.length / PRODUCTS_PER_PAGE));
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
@@ -31,6 +54,22 @@ const handleAddToCart = (product) => {
   addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image }, 1);
 };
 
+
+  if (isLoading) {
+    return (
+      <div className="container py-4">
+        <div className="text-center text-muted">Cargando productos...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container py-4">
+        <div className="alert alert-danger" role="alert">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="container py-4">

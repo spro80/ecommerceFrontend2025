@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
-import { getProductById } from '../../data/products.js';
+import { getProductByIdApi } from '../../lib/api.js';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const { addItem } = useCart();
-  const product = getProductById(id);
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+    getProductByIdApi(id)
+      .then((data) => {
+        if (!isMounted) return;
+        setProduct(data);
+      })
+      .catch((err) => {
+        if (!isMounted) return;
+        setError(err?.message || 'Error cargando producto');
+      })
+      .finally(() => {
+        if (!isMounted) return;
+        setIsLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
+
+  if (isLoading) {
+    return <h2 className="text-center text-muted mt-16 text-2xl font-semibold">Cargando...</h2>;
+  }
+
+  if (error) {
+    return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">{error}</h2>;
+  }
 
   if (!product) {
     return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">Producto no encontrado</h2>;
