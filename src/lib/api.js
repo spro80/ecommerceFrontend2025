@@ -3,11 +3,25 @@ export async function fetchJson(url, options = {}) {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });
+  const contentType = response.headers.get('content-type') || '';
   if (!response.ok) {
-    const message = await safeReadJson(response);
+    let message = null;
+    if (contentType.includes('application/json')) {
+      message = await safeReadJson(response);
+    } else {
+      const text = await response.text();
+      message = { message: (text || '').slice(0, 200) };
+    }
     const error = new Error(message?.message || `Request failed with status ${response.status}`);
     error.status = response.status;
     error.data = message;
+    throw error;
+  }
+  if (!contentType.includes('application/json')) {
+    const text = await response.text();
+    const snippet = (text || '').slice(0, 200);
+    const error = new Error('La respuesta no es JSON. ¿Está activo el endpoint /api?');
+    error.data = { snippet };
     throw error;
   }
   return response.json();
@@ -21,11 +35,35 @@ async function safeReadJson(response) {
   }
 }
 
-export function getProducts() {
-  return fetchJson('/api/products');
+export async function getProducts() {
+  try {
+    return await fetchJson('/api/products');
+  } catch (error) {
+    if (shouldFallbackToMock(error)) {
+      const { products } = await import('../data/products.js');
+      return products;
+    }
+    throw error;
+  }
 }
 
-export function getProductByIdApi(id) {
-  return fetchJson(`/api/products/${encodeURIComponent(id)}`);
+export async function getProductByIdApi(id) {
+  try {
+    return await fetchJson(`/api/products/${encodeURIComponent(id)}`);
+  } catch (error) {
+    if (shouldFallbackToMock(error)) {
+      const { getProductById } = await import('../data/products.js');
+      return getProductById(id);
+    }
+    throw error;
+  }
+}
+
+function shouldFallbackToMock(error) {
+  const snippet = error?.data?.snippet;
+  if (typeof snippet === 'string' && snippet.trim().startsWith('<')) return true;
+  // Also fallback when no status and no JSON data
+  if (!('status' in (error || {})) && !('data' in (error || {}))) return true;
+  return false;
 }
 
