@@ -81,9 +81,9 @@ export default function Home() {
         </div>
         <div className="row g-3 g-md-4">
           {[
-            { title: 'Cabello', slug: 'cabello', image: 'https://picsum.photos/seed/cabello/800/600' },
-            { title: 'Accesorios', slug: 'accesorios', image: 'https://picsum.photos/seed/accesorios/800/600' },
-            { title: 'Ofertas', slug: 'ofertas', image: 'https://picsum.photos/seed/ofertas/800/600' }
+            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello.svg' },
+            { title: 'Accesorios', slug: 'accesorios', image: '/images/categories/accesorios.svg' },
+            { title: 'Ofertas', slug: 'ofertas', image: '/images/categories/ofertas.svg' }
           ].map((cat) => (
             <div key={cat.slug} className="col-12 col-md-4">
               <Link to={`/products/${cat.slug}`} className="text-decoration-none">
