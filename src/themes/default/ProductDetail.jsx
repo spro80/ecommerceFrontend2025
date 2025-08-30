@@ -100,7 +100,7 @@ export default function ProductDetail() {
                 ${product.stock === 0 ? 'bg-gray-400 cursor-not-allowed text-white' : 'bg-gold text-black hover:bg-[#c09d31]'}
               `}
               disabled={product.stock === 0}
-              onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image })}
+              onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image }, 1)}
             >
               {product.stock === 0 ? 'No disponible' : 'Agregar al carrito'}
             </button>

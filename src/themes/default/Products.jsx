@@ -184,7 +184,7 @@ export default function Products(items) {
 
 const handleAddToCart = (product) => {
   if (product.stock === 0) return;
-  addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image });
+  addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image }, 1);
 };
 
 
