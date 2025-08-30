@@ -1,14 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
-import { getProductById } from '../../data/products.js';
+// Removed local data import. Data now comes from mock API.
 
 export default function ProductDetail() {
   const { id } = useParams();
   const { addItem } = useCart();
-  const product = getProductById(id);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!product) {
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setError(null);
+    fetch(`/api/products/${id}`)
+      .then(async (res) => {
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.message || 'Error al cargar el producto');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) setProduct(data);
+      })
+      .catch((err) => {
+        if (isMounted) setError(err.message);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
+
+  if (loading) {
+    return <h2 className="text-center text-gray-600 mt-16 text-2xl font-semibold">Cargando...</h2>;
+  }
+
+  if (error || !product) {
     return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">Producto no encontrado</h2>;
   }
 

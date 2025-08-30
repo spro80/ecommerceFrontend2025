@@ -1,19 +1,48 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
-import { products as catalog } from '../../data/products.js';
+// Removed local catalog import. Fetching from mock API.
 
 
 
 export default function Products() {
   const { addItem } = useCart();
   const PRODUCTS_PER_PAGE = 9;
-  const allProducts = useMemo(() => catalog, []);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setError(null);
+    fetch('/api/products')
+      .then(async (res) => {
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.message || 'Error al cargar productos');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) setAllProducts(Array.isArray(data) ? data : []);
+      })
+      .catch((err) => {
+        if (isMounted) setError(err.message);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const [stock, setStock] = useState(0);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
+  const totalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE) || 1;
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
@@ -41,6 +70,13 @@ const handleAddToCart = (product) => {
         </div>
         <span className="badge text-bg-secondary">{allProducts.length} items</span>
       </div>
+
+      {loading && (
+        <div className="text-center text-muted py-5">Cargando...</div>
+      )}
+      {error && !loading && (
+        <div className="alert alert-danger" role="alert">{error}</div>
+      )}
 
       <div className="row g-3 g-md-4">
         {pagedProducts.map((product) => (
