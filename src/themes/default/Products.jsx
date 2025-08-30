@@ -1,9 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../contexts/CartContext.jsx';
 
 
 
 export default function Products(items) {
+  const { addItem } = useCart();
   const PRODUCTS_PER_PAGE = 9;
 
   const allProducts = useMemo(() => {
@@ -161,7 +163,6 @@ export default function Products(items) {
   }, []);
 
   const [stock, setStock] = useState(items ? items.stock : 0);
-  const [productsState, setProductsState] = useState(items);
 
   if (!items) {
     return <h2 className="text-center text-red-600 mt-16">Producto no encontrado</h2>;
@@ -181,20 +182,9 @@ export default function Products(items) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-const handleAddToCart = (productId) => {
-  setProductsState(prevProducts =>
-    prevProducts.map(p => {
-      if (p.id === productId && p.stock > 0) {
-        return { ...p, stock: p.stock - 1 }; // reducimos stock
-      }
-      return p;
-    })
-  );
-
-  const product = productsState.find(p => p.id === productId);
-  if (product && product.stock > 0) {
-    console.log(`Agregaste 1 unidad de ${product.name} al carrito`);
-  }
+const handleAddToCart = (product) => {
+  if (product.stock === 0) return;
+  addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image });
 };
 
 
@@ -238,11 +228,10 @@ const handleAddToCart = (productId) => {
                         <button
                           className="btn btn-sm btn-primary"
                           disabled={product.stock === 0}
+                          onClick={() => handleAddToCart(product)}
                         >
                           {product.stock === 0 ? 'No disponible' : 'Añadir al carrito'}
                         </button>
-
-                        <button onClick={() => handleAddToCart(product.id)}>Agregar al carrito</button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../../contexts/CartContext.jsx';
 
 const products = [
   {
@@ -50,6 +51,7 @@ const products = [
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { addItem } = useCart();
   const product = products.find((p) => p.id === id);
 
   if (!product) {
@@ -98,6 +100,7 @@ export default function ProductDetail() {
                 ${product.stock === 0 ? 'bg-gray-400 cursor-not-allowed text-white' : 'bg-gold text-black hover:bg-[#c09d31]'}
               `}
               disabled={product.stock === 0}
+              onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image })}
             >
               {product.stock === 0 ? 'No disponible' : 'Agregar al carrito'}
             </button>
