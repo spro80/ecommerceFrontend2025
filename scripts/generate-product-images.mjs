@@ -37,74 +37,117 @@ function wrapText(text, maxChars) {
   return lines.slice(0, 3);
 }
 
-function svgForCategory(category) {
-  const c = String(category || '').toLowerCase();
-  if (c === 'cabello') {
-    return {
-      bg1: '#fff7ed', // warm background
-      bg2: '#fde68a', // accent gradient
-      shape: `<path d="M120 460 C 200 380, 260 520, 340 440 S 500 500, 540 420" stroke="#7c3e0a" stroke-width="10" fill="none" stroke-linecap="round" />
-              <path d="M80 380 C 160 300, 220 440, 300 360 S 460 420, 520 340" stroke="#a16207" stroke-width="8" fill="none" stroke-linecap="round" />`,
-      accent: '#7c3e0a',
-      text: '#1f2937'
-    };
+function themeFor(product) {
+  const category = String(product.category || '').toLowerCase();
+  const sub = String(product.subcategory || '').toLowerCase();
+  if (category === 'tazon' || sub === 'schopero') {
+    return { bg1: '#ecfeff', bg2: '#bae6fd', primary: '#0ea5e9', secondary: '#0369a1' };
   }
-  if (c === 'tazon') {
-    return {
-      bg1: '#ecfeff',
-      bg2: '#bae6fd',
-      shape: `<rect x="120" y="200" rx="24" ry="24" width="360" height="220" fill="#0ea5e9"/>
-              <rect x="380" y="240" rx="40" ry="40" width="120" height="140" fill="none" stroke="#0ea5e9" stroke-width="20"/>
-              <rect x="140" y="190" width="320" height="20" fill="#0c4a6e" opacity="0.4"/>`,
-      accent: '#0ea5e9',
-      text: '#0c4a6e'
-    };
+  if (sub === 'shampoo') {
+    return { bg1: '#fef2f2', bg2: '#fecaca', primary: '#ef4444', secondary: '#991b1b' };
   }
-  return {
-    bg1: '#f1f5f9',
-    bg2: '#e2e8f0',
-    shape: `<circle cx="300" cy="300" r="120" fill="#64748b" opacity="0.35"/>`,
-    accent: '#334155',
-    text: '#0f172a'
-  };
+  if (sub === 'conditioner') {
+    return { bg1: '#f5f3ff', bg2: '#ddd6fe', primary: '#8b5cf6', secondary: '#6d28d9' };
+  }
+  if (sub === 'aceite') {
+    return { bg1: '#fffbeb', bg2: '#fde68a', primary: '#f59e0b', secondary: '#b45309' };
+  }
+  if (category === 'cabello') {
+    return { bg1: '#fff7ed', bg2: '#fde68a', primary: '#f97316', secondary: '#7c2d12' };
+  }
+  return { bg1: '#f1f5f9', bg2: '#e2e8f0', primary: '#334155', secondary: '#475569' };
+}
+
+function iconFor(product, theme) {
+  const sub = String(product.subcategory || '').toLowerCase();
+  const category = String(product.category || '').toLowerCase();
+
+  // Common glossy highlight
+  const highlight = `<ellipse cx="300" cy="240" rx="90" ry="28" fill="white" opacity="0.25"/>`;
+
+  if (sub === 'shampoo') {
+    // Rounded-shoulder bottle with cap
+    return `
+      <g>
+        <rect x="230" y="170" width="140" height="260" rx="36" ry="36" fill="${theme.primary}"/>
+        <rect x="250" y="140" width="100" height="40" rx="10" ry="10" fill="${theme.secondary}"/>
+        <rect x="245" y="200" width="110" height="18" rx="9" ry="9" fill="white" opacity="0.25"/>
+        ${highlight}
+        <circle cx="300" cy="405" r="70" fill="white" opacity="0.08"/>
+      </g>
+    `;
+  }
+
+  if (sub === 'conditioner') {
+    // Tall oval bottle with pump
+    return `
+      <g>
+        <rect x="230" y="160" width="140" height="280" rx="70" ry="70" fill="${theme.primary}"/>
+        <rect x="288" y="110" width="24" height="60" rx="8" ry="8" fill="${theme.secondary}"/>
+        <rect x="260" y="100" width="120" height="14" rx="7" ry="7" fill="${theme.secondary}"/>
+        <rect x="360" y="100" width="40" height="12" rx="6" ry="6" fill="${theme.secondary}"/>
+        ${highlight}
+        <rect x="265" y="230" width="90" height="16" rx="8" ry="8" fill="white" opacity="0.25"/>
+      </g>
+    `;
+  }
+
+  if (sub === 'aceite') {
+    // Oil drop over a small vial base
+    return `
+      <g>
+        <path d="M300 180 C 280 220, 240 250, 240 300 C 240 350, 275 385, 300 390 C 325 385, 360 350, 360 300 C 360 250, 320 220, 300 180 Z" fill="${theme.primary}"/>
+        <circle cx="290" cy="270" r="14" fill="white" opacity="0.45"/>
+        <rect x="255" y="390" width="90" height="30" rx="10" ry="10" fill="${theme.secondary}"/>
+        <rect x="265" y="360" width="70" height="20" rx="10" ry="10" fill="${theme.secondary}" opacity="0.85"/>
+      </g>
+    `;
+  }
+
+  if (category === 'tazon' || sub === 'schopero') {
+    // Bowl / mug silhouette
+    return `
+      <g>
+        <path d="M160 260 Q 180 420, 300 440 Q 420 420, 440 260 L 160 260 Z" fill="${theme.primary}"/>
+        <rect x="180" y="240" width="240" height="20" rx="10" ry="10" fill="${theme.secondary}" opacity="0.5"/>
+        <path d="M440 280 C 480 280, 500 300, 500 340 C 500 380, 480 400, 450 395" stroke="${theme.secondary}" stroke-width="18" fill="none" stroke-linecap="round"/>
+      </g>
+    `;
+  }
+
+  // Generic circle glyph
+  return `
+    <g>
+      <circle cx="300" cy="300" r="120" fill="${theme.primary}" opacity="0.85"/>
+      <circle cx="300" cy="260" r="52" fill="white" opacity="0.25"/>
+    </g>
+  `;
 }
 
 function generateSvg(product) {
-  const id = product.id || 'PRODUCT';
-  const brand = product.brand || '';
-  const name = product.name || '';
-  const desc = product.description || '';
-  const subcategory = product.subcategory || '';
-  const theme = svgForCategory(product.category);
-  const descLines = wrapText(desc, 36);
-  const nameLines = wrapText(name, 24);
+  const theme = themeFor(product);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-hidden="true">
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${theme.bg1}"/>
       <stop offset="100%" stop-color="${theme.bg2}"/>
     </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="600" height="600" fill="url(#bgGrad)"/>
-  <g opacity="0.9">${theme.shape}</g>
-  <g>
-    <rect x="40" y="40" width="520" height="80" rx="16" ry="16" fill="white" opacity="0.7"/>
-    <text x="60" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="700" fill="${theme.text}">${escapeXml(brand)}${subcategory ? ' · ' + escapeXml(subcategory) : ''}</text>
+
+  <g opacity="0.6">
+    <circle cx="460" cy="120" r="90" fill="url(#halo)"/>
+    <circle cx="120" cy="500" r="120" fill="url(#halo)"/>
   </g>
+
   <g>
-    <text x="60" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="36" font-weight="800" fill="${theme.accent}">${escapeXml(nameLines[0] || '')}</text>
-    <text x="60" y="262" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="36" font-weight="800" fill="${theme.accent}">${escapeXml(nameLines[1] || '')}</text>
-  </g>
-  <g opacity="0.9">
-    <text x="60" y="340" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[0] || '')}</text>
-    <text x="60" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[1] || '')}</text>
-    <text x="60" y="400" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[2] || '')}</text>
-  </g>
-  <g>
-    <rect x="40" y="500" width="240" height="60" rx="12" ry="12" fill="${theme.accent}"/>
-    <text x="60" y="540" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="22" font-weight="700" fill="white">${escapeXml(id)}</text>
+    ${iconFor(product, theme)}
   </g>
 </svg>`;
 }
