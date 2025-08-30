@@ -88,6 +88,37 @@ export default function Checkout() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const orderId = Math.random().toString(36).slice(2, 10).toUpperCase();
+      // Persist a minimal snapshot of the order to sessionStorage for the success page
+      const shippingCostSnapshot = (function () {
+        if (form.shippingMethod === 'express') return 9.99;
+        if (cartSubtotal === 0) return 0;
+        return 4.99;
+      })();
+      const taxSnapshot = Math.round(cartSubtotal * 0.19 * 100) / 100;
+      const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
+      const orderSnapshot = {
+        id: orderId,
+        items: items.map((it) => ({ id: it.id, name: it.name, price: it.price, quantity: it.quantity, image: it.image })),
+        totals: {
+          subtotal: cartSubtotal,
+          shipping: shippingCostSnapshot,
+          tax: taxSnapshot,
+          total: totalSnapshot
+        },
+        customer: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          address: form.address,
+          city: form.city,
+          postalCode: form.postalCode
+        },
+        shippingMethod: form.shippingMethod,
+        paymentMethod: form.paymentMethod
+      };
+      try {
+        sessionStorage.setItem('last_order', JSON.stringify(orderSnapshot));
+      } catch {}
       clearCart();
       navigate(`/order/success?orderId=${orderId}`);
     } finally {
