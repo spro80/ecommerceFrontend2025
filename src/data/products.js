@@ -6,7 +6,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 19.99,
-    image: "https://picsum.photos/seed/product-1/600/600",
+    image: "https://source.unsplash.com/800x800/?shampoo,beauty&sig=1",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 0
   },
@@ -17,7 +17,7 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 24.99,
-    image: "https://picsum.photos/seed/product-2/600/600",
+    image: "https://source.unsplash.com/800x800/?conditioner,beauty&sig=2",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 0
   },
@@ -28,7 +28,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 29.99,
-    image: "https://picsum.photos/seed/product-3/600/600",
+    image: "https://source.unsplash.com/800x800/?argan,oil,cosmetics&sig=3",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -39,7 +39,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 34.99,
-    image: "https://picsum.photos/seed/product-4/600/600",
+    image: "https://source.unsplash.com/800x800/?shampoo,haircare&sig=4",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -50,7 +50,7 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 22.99,
-    image: "https://picsum.photos/seed/product-5/600/600",
+    image: "https://source.unsplash.com/800x800/?conditioner,haircare&sig=5",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -61,7 +61,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 18.99,
-    image: "https://picsum.photos/seed/product-6/600/600",
+    image: "https://source.unsplash.com/800x800/?shampoo,bottle&sig=6",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -72,7 +72,7 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 21.49,
-    image: "https://picsum.photos/seed/product-7/600/600",
+    image: "https://source.unsplash.com/800x800/?conditioner,bottle&sig=7",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -83,7 +83,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 27.49,
-    image: "https://picsum.photos/seed/product-8/600/600",
+    image: "https://source.unsplash.com/800x800/?hair,oil,dropper&sig=8",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -94,7 +94,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 32.99,
-    image: "https://picsum.photos/seed/product-9/600/600",
+    image: "https://source.unsplash.com/800x800/?hair,oil,bottle&sig=9",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -105,7 +105,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 14.99,
-    image: "https://picsum.photos/seed/product-10/600/600",
+    image: "https://source.unsplash.com/800x800/?moroccan,oil,beauty&sig=10",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -116,7 +116,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 12.99,
-    image: "https://picsum.photos/seed/product-11/600/600",
+    image: "https://source.unsplash.com/800x800/?copper,mug&sig=11",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -127,7 +127,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 13.99,
-    image: "https://picsum.photos/seed/product-12/600/600",
+    image: "https://source.unsplash.com/800x800/?stainless,steel,mug&sig=12",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   }

@@ -12,6 +12,16 @@
  * @returns {string}
  */
 export function resolveProductImage(product = {}) {
+  const explicitImage = String(product.image || '').trim();
+  const isHttp = (url) => /^(https?:)?\/\//.test(url);
+  const isAbsolutePublic = (url) => typeof url === 'string' && url.startsWith('/');
+
+  // If a product already provides an image (remote URL or absolute public path), respect it.
+  if (explicitImage && (isHttp(explicitImage) || isAbsolutePublic(explicitImage))) {
+    return explicitImage;
+  }
+
+  // Otherwise, fall back to our deterministic local asset by id or category defaults.
   const productId = (product.id || '').trim();
   if (productId) {
     return `/assets/products/${productId}.svg`;
