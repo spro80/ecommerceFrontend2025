@@ -21,21 +21,7 @@ function escapeXml(s) {
     .replaceAll("'", '&#39;');
 }
 
-function wrapText(text, maxChars) {
-  const words = String(text || '').split(/\s+/).filter(Boolean);
-  const lines = [];
-  let current = '';
-  for (const word of words) {
-    if ((current + ' ' + word).trim().length > maxChars) {
-      if (current) lines.push(current.trim());
-      current = word;
-    } else {
-      current = (current + ' ' + word).trim();
-    }
-  }
-  if (current) lines.push(current.trim());
-  return lines.slice(0, 3);
-}
+// No text wrapping needed anymore as we removed textual overlays from SVGs
 
 function svgForCategory(category) {
   const c = String(category || '').toLowerCase();
@@ -70,42 +56,30 @@ function svgForCategory(category) {
 }
 
 function generateSvg(product) {
-  const id = product.id || 'PRODUCT';
-  const brand = product.brand || '';
-  const name = product.name || '';
-  const desc = product.description || '';
-  const subcategory = product.subcategory || '';
   const theme = svgForCategory(product.category);
-  const descLines = wrapText(desc, 36);
-  const nameLines = wrapText(name, 24);
-
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Product image">
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${theme.bg1}"/>
       <stop offset="100%" stop-color="${theme.bg2}"/>
     </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18" />
+    </filter>
+    <pattern id="subtleGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#000" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
   </defs>
   <rect width="600" height="600" fill="url(#bgGrad)"/>
+  <rect width="600" height="600" fill="url(#subtleGrid)"/>
   <g opacity="0.9">${theme.shape}</g>
-  <g>
-    <rect x="40" y="40" width="520" height="80" rx="16" ry="16" fill="white" opacity="0.7"/>
-    <text x="60" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="700" fill="${theme.text}">${escapeXml(brand)}${subcategory ? ' · ' + escapeXml(subcategory) : ''}</text>
-  </g>
-  <g>
-    <text x="60" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="36" font-weight="800" fill="${theme.accent}">${escapeXml(nameLines[0] || '')}</text>
-    <text x="60" y="262" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="36" font-weight="800" fill="${theme.accent}">${escapeXml(nameLines[1] || '')}</text>
-  </g>
-  <g opacity="0.9">
-    <text x="60" y="340" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[0] || '')}</text>
-    <text x="60" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[1] || '')}</text>
-    <text x="60" y="400" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" font-weight="500" fill="${theme.text}">${escapeXml(descLines[2] || '')}</text>
-  </g>
-  <g>
-    <rect x="40" y="500" width="240" height="60" rx="12" ry="12" fill="${theme.accent}"/>
-    <text x="60" y="540" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="22" font-weight="700" fill="white">${escapeXml(id)}</text>
-  </g>
+  <circle cx="460" cy="160" r="120" fill="url(#glow)" filter="url(#softBlur)" />
+  <circle cx="140" cy="460" r="140" fill="url(#glow)" filter="url(#softBlur)" />
 </svg>`;
 }
 
