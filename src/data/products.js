@@ -8,7 +8,7 @@ export const products = [
     price: 19.99,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 0
+    stock: 1
   },
   {
     id: "CAB-ACO-001",
@@ -19,7 +19,7 @@ export const products = [
     price: 24.99,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 0
+    stock: 1
   },
   {
     id: "CAB-ACE-001",
@@ -28,7 +28,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 29.99,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -83,7 +83,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 27.49,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -94,7 +94,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 32.99,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -105,7 +105,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 14.99,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },

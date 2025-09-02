@@ -83,7 +83,7 @@ export default function Home() {
           {[
             { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png' },
             { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png' },
-            { title: 'Ofertas', slug: 'ofertas', image: '/images/categories/ofertas.svg' }
+            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png' }
           ].map((cat) => (
             <div key={cat.slug} className="col-12 col-md-4">
               <Link to={`/products/${cat.slug}`} className="text-decoration-none">
