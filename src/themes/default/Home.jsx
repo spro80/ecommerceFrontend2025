@@ -81,8 +81,8 @@ export default function Home() {
         </div>
         <div className="row g-3 g-md-4">
           {[
-            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello.svg' },
-            { title: 'Accesorios', slug: 'accesorios', image: '/images/categories/accesorios.svg' },
+            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png' },
+            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png' },
             { title: 'Ofertas', slug: 'ofertas', image: '/images/categories/ofertas.svg' }
           ].map((cat) => (
             <div key={cat.slug} className="col-12 col-md-4">
