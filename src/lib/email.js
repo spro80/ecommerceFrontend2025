@@ -76,3 +76,33 @@ export async function sendOrderConfirmationEmail(order) {
   return response;
 }
 
+export function buildContactEmailPayload({ toEmail, toName, subject, message }) {
+  return {
+    to_email: toEmail || '',
+    to_name: toName || 'Contacto',
+    subject: subject || 'Mensaje de contacto',
+    message: message || '',
+  };
+}
+
+export async function sendContactEmail({ toEmail, toName, subject, message }) {
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+  if (!publicKey || !serviceId || !templateId) {
+    const missing = [
+      !publicKey && 'VITE_EMAILJS_PUBLIC_KEY',
+      !serviceId && 'VITE_EMAILJS_SERVICE_ID',
+      !templateId && 'VITE_EMAILJS_TEMPLATE_ID',
+    ].filter(Boolean).join(', ');
+    throw new Error(`EmailJS config missing: ${missing}`);
+  }
+
+  const payload = buildContactEmailPayload({ toEmail, toName, subject, message });
+
+  emailjs.init({ publicKey });
+  const response = await emailjs.send(serviceId, templateId, payload);
+  return response;
+}
+
