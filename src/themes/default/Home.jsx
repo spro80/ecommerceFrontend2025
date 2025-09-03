@@ -81,9 +81,9 @@ export default function Home() {
         </div>
         <div className="row g-3 g-md-4">
           {[
-            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png', query: 'category=cabello' },
-            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png', query: 'category=tazon' },
-            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png', query: 'subcategory=aceite' }
+            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png', query: 'category=cabello&subcategory=shampoo,conditioner' },
+            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png', query: 'category=tazon&subcategory=schopero' },
+            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png', query: 'category=cabello&subcategory=aceite' }
           ].map((cat) => (
             <div key={cat.slug} className="col-12 col-md-4">
               <Link to={`/products?${cat.query}`} className="text-decoration-none">
