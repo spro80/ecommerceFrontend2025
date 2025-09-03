@@ -1,6 +1,36 @@
 import React from 'react';
+import { sendContactEmail } from '../lib/email.js';
 
 export default function ContactSection() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const nombre = form.nombre?.value?.trim() || '';
+    const email = form.email?.value?.trim() || '';
+    const mensaje = form.mensaje?.value?.trim() || '';
+
+    if (!email) {
+      form.email?.focus();
+      return;
+    }
+
+    const subject = `Mensaje de contacto${nombre ? ' - ' + nombre : ''}`;
+    const lines = [];
+    if (nombre) lines.push(`Nombre: ${nombre}`);
+    if (email) lines.push(`Email: ${email}`);
+    lines.push('');
+    lines.push('Mensaje:');
+    lines.push(mensaje || '');
+
+    const body = encodeURIComponent(lines.join('\n'));
+    const href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    try {
+      await sendContactEmail({ toEmail: email, toName: nombre || 'Contacto', subject, message: lines.join('\n') });
+    } catch (err) {
+      window.location.href = href;
+    }
+  }
   return (
     <section id="contacto" className="contact-section py-5">
       <div className="container">
@@ -40,7 +70,7 @@ export default function ContactSection() {
           <div className="col-12 col-lg-7">
             <div className="h-100 p-4 p-lg-5 contact-form-card shadow-sm rounded-3">
               <h3 className="h5 mb-3 fw-semibold">Envíanos un mensaje</h3>
-              <form onSubmit={(e) => e.preventDefault()} noValidate>
+              <form onSubmit={handleSubmit} noValidate>
                 <div className="row g-3">
                   <div className="col-12 col-md-6">
                     <label htmlFor="nombre" className="form-label">Nombre</label>
