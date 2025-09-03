@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { sendContactEmail } from '../lib/email.js';
 
 export default function ContactSection() {
+  const supportEmail = import.meta.env.VITE_SUPPORT_EMAIL || 'soporte@mundobelleza.cl';
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -17,18 +21,25 @@ export default function ContactSection() {
     const subject = `Mensaje de contacto${nombre ? ' - ' + nombre : ''}`;
     const lines = [];
     if (nombre) lines.push(`Nombre: ${nombre}`);
-    if (email) lines.push(`Email: ${email}`);
+    if (email) lines.push(`Email remitente: ${email}`);
     lines.push('');
     lines.push('Mensaje:');
     lines.push(mensaje || '');
 
     const body = encodeURIComponent(lines.join('\n'));
-    const href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    const href = `mailto:${encodeURIComponent(supportEmail)}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
+    setIsSubmitting(true);
+    setFeedbackMessage('');
     try {
-      await sendContactEmail({ toEmail: email, toName: nombre || 'Contacto', subject, message: lines.join('\n') });
+      await sendContactEmail({ toEmail: supportEmail, toName: 'Soporte', subject, message: lines.join('\n') });
+      form.reset();
+      setFeedbackMessage('Mensaje enviado. Te responderemos pronto.');
     } catch (err) {
+      // Fallback: abrir cliente de correo del usuario
       window.location.href = href;
+    } finally {
+      setIsSubmitting(false);
     }
   }
   return (
@@ -85,9 +96,16 @@ export default function ContactSection() {
                     <textarea id="mensaje" name="mensaje" className="form-control" rows="4" placeholder="Cuéntanos en qué podemos ayudarte" required />
                   </div>
                   <div className="col-12 d-flex gap-2">
-                    <button type="submit" className="btn btn-primary">Enviar</button>
+                    <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                      {isSubmitting ? 'Enviando…' : 'Enviar'}
+                    </button>
                     <a href="https://wa.me/56989194282" target="_blank" rel="noreferrer" className="btn btn-secondary">WhatsApp</a>
                   </div>
+                  {feedbackMessage ? (
+                    <div className="col-12">
+                      <div className="alert alert-success py-2 mb-0" role="status">{feedbackMessage}</div>
+                    </div>
+                  ) : null}
                 </div>
               </form>
             </div>
