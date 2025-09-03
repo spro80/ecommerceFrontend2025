@@ -81,12 +81,12 @@ export default function Home() {
         </div>
         <div className="row g-3 g-md-4">
           {[
-            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png' },
-            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png' },
-            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png' }
+            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png', query: 'category=cabello' },
+            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png', query: 'category=tazon' },
+            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png', query: 'subcategory=aceite' }
           ].map((cat) => (
             <div key={cat.slug} className="col-12 col-md-4">
-              <Link to={`/products/${cat.slug}`} className="text-decoration-none">
+              <Link to={`/products?${cat.query}`} className="text-decoration-none">
                 <div className="card category-card h-100 overflow-hidden">
                   <img src={cat.image} className="card-img-top" alt={cat.title} loading="lazy" style={{ objectFit: 'contain', aspectRatio: '4 / 3', backgroundColor: '#fff' }} />
                   <div className="card-img-overlay d-flex align-items-end p-0">
