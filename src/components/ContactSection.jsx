@@ -13,7 +13,7 @@ export default function ContactSection() {
     const email = form.email?.value?.trim() || '';
     const mensaje = form.mensaje?.value?.trim() || '';
 
-    if (!email) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       form.email?.focus();
       return;
     }
@@ -27,12 +27,12 @@ export default function ContactSection() {
     lines.push(mensaje || '');
 
     const body = encodeURIComponent(lines.join('\n'));
-    const href = `mailto:${encodeURIComponent(supportEmail)}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    const href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
     setIsSubmitting(true);
     setFeedbackMessage('');
     try {
-      await sendContactEmail({ toEmail: supportEmail, toName: 'Soporte', subject, message: lines.join('\n') });
+      await sendContactEmail({ toEmail: email, toName: 'Soporte', subject, message: lines.join('\n') });
       form.reset();
       setFeedbackMessage('Mensaje enviado. Te responderemos pronto.');
     } catch (err) {
