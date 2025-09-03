@@ -16,7 +16,11 @@ export default function Products() {
 
   const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const selectedCategory = searchParams.get('category') || '';
-  const selectedSubcategory = searchParams.get('subcategory') || '';
+  const selectedSubcategoryRaw = searchParams.get('subcategory') || '';
+  const selectedSubcategories = useMemo(
+    () => selectedSubcategoryRaw.split(',').map((s) => s.trim().toLowerCase()).filter(Boolean),
+    [selectedSubcategoryRaw]
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -46,11 +50,11 @@ export default function Products() {
     if (selectedCategory) {
       result = result.filter((p) => (p.category || '').toLowerCase() === selectedCategory.toLowerCase());
     }
-    if (selectedSubcategory) {
-      result = result.filter((p) => (p.subcategory || '').toLowerCase() === selectedSubcategory.toLowerCase());
+    if (selectedSubcategories.length > 0) {
+      result = result.filter((p) => selectedSubcategories.includes((p.subcategory || '').toLowerCase()));
     }
     return result;
-  }, [allProducts, selectedCategory, selectedSubcategory]);
+  }, [allProducts, selectedCategory, selectedSubcategories]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
@@ -94,13 +98,17 @@ const handleAddToCart = (product) => {
         <div>
           <h1 className="h3 mb-1">Productos</h1>
           <p className="text-muted mb-0">Explora nuestra selección cuidadosamente curada.</p>
-          {(selectedCategory || selectedSubcategory) && (
+          {(selectedCategory || selectedSubcategories.length > 0) && (
             <div className="mt-2 d-flex align-items-center gap-2 flex-wrap">
               {selectedCategory && (
                 <span className="badge text-bg-primary">Categoría: {selectedCategory}</span>
               )}
-              {selectedSubcategory && (
-                <span className="badge text-bg-primary">Subcategoría: {selectedSubcategory}</span>
+              {selectedSubcategories.length > 0 && (
+                <span className="badge text-bg-primary">
+                  {selectedSubcategories.length === 1
+                    ? `Subcategoría: ${selectedSubcategories[0]}`
+                    : `Subcategorías: ${selectedSubcategories.join(', ')}`}
+                </span>
               )}
               <button
                 className="btn btn-sm btn-outline-secondary"
