@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { getProducts } from '../../lib/api.js';
 
@@ -11,6 +11,12 @@ export default function Products() {
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const selectedCategory = searchParams.get('category') || '';
+  const selectedSubcategory = searchParams.get('subcategory') || '';
 
   useEffect(() => {
     let isMounted = true;
@@ -35,13 +41,24 @@ export default function Products() {
 
   const [stock, setStock] = useState(0);
 
+  const filteredProducts = useMemo(() => {
+    let result = allProducts;
+    if (selectedCategory) {
+      result = result.filter((p) => (p.category || '').toLowerCase() === selectedCategory.toLowerCase());
+    }
+    if (selectedSubcategory) {
+      result = result.filter((p) => (p.subcategory || '').toLowerCase() === selectedSubcategory.toLowerCase());
+    }
+    return result;
+  }, [allProducts, selectedCategory, selectedSubcategory]);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.max(1, Math.ceil(allProducts.length / PRODUCTS_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-    return allProducts.slice(start, start + PRODUCTS_PER_PAGE);
-  }, [allProducts, currentPage]);
+    return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
 
   const goToPage = (page) => {
     if (page < 1 || page > totalPages) return;
@@ -77,8 +94,24 @@ const handleAddToCart = (product) => {
         <div>
           <h1 className="h3 mb-1">Productos</h1>
           <p className="text-muted mb-0">Explora nuestra selección cuidadosamente curada.</p>
+          {(selectedCategory || selectedSubcategory) && (
+            <div className="mt-2 d-flex align-items-center gap-2 flex-wrap">
+              {selectedCategory && (
+                <span className="badge text-bg-primary">Categoría: {selectedCategory}</span>
+              )}
+              {selectedSubcategory && (
+                <span className="badge text-bg-primary">Subcategoría: {selectedSubcategory}</span>
+              )}
+              <button
+                className="btn btn-sm btn-outline-secondary"
+                onClick={() => navigate('/products', { replace: true })}
+              >
+                Mostrar todo
+              </button>
+            </div>
+          )}
         </div>
-        <span className="badge text-bg-secondary">{allProducts.length} items</span>
+        <span className="badge text-bg-secondary">{filteredProducts.length} items</span>
       </div>
 
       <div className="row g-3 g-md-4">
