@@ -45,6 +45,35 @@ export default function Products() {
 
   const [stock, setStock] = useState(0);
 
+  // Derivar categorías y subcategorías disponibles con contadores
+  const categorySummary = useMemo(() => {
+    const counts = new Map();
+    for (const product of allProducts) {
+      const key = (product.category || '').toLowerCase();
+      if (!key) continue;
+      counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    const list = Array.from(counts.entries()).map(([key, count]) => ({ key, count }));
+    list.sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
+    return list;
+  }, [allProducts]);
+
+  const subcategorySummary = useMemo(() => {
+    if (!selectedCategory) return [];
+    const counts = new Map();
+    for (const product of allProducts) {
+      if ((product.category || '').toLowerCase() !== selectedCategory.toLowerCase()) continue;
+      const key = (product.subcategory || '').toLowerCase();
+      if (!key) continue;
+      counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    const list = Array.from(counts.entries()).map(([key, count]) => ({ key, count }));
+    list.sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
+    return list;
+  }, [allProducts, selectedCategory]);
+
+  const toTitle = (str) => (str ? str.charAt(0).toUpperCase() + str.slice(1) : '');
+
   const filteredProducts = useMemo(() => {
     let result = allProducts;
     if (selectedCategory) {
@@ -74,6 +103,45 @@ const handleAddToCart = (product) => {
   if (product.stock === 0) return;
   addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image }, 1);
 };
+
+  // Sincronización de filtros con la URL
+  const updateSearchParams = (next) => {
+    const params = new URLSearchParams(location.search);
+    if (Object.prototype.hasOwnProperty.call(next, 'category')) {
+      const value = (next.category || '').trim();
+      if (value) params.set('category', value); else params.delete('category');
+    }
+    if (Object.prototype.hasOwnProperty.call(next, 'subcategory')) {
+      const value = (next.subcategory || '').trim();
+      if (value) params.set('subcategory', value); else params.delete('subcategory');
+    }
+    const qs = params.toString();
+    navigate(qs ? `/products?${qs}` : '/products');
+  };
+
+  const handleSelectCategory = (key) => {
+    const normalized = (key || '').toLowerCase();
+    const isSame = (selectedCategory || '').toLowerCase() === normalized;
+    // Toggle: si se hace clic en la categoría activa, limpiar filtros
+    if (isSame) {
+      updateSearchParams({ category: '', subcategory: '' });
+    } else {
+      updateSearchParams({ category: normalized, subcategory: '' });
+    }
+  };
+
+  const handleToggleSubcategory = (key) => {
+    const normalized = (key || '').toLowerCase();
+    const set = new Set(selectedSubcategories);
+    if (set.has(normalized)) set.delete(normalized); else set.add(normalized);
+    const value = Array.from(set).join(',');
+    updateSearchParams({ subcategory: value });
+  };
+
+  // Reiniciar paginación cuando cambian los filtros
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [location.search]);
 
 
   if (isLoading) {
@@ -121,6 +189,65 @@ const handleAddToCart = (product) => {
         </div>
         <span className="badge text-bg-secondary">{filteredProducts.length} items</span>
       </div>
+
+      {/* Filtros por categoría */}
+      <div className="mb-3">
+        <div className="d-flex align-items-center gap-2 overflow-auto flex-nowrap py-2" role="toolbar" aria-label="Filtrar por categoría">
+          <button
+            type="button"
+            className={`btn btn-sm ${selectedCategory ? 'btn-outline-secondary' : 'btn-primary'}`}
+            aria-pressed={!selectedCategory}
+            onClick={() => handleSelectCategory('')}
+          >
+            Todas <span className="badge text-bg-light ms-1">{allProducts.length}</span>
+          </button>
+          {categorySummary.map((cat) => {
+            const active = (selectedCategory || '').toLowerCase() === cat.key;
+            return (
+              <button
+                key={cat.key}
+                type="button"
+                className={`btn btn-sm ${active ? 'btn-primary' : 'btn-outline-secondary'}`}
+                aria-pressed={active}
+                onClick={() => handleSelectCategory(cat.key)}
+              >
+                {toTitle(cat.key)} <span className="badge text-bg-light ms-1">{cat.count}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Filtros por subcategoría (solo cuando hay categoría seleccionada) */}
+      {subcategorySummary.length > 0 && (
+        <div className="mb-3">
+          <div className="d-flex align-items-center gap-2 overflow-auto flex-nowrap py-1" role="toolbar" aria-label={`Filtrar por subcategoría de ${selectedCategory}`}>
+            {subcategorySummary.map((sub) => {
+              const active = selectedSubcategories.includes(sub.key);
+              return (
+                <button
+                  key={sub.key}
+                  type="button"
+                  className={`btn btn-sm ${active ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  aria-pressed={active}
+                  onClick={() => handleToggleSubcategory(sub.key)}
+                >
+                  {toTitle(sub.key)} <span className="badge text-bg-light ms-1">{sub.count}</span>
+                </button>
+              );
+            })}
+            {selectedSubcategories.length > 0 && (
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary ms-2"
+                onClick={() => updateSearchParams({ subcategory: '' })}
+              >
+                Borrar filtros
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       <div className="row g-3 g-md-4">
         {pagedProducts.map((product) => (
