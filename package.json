@@ -4,9 +4,15 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode local",
+    "dev:stage": "vite --mode stage",
+    "dev:prod": "vite --mode prod",
     "build": "vite build",
+    "build:stage": "vite build --mode stage",
+    "build:prod": "vite build --mode prod",
     "preview": "vite preview",
+    "preview:stage": "vite preview --mode stage",
+    "preview:prod": "vite preview --mode prod",
     "generate:images": "node scripts/generate-product-images.mjs"
   },
   "dependencies": {
