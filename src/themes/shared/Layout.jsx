@@ -5,6 +5,7 @@ import Breadcrumbs from './Breadcrumbs.jsx';
 import { Helmet } from 'react-helmet-async';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 import AuthModal from '../../ui/AuthModal.jsx';
+import ContactSection from '../../components/ContactSection.jsx';
 
 export default function Layout({ children }) {
   const { title, description } = useSEO();
@@ -22,6 +23,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
+      <ContactSection />
       <Footer />
       <AuthModal />
     </div>
