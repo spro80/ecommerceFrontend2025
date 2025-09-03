@@ -1,5 +1,7 @@
+import { buildApiUrl } from './config.js';
+
 export async function fetchJson(url, options = {}) {
-  const response = await fetch(url, {
+  const response = await fetch(buildApiUrl(url), {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });

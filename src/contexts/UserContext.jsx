@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useMemo, useEffect, useCallback } from 'react';
+import { GOOGLE_CLIENT_ID } from '../lib/config.js';
+import { fetchJson } from '../lib/api.js';
 
 const UserContext = createContext(null);
 
@@ -78,7 +80,7 @@ export function UserProvider({ children }) {
   }, []);
 
   const loginWithGoogle = useCallback(async () => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    const clientId = GOOGLE_CLIENT_ID;
     if (!clientId) {
       const error = new Error('GOOGLE_CLIENT_MISSING');
       error.code = 'GOOGLE_CLIENT_MISSING';
@@ -122,7 +124,26 @@ export function UserProvider({ children }) {
       }
     });
 
-    // Decode JWT payload for basic profile (no external deps)
+    // Send credential to backend for login
+    try {
+      const backendUser = await fetchJson('/login', {
+        method: 'POST',
+        body: JSON.stringify({ provider: 'google', credential })
+      });
+      setUser({
+        id: backendUser.id || backendUser.user?.id || crypto.randomUUID(),
+        name: backendUser.name || backendUser.user?.name || 'Usuario',
+        email: backendUser.email || backendUser.user?.email || '',
+        avatar: backendUser.avatar || backendUser.user?.avatar,
+        provider: 'google',
+        token: backendUser.token || backendUser.accessToken
+      });
+      return backendUser;
+    } catch (backendError) {
+      // Fallback: decode JWT locally to keep UX in dev/local
+    }
+
+    // Decode JWT payload for basic profile (no external deps) as fallback
     try {
       const payload = JSON.parse(atob(credential.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
       const googleUser = {
