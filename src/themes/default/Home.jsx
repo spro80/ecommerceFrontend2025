@@ -30,43 +30,29 @@ export default function Home() {
             </div>
           </div>
           <div className="col-12 col-lg-6">
-            <div id="homeHeroCarousel" className="carousel slide rounded-4 shadow-lg" data-bs-ride="carousel">
-              <div className="carousel-indicators">
-                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1" />
-                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2" />
-                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3" />
+            <div className="hero-gallery rounded-4 shadow-lg">
+              <div className="gallery-grid">
+                <Link to="/products?category=cabello" className="gallery-card item-a" aria-label="Explorar productos de Cabello">
+                  <img src="/images/categories/cabello_1024x1024.png" alt="Colección Cabello" loading="eager" />
+                  <span className="gallery-label">Cabello</span>
+                </Link>
+                <Link to="/products?category=tazon&subcategory=schopero" className="gallery-card item-b" aria-label="Explorar Tazones">
+                  <img src="/images/categories/tazones_600x600.png" alt="Colección Tazones" loading="lazy" />
+                  <span className="gallery-label">Tazones</span>
+                </Link>
+                <Link to="/products?category=accesorios" className="gallery-card item-c" aria-label="Explorar Accesorios">
+                  <img src="/images/categories/accesorios.svg" alt="Accesorios" loading="lazy" />
+                  <span className="gallery-label">Accesorios</span>
+                </Link>
+                <Link to="/products?category=ofertas" className="gallery-card item-d" aria-label="Ver Ofertas">
+                  <img src="/images/categories/ofertas.svg" alt="Ofertas especiales" loading="lazy" />
+                  <span className="gallery-label">Ofertas</span>
+                </Link>
+                <Link to="/products?category=cabello&subcategory=aceite" className="gallery-card item-e" aria-label="Explorar Aceites capilares">
+                  <img src="/images/categories/cabello.svg" alt="Aceites capilares" loading="lazy" />
+                  <span className="gallery-label">Aceites</span>
+                </Link>
               </div>
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img src="https://picsum.photos/seed/mb-hero-1/1200/600" className="d-block w-100" alt="Colección premium 1" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Lujo que cuida</h5>
-                    <p>Fórmulas profesionales para resultados visibles.</p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src="https://picsum.photos/seed/mb-hero-2/1200/600" className="d-block w-100" alt="Colección premium 2" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Rituales de belleza</h5>
-                    <p>Todo para tu rutina de cabello y estilo.</p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src="https://picsum.photos/seed/mb-hero-3/1200/600" className="d-block w-100" alt="Colección premium 3" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Ofertas especiales</h5>
-                    <p>Descubre combos y promociones por tiempo limitado.</p>
-                  </div>
-                </div>
-              </div>
-              <button className="carousel-control-prev" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
-                <span className="visually-hidden">Anterior</span>
-              </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true" />
-                <span className="visually-hidden">Siguiente</span>
-              </button>
             </div>
           </div>
         </div>
