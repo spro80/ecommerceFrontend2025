@@ -12,6 +12,7 @@ export default function Layout({ children }) {
   const { title, description } = useSEO();
   const location = useLocation();
   const isProductDetailPage = /^\/products\/[^/]+$/.test(location.pathname);
+  const isProductsListPage = location.pathname === '/products';
   const isCartPage = location.pathname === '/cart';
 
   return (
@@ -27,7 +28,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
-      {!isProductDetailPage && !isCartPage && <ContactSection />}
+      {!isProductDetailPage && !isProductsListPage && !isCartPage && <ContactSection />}
       <Footer />
       <AuthModal />
     </div>
