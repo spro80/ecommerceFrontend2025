@@ -12,6 +12,7 @@ export default function Layout({ children }) {
   const { title, description } = useSEO();
   const location = useLocation();
   const isProductDetailPage = /^\/products\/[^/]+$/.test(location.pathname);
+  const isCartPage = location.pathname === '/cart';
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -26,7 +27,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
-      {!isProductDetailPage && <ContactSection />}
+      {!isProductDetailPage && !isCartPage && <ContactSection />}
       <Footer />
       <AuthModal />
     </div>
