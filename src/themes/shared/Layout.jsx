@@ -6,9 +6,12 @@ import { Helmet } from 'react-helmet-async';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 import AuthModal from '../../ui/AuthModal.jsx';
 import ContactSection from '../../components/ContactSection.jsx';
+import { useLocation } from 'react-router-dom';
 
 export default function Layout({ children }) {
   const { title, description } = useSEO();
+  const location = useLocation();
+  const isProductDetailPage = /^\/products\/[^/]+$/.test(location.pathname);
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -23,7 +26,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
-      <ContactSection />
+      {!isProductDetailPage && <ContactSection />}
       <Footer />
       <AuthModal />
     </div>
