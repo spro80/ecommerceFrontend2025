@@ -32,71 +32,74 @@ export default function ProductDetail() {
   }, [id]);
 
   if (isLoading) {
-    return <h2 className="text-center text-muted mt-16 text-2xl font-semibold">Cargando...</h2>;
+    return (
+      <div className="text-center text-muted my-5 h4 fw-semibold">Cargando...</div>
+    );
   }
 
   if (error) {
-    return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">{error}</h2>;
+    return (
+      <div className="alert alert-danger my-4" role="alert">{error}</div>
+    );
   }
 
   if (!product) {
-    return <h2 className="text-center text-red-600 mt-16 text-2xl font-semibold">Producto no encontrado</h2>;
+    return (
+      <div className="alert alert-warning my-4" role="alert">Producto no encontrado</div>
+    );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 md:p-12 bg-offwhite rounded-3xl shadow-2xl mt-12">
-      <div className="flex flex-col lg:flex-row gap-12">
-        
-        {/* IMAGEN */}
-        <div className="lg:w-1/2 relative flex justify-center items-center">
-          <img
-            src={product.image}
-            alt={product.name}
-            className={`rounded-3xl shadow-xl object-cover w-full max-w-md transition-transform duration-300 hover:scale-105 ${
-              product.stock === 0 ? 'opacity-50' : ''
-            }`}
-          />
-          {product.stock === 0 && (
-            <span className="absolute top-4 left-4 px-4 py-1 bg-red-600 text-white font-bold rounded-full shadow-lg text-sm">
-              AGOTADO
-            </span>
-          )}
-        </div>
-
-        {/* INFORMACIÓN */}
-        <div className="lg:w-1/2 flex flex-col justify-between">
-          {/* Nombre */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-4 leading-tight">{product.name}</h1>
-
-          {/* Categoría y Subcategoría */}
-          <div className="flex flex-wrap gap-4 mb-6">
-            <span className="bg-jade text-white px-3 py-1 rounded-full text-sm font-semibold shadow">{product.category}</span>
-            <span className="bg-gold text-black px-3 py-1 rounded-full text-sm font-semibold shadow">{product.subcategory}</span>
+    <section className="product-detail my-3">
+      <div className="product-detail-card position-relative p-3 p-md-4 p-lg-5">
+        <div className="row g-4 g-lg-5 align-items-start">
+          {/* Imagen */}
+          <div className="col-12 col-lg-6 d-flex justify-content-center align-items-start">
+            <div className={`image-frame w-100 ${product.stock === 0 ? 'opacity-75' : ''}`}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="img-fluid"
+                loading="eager"
+              />
+              {product.stock === 0 && (
+                <span className="soldout-badge">Agotado</span>
+              )}
+            </div>
           </div>
 
-          {/* Descripción */}
-          <p className="text-gray-700 text-lg mb-6">{product.description}</p>
+          {/* Información */}
+          <div className="col-12 col-lg-6 d-flex flex-column">
+            <div className="d-flex align-items-center gap-2 mb-2 flex-wrap product-badges">
+              <span className="badge badge-jade text-uppercase">{product.category}</span>
+              <span className="badge badge-gold text-uppercase">{product.subcategory}</span>
+            </div>
 
-          {/* Precio y Botón */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6">
-            <span className="text-4xl font-bold text-gold mb-4 sm:mb-0">${product.price.toFixed(2)}</span>
-            <button
-              className={`px-8 py-3 rounded-2xl font-bold shadow-lg transition-all duration-300
-                ${product.stock === 0 ? 'bg-gray-400 cursor-not-allowed text-white' : 'bg-gold text-black hover:bg-[#c09d31]'}
-              `}
-              disabled={product.stock === 0}
-              onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image }, 1)}
-            >
-              {product.stock === 0 ? 'No disponible' : 'Agregar al carrito'}
-            </button>
+            <h1 className="product-title display-6 fw-bold mb-2">{product.name}</h1>
+            {product.brand && (
+              <div className="text-muted mb-3">Marca: <strong>{product.brand}</strong></div>
+            )}
+
+            <p className="product-description lead mb-4">{product.description}</p>
+
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+              <div className="price-highlight">${product.price.toFixed(2)}</div>
+              <button
+                type="button"
+                className="btn btn-primary btn-lg btn-add-cart"
+                disabled={product.stock === 0}
+                onClick={() => addItem({ id: product.id, name: product.name, price: Number(product.price), image: product.image }, 1)}
+              >
+                {product.stock === 0 ? 'No disponible' : 'Agregar al carrito'}
+              </button>
+            </div>
+
+            {product.stock > 0 && (
+              <small className="stock-indicator mt-3">En stock: {product.stock} unidades</small>
+            )}
           </div>
-
-          {/* Indicador de stock (opcional debajo del botón) */}
-          {product.stock > 0 && (
-            <span className="mt-4 text-sm text-jade font-semibold">En stock: {product.stock} unidades</span>
-          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
