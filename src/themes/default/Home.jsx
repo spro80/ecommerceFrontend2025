@@ -1,65 +1,103 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 
 export default function Home() {
+  const { t } = useTranslation();
   const { setTitle, setDescription } = useSEO();
-  const scrollRef = useRef(null);
-
-  const handlePrev = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
-    }
-  };
-
-  const handleNext = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
     setTitle('Mundo Belleza — Inicio');
     setDescription('Descubre nuestra colección de productos profesionales para el cuidado del cabello, accesorios y ofertas especiales.');
   }, [setTitle, setDescription]);
 
-  const categories = [
-    { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png', link: '/products?category=cabello' },
-    { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png', link: '/products?category=tazon&subcategory=schopero' },
-    { title: 'Accesorios', slug: 'accesorios', image: '/images/categories/accesorios.svg', link: '/products?category=accesorios' },
-    { title: 'Ofertas', slug: 'ofertas', image: '/images/categories/ofertas.svg', link: '/products?category=ofertas' }
-  ];
-
   return (
     <div className="home-page">
-      <section className="mb-4 category-carousel">
-        <div className="d-flex align-items-center justify-content-between mb-2">
-          <h2 className="h5 mb-0">Categorías</h2>
+      {/* Hero */}
+      <section className="hero position-relative overflow-hidden rounded-4 p-4 p-md-5 mb-4">
+        <div className="row align-items-center g-4">
+          <div className="col-12 col-lg-6">
+            <h1 className="display-5 fw-bold mb-3 text-white">
+              {t('home.heroTitle')}
+            </h1>
+            <p className="lead text-white-50 mb-4">
+              {t('home.heroSubtitle')}
+            </p>
+            <div className="d-flex gap-2">
+              <Link to="/products" className="btn btn-primary btn-lg">{t('home.cta')}</Link>
+              <Link to="/blog" className="btn btn-outline-light btn-lg">Blog</Link>
+            </div>
+          </div>
+          <div className="col-12 col-lg-6">
+            <div id="homeHeroCarousel" className="carousel slide rounded-4 shadow-lg" data-bs-ride="carousel">
+              <div className="carousel-indicators">
+                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1" />
+                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2" />
+                <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3" />
+              </div>
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img src="https://picsum.photos/seed/mb-hero-1/1200/600" className="d-block w-100" alt="Colección premium 1" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>Lujo que cuida</h5>
+                    <p>Fórmulas profesionales para resultados visibles.</p>
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <img src="https://picsum.photos/seed/mb-hero-2/1200/600" className="d-block w-100" alt="Colección premium 2" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>Rituales de belleza</h5>
+                    <p>Todo para tu rutina de cabello y estilo.</p>
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <img src="https://picsum.photos/seed/mb-hero-3/1200/600" className="d-block w-100" alt="Colección premium 3" style={{ objectFit: 'cover', aspectRatio: '2 / 1' }} />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>Ofertas especiales</h5>
+                    <p>Descubre combos y promociones por tiempo limitado.</p>
+                  </div>
+                </div>
+              </div>
+              <button className="carousel-control-prev" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true" />
+                <span className="visually-hidden">Anterior</span>
+              </button>
+              <button className="carousel-control-next" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true" />
+                <span className="visually-hidden">Siguiente</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="hero-bg" aria-hidden="true" />
+      </section>
+
+      {/* Categorías destacadas */}
+      <section className="mb-5">
+        <div className="d-flex align-items-center justify-content-between mb-3">
+          <h2 className="h4 mb-0">Categorías destacadas</h2>
           <Link to="/products" className="btn btn-sm btn-outline-secondary">Ver todo</Link>
         </div>
-        <div className="position-relative">
-          <button type="button" className="btn btn-light btn-sm carousel-btn prev" aria-label="Anterior" onClick={handlePrev}>
-            ‹
-          </button>
-          <div ref={scrollRef} className="category-scroll" role="region" aria-label="Carrusel de categorías">
-            {categories.map((cat) => (
-              <div key={cat.slug} className="carousel-item-card">
-                <Link to={cat.link} className="text-decoration-none d-block">
-                  <div className="card h-100 overflow-hidden">
-                    <div className="p-2 bg-white">
-                      <img src={cat.image} alt={cat.title} loading="lazy" className="w-100" style={{ height: '120px', objectFit: 'contain' }} />
-                    </div>
-                    <div className="p-2 text-center">
-                      <span className="small fw-semibold text-dark">{cat.title}</span>
+        <div className="row g-3 g-md-4">
+          {[
+            { title: 'Cabello', slug: 'cabello', image: '/images/categories/cabello_600x600.png', query: 'category=cabello&subcategory=shampoo,conditioner' },
+            { title: 'Tazones', slug: 'tazones', image: '/images/categories/tazones_600x600.png', query: 'category=tazon&subcategory=schopero' },
+            { title: 'Aceites Capilares', slug: 'aceites capilares', image: '/images/categories/aceites_capilares_600x600.png', query: 'category=cabello&subcategory=aceite' }
+          ].map((cat) => (
+            <div key={cat.slug} className="col-12 col-md-4">
+              <Link to={`/products?${cat.query}`} className="text-decoration-none">
+                <div className="card category-card h-100 overflow-hidden">
+                  <img src={cat.image} className="card-img-top" alt={cat.title} loading="lazy" style={{ objectFit: 'contain', aspectRatio: '4 / 3', backgroundColor: '#fff' }} />
+                  <div className="card-img-overlay d-flex align-items-end p-0">
+                    <div className="w-100 p-3 category-overlay">
+                      <h3 className="h5 mb-0 text-white">{cat.title}</h3>
                     </div>
                   </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <button type="button" className="btn btn-light btn-sm carousel-btn next" aria-label="Siguiente" onClick={handleNext}>
-            ›
-          </button>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
     </div>
