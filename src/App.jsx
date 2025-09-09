@@ -10,6 +10,7 @@ import OrderSuccess from './themes/default/OrderSuccess.jsx';
 import Blog from './themes/default/Blog.jsx';
 import BlogDetail from './themes/default/BlogDetail.jsx';
 import PreguntasFrecuentes from './themes/default/PreguntasFrecuentes.jsx';
+import EnviosYDevoluciones from './themes/default/EnviosYDevoluciones.jsx';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
+        <Route path="/envios-y-devoluciones" element={<EnviosYDevoluciones />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

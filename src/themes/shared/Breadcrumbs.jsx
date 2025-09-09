@@ -8,6 +8,7 @@ const nameMap = {
   checkout: 'Checkout',
   blog: 'Blog',
   'preguntas-frecuentes': 'Preguntas frecuentes',
+  'envios-y-devoluciones': 'Envíos y devoluciones',
 };
 
 export default function Breadcrumbs() {
