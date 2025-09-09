@@ -61,7 +61,7 @@ export default function Footer() {
               <h6 className="footer-title">Soporte</h6>
               <ul className="list-unstyled footer-links">
                 <li><Link to="/preguntas-frecuentes">Preguntas frecuentes</Link></li>
-                <li><a href="#envios">Envíos y devoluciones</a></li>
+                <li><Link to="/envios-y-devoluciones">Envíos y devoluciones</Link></li>
                 <li><a href="#garantia">Garantía</a></li>
                 <li><a href="#contacto">Contacto</a></li>
               </ul>
