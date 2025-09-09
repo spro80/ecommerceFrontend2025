@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSEO } from '../../contexts/SEOContext.jsx';
 
 const faqs = [
   {
@@ -44,6 +45,13 @@ const faqs = [
 ];
 
 export default function PreguntasFrecuentes() {
+  const { setTitle, setDescription } = useSEO();
+
+  useEffect(() => {
+    setTitle('Preguntas frecuentes');
+    setDescription('Respuestas rápidas sobre envíos, pagos, cambios, garantías y soporte.');
+  }, [setTitle, setDescription]);
+
   return (
     <section className="py-3">
       <div className="container">
@@ -90,7 +98,7 @@ export default function PreguntasFrecuentes() {
 
           <div className="col-12 col-lg-4">
             <div className="card contact-form-card p-3">
-              <h5 className="mb-2">¿Aún necesitas ayuda?</h5>
+              <h3 className="h5 mb-2">¿Aún necesitas ayuda?</h3>
               <p className="text-muted mb-3">Escríbenos y te responderemos a la brevedad.</p>
               <a href="#contacto" className="btn btn-secondary w-100">Contactar soporte</a>
             </div>

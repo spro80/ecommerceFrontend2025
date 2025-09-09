@@ -185,6 +185,17 @@ body {
   color: var(--color-black);
 }
 
+/* Themed link-style buttons for accordions and similar triggers */
+.btn-link {
+  color: var(--color-jade);
+  text-decoration: none;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
 main:focus {
   outline: 3px solid var(--color-gold);
   outline-offset: 4px;
