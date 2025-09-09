@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { useUser } from '../../contexts/UserContext.jsx';
 import { useSEO } from '../../contexts/SEOContext.jsx';
+import PayPalCheckout from '../../ui/PayPalCheckout.jsx';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -80,6 +81,43 @@ export default function Checkout() {
     return Object.keys(next).length === 0;
   }
 
+  async function completeOrder(paymentMethodOverride) {
+    const paymentMethod = paymentMethodOverride || form.paymentMethod;
+    const orderId = Math.random().toString(36).slice(2, 10).toUpperCase();
+    const shippingCostSnapshot = (function () {
+      if (form.shippingMethod === 'express') return 9.99;
+      if (cartSubtotal === 0) return 0;
+      return 4.99;
+    })();
+    const taxSnapshot = Math.round(cartSubtotal * 0.19 * 100) / 100;
+    const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
+    const orderSnapshot = {
+      id: orderId,
+      items: items.map((it) => ({ id: it.id, name: it.name, price: it.price, quantity: it.quantity, image: it.image })),
+      totals: {
+        subtotal: cartSubtotal,
+        shipping: shippingCostSnapshot,
+        tax: taxSnapshot,
+        total: totalSnapshot
+      },
+      customer: {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        address: form.address,
+        city: form.city,
+        postalCode: form.postalCode
+      },
+      shippingMethod: form.shippingMethod,
+      paymentMethod,
+    };
+    try {
+      sessionStorage.setItem('last_order', JSON.stringify(orderSnapshot));
+    } catch {}
+    clearCart();
+    navigate(`/order/success?orderId=${orderId}`);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (items.length === 0) return;
@@ -87,40 +125,7 @@ export default function Checkout() {
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const orderId = Math.random().toString(36).slice(2, 10).toUpperCase();
-      // Persist a minimal snapshot of the order to sessionStorage for the success page
-      const shippingCostSnapshot = (function () {
-        if (form.shippingMethod === 'express') return 9.99;
-        if (cartSubtotal === 0) return 0;
-        return 4.99;
-      })();
-      const taxSnapshot = Math.round(cartSubtotal * 0.19 * 100) / 100;
-      const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
-      const orderSnapshot = {
-        id: orderId,
-        items: items.map((it) => ({ id: it.id, name: it.name, price: it.price, quantity: it.quantity, image: it.image })),
-        totals: {
-          subtotal: cartSubtotal,
-          shipping: shippingCostSnapshot,
-          tax: taxSnapshot,
-          total: totalSnapshot
-        },
-        customer: {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          address: form.address,
-          city: form.city,
-          postalCode: form.postalCode
-        },
-        shippingMethod: form.shippingMethod,
-        paymentMethod: form.paymentMethod
-      };
-      try {
-        sessionStorage.setItem('last_order', JSON.stringify(orderSnapshot));
-      } catch {}
-      clearCart();
-      navigate(`/order/success?orderId=${orderId}`);
+      await completeOrder(form.paymentMethod);
     } finally {
       setIsSubmitting(false);
     }
@@ -218,6 +223,10 @@ export default function Checkout() {
                   <input className="form-check-input" type="radio" name="paymentMethod" id="payCash" value="cash" checked={form.paymentMethod === 'cash'} onChange={handleChange} />
                   <label className="form-check-label" htmlFor="payCash">Efectivo/Transferencia</label>
                 </div>
+                <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" name="paymentMethod" id="payPaypal" value="paypal" checked={form.paymentMethod === 'paypal'} onChange={handleChange} />
+                  <label className="form-check-label" htmlFor="payPaypal">PayPal</label>
+                </div>
               </div>
 
               {form.paymentMethod === 'card' && (
@@ -244,12 +253,25 @@ export default function Checkout() {
                   </div>
                 </div>
               )}
+
+              {form.paymentMethod === 'paypal' && (
+                <div className="mt-2">
+                  <div className="text-muted small mb-2">Completa el pago con PayPal:</div>
+                  <PayPalCheckout
+                    amount={total}
+                    currency="USD"
+                    onApprove={() => completeOrder('paypal')}
+                    onError={() => {}}
+                    onCancel={() => {}}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
           <div className="d-flex justify-content-end gap-2">
             <Link to="/cart" className="btn btn-outline-secondary">Volver al carrito</Link>
-            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            <button type="submit" className="btn btn-primary" disabled={isSubmitting || form.paymentMethod === 'paypal'}>
               {isSubmitting ? 'Procesando…' : 'Confirmar pedido'}
             </button>
           </div>
