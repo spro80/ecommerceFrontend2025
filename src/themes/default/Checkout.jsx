@@ -4,6 +4,7 @@ import { useCart } from '../../contexts/CartContext.jsx';
 import { useUser } from '../../contexts/UserContext.jsx';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 import PayPalCheckout from '../../ui/PayPalCheckout.jsx';
+import { IVA_RATE } from '../../lib/config.js';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ export default function Checkout() {
   }, [form.shippingMethod, cartSubtotal]);
 
   const tax = useMemo(() => {
-    return Math.round(cartSubtotal * 0.19 * 100) / 100; // 19% IVA
+    return Math.round(cartSubtotal * IVA_RATE * 100) / 100;
   }, [cartSubtotal]);
 
   const total = useMemo(() => {
@@ -89,7 +90,7 @@ export default function Checkout() {
       if (cartSubtotal === 0) return 0;
       return 4990;
     })();
-    const taxSnapshot = Math.round(cartSubtotal * 0.19 * 100) / 100;
+    const taxSnapshot = Math.round(cartSubtotal * IVA_RATE * 100) / 100;
     const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
     const orderSnapshot = {
       id: orderId,
