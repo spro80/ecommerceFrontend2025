@@ -54,6 +54,12 @@ export default function Home() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const listId = 'category-carousel';
+  const autoplayTimerRef = useRef(null);
+  const interactionPauseTimerRef = useRef(null);
+  const [isAutoplayOn, setIsAutoplayOn] = useState(false);
+  const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const updateScrollButtons = () => {
     const el = scrollerRef.current;
@@ -86,6 +92,63 @@ export default function Home() {
     el.scrollBy({ left: next, behavior: 'smooth' });
   };
 
+  // Track desktop viewport
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(!!mq.matches);
+    update();
+    mq.addEventListener?.('change', update);
+    return () => mq.removeEventListener?.('change', update);
+  }, []);
+
+  // Track reduced motion preference
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setPrefersReducedMotion(!!mq.matches);
+    update();
+    mq.addEventListener?.('change', update);
+    return () => mq.removeEventListener?.('change', update);
+  }, []);
+
+  // Autoplay logic (desktop only, off by default, respects reduced-motion, pauses on interaction)
+  useEffect(() => {
+    if (autoplayTimerRef.current) {
+      clearInterval(autoplayTimerRef.current);
+      autoplayTimerRef.current = null;
+    }
+    const canRun = isAutoplayOn && isDesktop && !prefersReducedMotion && categories.length > 0 && !isPausedByInteraction;
+    if (!canRun) return;
+    autoplayTimerRef.current = setInterval(() => {
+      // Advance right; if at end, jump to start for an infinite loop feel
+      const el = scrollerRef.current;
+      if (!el) return;
+      const maxScrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
+      if (el.scrollLeft >= maxScrollLeft - 4) {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollByAmount('right');
+      }
+    }, 5000); // slow interval for readability
+    return () => {
+      if (autoplayTimerRef.current) {
+        clearInterval(autoplayTimerRef.current);
+        autoplayTimerRef.current = null;
+      }
+    };
+  }, [isAutoplayOn, isDesktop, prefersReducedMotion, isPausedByInteraction, categories.length]);
+
+  const handleUserInteraction = () => {
+    setIsPausedByInteraction(true);
+    if (interactionPauseTimerRef.current) {
+      clearTimeout(interactionPauseTimerRef.current);
+      interactionPauseTimerRef.current = null;
+    }
+    // Resume after brief inactivity, only if autoplay remains enabled and no hover/focus
+    interactionPauseTimerRef.current = setTimeout(() => {
+      setIsPausedByInteraction(false);
+    }, 4000);
+  };
+
   return (
     <div className="container py-4">
       <section className="text-center p-4 p-md-5 bg-light rounded-3 mb-4">
@@ -106,7 +169,19 @@ export default function Home() {
         <section aria-labelledby="home-categories-title" className="mb-4">
           <div className="d-flex align-items-center justify-content-between mb-2">
             <h2 id="home-categories-title" className="h5 m-0">Explora por categoría</h2>
-            <Link to="/products" className="btn btn-sm btn-outline-secondary">Ver todo</Link>
+            <div className="d-flex align-items-center gap-2">
+              <button
+                type="button"
+                className={`btn btn-sm ${isAutoplayOn ? 'btn-primary' : 'btn-outline-secondary'} d-none d-md-inline-flex`}
+                aria-pressed={isAutoplayOn}
+                aria-label={isAutoplayOn ? 'Pausar carrusel' : 'Reproducir carrusel'}
+                onClick={() => setIsAutoplayOn((v) => !v)}
+                title={isAutoplayOn ? 'Pausar carrusel' : 'Reproducir carrusel'}
+              >
+                {isAutoplayOn ? 'Pausar' : 'Reproducir'}
+              </button>
+              <Link to="/products" className="btn btn-sm btn-outline-secondary">Ver todo</Link>
+            </div>
           </div>
 
           <div className="position-relative">
@@ -140,6 +215,12 @@ export default function Home() {
               role="list"
               aria-label="Carrusel de categorías"
               style={{ scrollBehavior: 'smooth' }}
+              onMouseEnter={() => setIsPausedByInteraction(true)}
+              onMouseLeave={() => setIsPausedByInteraction(false)}
+              onFocus={() => setIsPausedByInteraction(true)}
+              onBlur={() => setIsPausedByInteraction(false)}
+              onPointerDown={handleUserInteraction}
+              onWheel={handleUserInteraction}
             >
               {categories.map((cat) => (
                 <div key={cat.key} role="listitem" className="flex-shrink-0" style={{ minWidth: 200, maxWidth: 280 }}>
