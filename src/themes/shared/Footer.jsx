@@ -53,7 +53,7 @@ export default function Footer() {
                 <li><Link to="/products">Productos</Link></li>
                 <li><Link to="/blog">Blog</Link></li>
                 <li><Link to="/cart">Carrito</Link></li>
-                <li><Link to="/checkout">Checkout</Link></li>
+                <li><Link to="/checkout">Pagar</Link></li>
               </ul>
             </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
               <ul className="list-unstyled footer-links">
                 <li><Link to="/preguntas-frecuentes">Preguntas frecuentes</Link></li>
                 <li><Link to="/envios-y-devoluciones">Envíos y devoluciones</Link></li>
-                <li><a href="#garantia">Garantía</a></li>
+                <li><Link to="/garantia">Garantía</Link></li>
                 <li><a href="#contacto">Contacto</a></li>
               </ul>
             </div>
@@ -97,9 +97,9 @@ export default function Footer() {
         <div className="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
           <small className="m-0 text-muted">© {new Date().getFullYear()} Mundo Belleza. Todos los derechos reservados.</small>
           <ul className="list-unstyled d-flex gap-3 m-0 footer-bottom-links">
-            <li><a href="#privacidad">Privacidad</a></li>
-            <li><a href="#terminos">Términos</a></li>
-            <li><a href="#cookies">Cookies</a></li>
+            <li><a href="#privacidad">Política de privacidad</a></li>
+            <li><a href="#terminos">Términos y condiciones</a></li>
+            <li><a href="#cookies">Política de cookies</a></li>
           </ul>
         </div>
       </div>
