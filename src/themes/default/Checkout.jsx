@@ -299,20 +299,20 @@ export default function Checkout() {
 
             <div className="d-flex justify-content-between mb-2">
               <span>Subtotal</span>
-              <strong>${cartSubtotal.toFixed(2)}</strong>
+              <strong>${cartSubtotal}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Envío</span>
-              <strong>${shippingCost.toFixed(2)}</strong>
+              <strong>${shippingCost}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>IVA</span>
-              <strong>${tax.toFixed(2)}</strong>
+              <strong>${tax}</strong>
             </div>
             <hr />
             <div className="d-flex justify-content-between">
               <span>Total</span>
-              <strong>${total.toFixed(2)}</strong>
+              <strong>${total}</strong>
             </div>
           </div>
         </div>
