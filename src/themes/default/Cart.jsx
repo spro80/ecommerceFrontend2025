@@ -14,7 +14,7 @@ export default function Cart() {
     removeItem,
   } = useCart();
 
-  const formatCurrency = (value) => `$${value.toFixed(2)}`;
+  const formatCurrency = (value) => `$${value}`;
 
   return (
     <div className="container py-4">

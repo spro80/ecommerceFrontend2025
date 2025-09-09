@@ -44,9 +44,9 @@ export default function Checkout() {
   }, [user]);
 
   const shippingCost = useMemo(() => {
-    if (form.shippingMethod === 'express') return 9.99;
+    if (form.shippingMethod === 'express') return 4990;
     if (cartSubtotal === 0) return 0;
-    return 4.99;
+    return 4990;
   }, [form.shippingMethod, cartSubtotal]);
 
   const tax = useMemo(() => {
@@ -85,9 +85,9 @@ export default function Checkout() {
     const paymentMethod = paymentMethodOverride || form.paymentMethod;
     const orderId = Math.random().toString(36).slice(2, 10).toUpperCase();
     const shippingCostSnapshot = (function () {
-      if (form.shippingMethod === 'express') return 9.99;
+      if (form.shippingMethod === 'express') return 4990;
       if (cartSubtotal === 0) return 0;
-      return 4.99;
+      return 4990;
     })();
     const taxSnapshot = Math.round(cartSubtotal * 0.19 * 100) / 100;
     const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
@@ -292,7 +292,7 @@ export default function Checkout() {
                       <div className="text-muted small">Cantidad: {it.quantity || 1}</div>
                     </div>
                   </div>
-                  <div className="small fw-semibold">${((it.price || 0) * (it.quantity || 1)).toFixed(2)}</div>
+                  <div className="small fw-semibold">${((it.price || 0) * (it.quantity || 1))}</div>
                 </li>
               ))}
             </ul>
