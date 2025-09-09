@@ -83,7 +83,7 @@ export default function ProductDetail() {
             <p className="product-description lead mb-4">{product.description}</p>
 
             <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
-              <div className="price-highlight">${product.price.toFixed(2)}</div>
+              <div className="price-highlight">${product.price}</div>
               <button
                 type="button"
                 className="btn btn-primary btn-lg btn-add-cart"

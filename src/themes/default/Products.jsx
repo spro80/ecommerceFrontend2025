@@ -275,7 +275,7 @@ const handleAddToCart = (product) => {
                 )}
 
                 <div className="mt-auto d-flex align-items-center justify-content-between">
-                        <span className="price h6 mb-0">${product.price.toFixed(2)}</span>
+                        <span className="price h6 mb-0">${product.price}</span>
                         <button
                           className="btn btn-sm btn-primary"
                           disabled={product.stock === 0}

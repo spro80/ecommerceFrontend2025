@@ -5,7 +5,7 @@ export const products = [
     brand: "Plus Vinge",
     category: "cabello",
     subcategory: "shampoo",
-    price: 19.99,
+    price: 9990,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -16,7 +16,7 @@ export const products = [
     brand: "Plus Vinge",
     category: "cabello",
     subcategory: "conditioner",
-    price: 24.99,
+    price: 9990,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -27,7 +27,7 @@ export const products = [
     brand: "Plus Vinge",
     category: "cabello",
     subcategory: "aceite",
-    price: 29.99,
+    price: 5990,
     image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -38,7 +38,7 @@ export const products = [
     brand: "Rocco",
     category: "cabello",
     subcategory: "shampoo",
-    price: 34.99,
+    price: 5990,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -49,7 +49,7 @@ export const products = [
     brand: "Rocco",
     category: "cabello",
     subcategory: "conditioner",
-    price: 22.99,
+    price: 5990,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -60,7 +60,7 @@ export const products = [
     brand: "Rocco",
     category: "cabello",
     subcategory: "shampoo",
-    price: 18.99,
+    price: 5390,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -71,7 +71,7 @@ export const products = [
     brand: "Rocco",
     category: "cabello",
     subcategory: "conditioner",
-    price: 21.49,
+    price: 5390,
     image: "/images/categories/cabello_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -82,7 +82,7 @@ export const products = [
     brand: "Moroccan",
     category: "cabello",
     subcategory: "aceite",
-    price: 27.49,
+    price: 7990,
     image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -93,7 +93,7 @@ export const products = [
     brand: "Luxe Line",
     category: "cabello",
     subcategory: "aceite",
-    price: 32.99,
+    price: 8990,
     image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -104,7 +104,7 @@ export const products = [
     brand: "Marca",
     category: "cabello",
     subcategory: "aceite",
-    price: 14.99,
+    price: 5990,
     image: "/images/categories/aceites_capilares_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -115,7 +115,7 @@ export const products = [
     brand: "Kunstmann",
     category: "tazon",
     subcategory: "schopero",
-    price: 12.99,
+    price: 24990,
     image: "/images/categories/tazones_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
@@ -126,7 +126,7 @@ export const products = [
     brand: "Kunstmann",
     category: "tazon",
     subcategory: "schopero",
-    price: 13.99,
+    price: 24990,
     image: "/images/categories/tazones_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
