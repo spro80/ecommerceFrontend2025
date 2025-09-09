@@ -7,6 +7,7 @@ const nameMap = {
   cart: 'Carrito',
   checkout: 'Checkout',
   blog: 'Blog',
+  'preguntas-frecuentes': 'Preguntas frecuentes',
 };
 
 export default function Breadcrumbs() {
