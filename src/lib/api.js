@@ -73,3 +73,33 @@ function shouldFallbackToMock(error) {
   return false;
 }
 
+// =====================
+// Blog API (with fallback)
+// =====================
+export async function getBlogPosts() {
+  try {
+    const data = await fetchJson('/api/blog');
+    // Expected shape from API: array of posts
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    if (shouldFallbackToMock(error)) {
+      const { getAllPosts } = await import('../data/blog.js');
+      return getAllPosts();
+    }
+    throw error;
+  }
+}
+
+export async function getBlogPostBySlug(slug) {
+  try {
+    const data = await fetchJson(`/api/blog/${encodeURIComponent(slug)}`);
+    return data;
+  } catch (error) {
+    if (shouldFallbackToMock(error)) {
+      const { getPostBySlug } = await import('../data/blog.js');
+      return getPostBySlug(slug);
+    }
+    throw error;
+  }
+}
+

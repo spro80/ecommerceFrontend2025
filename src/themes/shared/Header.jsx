@@ -64,11 +64,11 @@ export default function Header() {
               </NavLink>
             </li>
 
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <NavLink to="/blog" className="nav-link">
                 {t('common.blog')}
               </NavLink>
-            </li> */}
+            </li>
 
             {/* <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle" data-bs-toggle="dropdown">

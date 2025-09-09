@@ -205,6 +205,34 @@ main:focus {
 .hero {
   background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(212,175,55,0.25));
 }
+
+/* ==========================
+   Blog styling (brand-aligned)
+   ========================== */
+.blog-hero {
+  background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(212,175,55,0.25));
+  color: var(--color-offwhite);
+}
+.blog-hero .blog-hero-bg {
+  background: radial-gradient(800px 400px at 100% 0%, rgba(212,175,55,0.25), transparent 60%),
+              radial-gradient(600px 300px at 0% 100%, rgba(46,107,87,0.25), transparent 60%);
+}
+.blog-card .card-title {
+  color: var(--color-black);
+}
+.blog-featured .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.blog-content h2, .blog-content h3, .blog-content h4 {
+  color: var(--color-black);
+  margin-top: 1rem;
+}
+.blog-content p {
+  color: #495057;
+}
 .hero .hero-bg {
   position: absolute;
   inset: 0;
