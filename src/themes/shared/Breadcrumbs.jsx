@@ -5,10 +5,11 @@ const nameMap = {
   '': 'Inicio',
   products: 'Productos',
   cart: 'Carrito',
-  checkout: 'Checkout',
+  checkout: 'Pagar',
   blog: 'Blog',
   'preguntas-frecuentes': 'Preguntas frecuentes',
   'envios-y-devoluciones': 'Envíos y devoluciones',
+  'garantia': 'Garantía',
 };
 
 export default function Breadcrumbs() {

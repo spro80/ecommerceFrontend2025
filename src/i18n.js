@@ -60,10 +60,10 @@ const resources = {
       cart: {
         title: 'Tu carrito',
         empty: 'Tu carrito está vacío',
-        proceedToCheckout: 'Ir a checkout'
+        proceedToCheckout: 'Proceder al pago'
       },
       checkout: {
-        title: 'Checkout',
+        title: 'Pagar',
         stepCart: 'Carrito',
         stepShipping: 'Envío',
         stepPayment: 'Pago',
