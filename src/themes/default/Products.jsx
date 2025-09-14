@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { getProducts } from '../../lib/api.js';
+import { formatCLP } from '../shared/format.js';
 
 
 
@@ -275,7 +276,7 @@ const handleAddToCart = (product) => {
                 )}
 
                 <div className="mt-auto d-flex align-items-center justify-content-between">
-                        <span className="price h6 mb-0">${product.price}</span>
+                        <span className="price h6 mb-0">{formatCLP(product.price)}</span>
                         <button
                           className="btn btn-sm btn-primary"
                           disabled={product.stock === 0}
