@@ -75,7 +75,7 @@ export default function Blog() {
   };
 
   return (
-    <div className="blog-page">
+    <div className="container py-4 blog-page">
       <section className="blog-hero rounded-3 p-4 p-md-5 mb-4 position-relative overflow-hidden">
         <div className="position-absolute top-0 start-0 w-100 h-100 blog-hero-bg" aria-hidden="true" />
         <div className="position-relative">
@@ -86,11 +86,11 @@ export default function Blog() {
 
       <div className="row g-3 align-items-center mb-3">
         <div className="col-12 col-md-6">
-          <div className="input-group">
-            <span className="input-group-text">🔎</span>
+          <div className="input-group rounded-pill shadow-sm overflow-hidden">
+            <span className="input-group-text bg-white border-0">🔎</span>
             <input
               type="search"
-              className="form-control"
+              className="form-control form-control-lg border-0"
               placeholder="Buscar artículos, temas o autores"
               value={q}
               onChange={(e) => updateParam({ q: e.target.value })}
@@ -102,7 +102,7 @@ export default function Blog() {
           <div className="d-flex flex-wrap gap-2">
             <button
               type="button"
-              className={`btn btn-sm ${!tag ? 'btn-primary' : 'btn-outline-secondary'}`}
+              className={`btn btn-sm rounded-pill ${!tag ? 'btn-primary' : 'btn-outline-secondary'}`}
               onClick={() => updateParam({ tag: '' })}
             >
               Todas las etiquetas
@@ -111,7 +111,7 @@ export default function Blog() {
               <button
                 key={t}
                 type="button"
-                className={`btn btn-sm ${tag === t ? 'btn-primary' : 'btn-outline-secondary'}`}
+                className={`btn btn-sm rounded-pill ${tag === t ? 'btn-primary' : 'btn-outline-secondary'}`}
                 onClick={() => updateParam({ tag: t })}
               >
                 #{t}
@@ -133,16 +133,17 @@ export default function Blog() {
           {featured && (
             <section className="mb-4">
               <Link to={`/blog/${featured.slug}`} className="text-decoration-none">
-                <article className="card blog-featured shadow-sm overflow-hidden">
+                <article className="card blog-featured shadow-sm overflow-hidden card-hover-lift">
                   <div className="row g-0 align-items-stretch">
                     <div className="col-12 col-md-6">
-                      <div className="ratio ratio-16x9 h-100">
-                        <img src={featured.coverImage} alt={featured.title} className="w-100 h-100 object-fit-cover" loading="lazy" />
+                      <div className="ratio ratio-16x9 h-100 position-relative">
+                        <img src={featured.coverImage} alt={featured.title} className="w-100 h-100 object-fit-cover image-zoom" loading="lazy" />
+                        <div className="media-overlay" aria-hidden="true" />
                       </div>
                     </div>
                     <div className="col-12 col-md-6">
                       <div className="card-body">
-                        <span className="badge text-bg-primary mb-2">Destacado</span>
+                        <span className="badge blog-badge-destacado mb-2">Destacado</span>
                         <h2 className="h4 card-title">{featured.title}</h2>
                         <p className="card-text text-muted">{featured.excerpt}</p>
                         <div className="small text-muted d-flex flex-wrap gap-2 align-items-center">
@@ -165,10 +166,11 @@ export default function Blog() {
               <div className="row g-3">
                 {rest.map((p) => (
                   <div className="col-12 col-md-6 col-lg-4" key={p.slug}>
-                    <article className="card h-100 blog-card">
+                    <article className="card h-100 blog-card overflow-hidden card-hover-lift">
                       <Link to={`/blog/${p.slug}`} className="text-decoration-none">
-                        <div className="ratio ratio-16x9">
-                          <img src={p.coverImage} alt={p.title} className="w-100 h-100 object-fit-cover" loading="lazy" />
+                        <div className="ratio ratio-16x9 position-relative">
+                          <img src={p.coverImage} alt={p.title} className="w-100 h-100 object-fit-cover image-zoom" loading="lazy" />
+                          <div className="media-overlay" aria-hidden="true" />
                         </div>
                       </Link>
                       <div className="card-body d-flex flex-column">

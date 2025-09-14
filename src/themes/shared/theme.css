@@ -241,6 +241,42 @@ main:focus {
   pointer-events: none;
 }
 
+/* Blog enhancements */
+.card-hover-lift {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card-hover-lift:hover,
+.card-hover-lift:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+.image-zoom {
+  transition: transform .35s ease;
+}
+.card-hover-lift:hover .image-zoom,
+.card-hover-lift:focus-within .image-zoom {
+  transform: scale(1.05);
+}
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30,30,30,0.45), rgba(30,30,30,0.0) 55%);
+}
+.blog-badge-destacado {
+  background: linear-gradient(135deg, var(--color-gold), #c09d31);
+  color: var(--color-black);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+/* Blog detail hero */
+.blog-post-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30,30,30,0.65), rgba(30,30,30,0.2) 50%, rgba(30,30,30,0.0));
+}
+
 /* Hero gallery (brand-aligned mosaic) */
 .hero-gallery {
   position: relative;

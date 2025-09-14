@@ -49,24 +49,42 @@ export default function BlogDetail() {
 
   return (
     <article className="blog-post">
-      <header className="mb-3">
-        <h1 className="h3 h-md-2">{post.title}</h1>
-        <div className="small text-muted d-flex flex-wrap gap-2">
-          <span>{post.author}</span>
-          <span>•</span>
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
-          <span>•</span>
-          <span>{post.readingMinutes} min</span>
-        </div>
-      </header>
-
       {post.coverImage && (
-        <div className="ratio ratio-16x9 mb-3 rounded overflow-hidden">
-          <img src={post.coverImage} alt="" className="w-100 h-100 object-fit-cover" />
-        </div>
+        <section className="blog-post-hero rounded-3 overflow-hidden position-relative mb-4">
+          <div className="ratio ratio-21x9 d-none d-md-block">
+            <img src={post.coverImage} alt="" className="w-100 h-100 object-fit-cover" />
+          </div>
+          <div className="ratio ratio-16x9 d-block d-md-none">
+            <img src={post.coverImage} alt="" className="w-100 h-100 object-fit-cover" />
+          </div>
+          <div className="hero-overlay" aria-hidden="true" />
+          <div className="position-absolute bottom-0 start-0 end-0 p-3 p-md-4">
+            <h1 className="h3 h-md-2 text-white mb-2">{post.title}</h1>
+            <div className="small text-white-50 d-flex flex-wrap gap-2">
+              <span>{post.author}</span>
+              <span>•</span>
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span>•</span>
+              <span>{post.readingMinutes} min</span>
+            </div>
+          </div>
+        </section>
       )}
 
-      <div className="blog-content">
+      {!post.coverImage && (
+        <header className="mb-3">
+          <h1 className="h3 h-md-2">{post.title}</h1>
+          <div className="small text-muted d-flex flex-wrap gap-2">
+            <span>{post.author}</span>
+            <span>•</span>
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <span>•</span>
+            <span>{post.readingMinutes} min</span>
+          </div>
+        </header>
+      )}
+
+      <div className="blog-content card p-3 p-md-4 shadow-sm">
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
 
