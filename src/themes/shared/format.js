@@ -11,7 +11,7 @@ export function formatCLP(value) {
   const numeric = Number(value);
   if (!Number.isFinite(numeric)) return "$0";
   try {
-    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(numeric);
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(numeric);
   } catch (_) {
     // Fallback formatting if Intl is not available
     const rounded = Math.round(numeric);
