@@ -6,6 +6,7 @@ import { useSEO } from '../../contexts/SEOContext.jsx';
 import PayPalCheckout from '../../ui/PayPalCheckout.jsx';
 import { IVA_RATE } from '../../lib/config.js';
 import { formatCLP } from '../shared/format.js';
+import { generateOrderNumber } from '../shared/order.js';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ export default function Checkout() {
 
   async function completeOrder(paymentMethodOverride) {
     const paymentMethod = paymentMethodOverride || form.paymentMethod;
-    const orderId = Math.random().toString(36).slice(2, 10).toUpperCase();
+    const orderId = generateOrderNumber();
     const shippingCostSnapshot = (function () {
       if (form.shippingMethod === 'express') return 4990;
       if (cartSubtotal === 0) return 0;
