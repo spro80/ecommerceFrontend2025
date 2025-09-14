@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 import { sendOrderConfirmationEmail, buildOrderEmailPayload } from '../../lib/email.js';
+import { formatCLP } from '../shared/format.js';
 
 function useQuery() {
   const { search } = useLocation();
@@ -67,13 +68,13 @@ export default function OrderSuccess() {
   items.forEach((it) => {
     const qty = it.quantity || 1;
     const price = Number(it.price || 0);
-    lines.push(`- ${it.name} x${qty} - $${(price * qty).toFixed(2)}`);
+    lines.push(`- ${it.name} x${qty} - ${formatCLP(price * qty)}`);
   });
   lines.push(' ');
-  lines.push(`Subtotal: $${Number(totals.subtotal || 0).toFixed(2)}`);
-  lines.push(`Envío: $${Number(totals.shipping || 0).toFixed(2)} (${order.shippingMethod === 'express' ? 'Express' : 'Estándar'})`);
-  lines.push(`IVA: $${Number(totals.tax || 0).toFixed(2)}`);
-  lines.push(`Total: $${Number(totals.total || 0).toFixed(2)}`);
+  lines.push(`Subtotal: ${formatCLP(totals.subtotal || 0)}`);
+  lines.push(`Envío: ${formatCLP(totals.shipping || 0)} (${order.shippingMethod === 'express' ? 'Express' : 'Estándar'})`);
+  lines.push(`IVA: ${formatCLP(totals.tax || 0)}`);
+  lines.push(`Total: ${formatCLP(totals.total || 0)}`);
   lines.push(' ');
   lines.push('Datos de envío:');
   lines.push(`${customer.name}`);
@@ -109,16 +110,16 @@ export default function OrderSuccess() {
                         <div className="text-muted small">Cantidad: {it.quantity || 1}</div>
                       </div>
                     </div>
-                    <div className="small fw-semibold">${((it.price || 0) * (it.quantity || 1)).toFixed(2)}</div>
+                    <div className="small fw-semibold">{formatCLP((it.price || 0) * (it.quantity || 1))}</div>
                   </li>
                 ))}
               </ul>
 
-              <div className="d-flex justify-content-between mb-2"><span>Subtotal</span><strong>${Number(totals.subtotal).toFixed(2)}</strong></div>
-              <div className="d-flex justify-content-between mb-2"><span>Envío</span><strong>${Number(totals.shipping).toFixed(2)}</strong></div>
-              <div className="d-flex justify-content-between mb-2"><span>IVA</span><strong>${Number(totals.tax).toFixed(2)}</strong></div>
+              <div className="d-flex justify-content-between mb-2"><span>Subtotal</span><strong>{formatCLP(totals.subtotal)}</strong></div>
+              <div className="d-flex justify-content-between mb-2"><span>Envío</span><strong>{formatCLP(totals.shipping)}</strong></div>
+              <div className="d-flex justify-content-between mb-2"><span>IVA</span><strong>{formatCLP(totals.tax)}</strong></div>
               <hr />
-              <div className="d-flex justify-content-between"><span>Total</span><strong>${Number(totals.total).toFixed(2)}</strong></div>
+              <div className="d-flex justify-content-between"><span>Total</span><strong>{formatCLP(totals.total)}</strong></div>
             </div>
           </div>
         </div>
