@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { getProductByIdApi } from '../../lib/api.js';
+import { formatCLP } from '../shared/format.js';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -83,7 +84,7 @@ export default function ProductDetail() {
             <p className="product-description lead mb-4">{product.description}</p>
 
             <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3">
-              <div className="price-highlight">${product.price}</div>
+              <div className="price-highlight">{formatCLP(product.price)}</div>
               <button
                 type="button"
                 className="btn btn-primary btn-lg btn-add-cart"

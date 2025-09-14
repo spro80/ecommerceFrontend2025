@@ -5,6 +5,7 @@ import { useUser } from '../../contexts/UserContext.jsx';
 import { useSEO } from '../../contexts/SEOContext.jsx';
 import PayPalCheckout from '../../ui/PayPalCheckout.jsx';
 import { IVA_RATE } from '../../lib/config.js';
+import { formatCLP } from '../shared/format.js';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -293,27 +294,27 @@ export default function Checkout() {
                       <div className="text-muted small">Cantidad: {it.quantity || 1}</div>
                     </div>
                   </div>
-                  <div className="small fw-semibold">${((it.price || 0) * (it.quantity || 1))}</div>
+                  <div className="small fw-semibold">{formatCLP((it.price || 0) * (it.quantity || 1))}</div>
                 </li>
               ))}
             </ul>
 
             <div className="d-flex justify-content-between mb-2">
               <span>Subtotal</span>
-              <strong>${cartSubtotal}</strong>
+              <strong>{formatCLP(cartSubtotal)}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Envío</span>
-              <strong>${shippingCost}</strong>
+              <strong>{formatCLP(shippingCost)}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>IVA</span>
-              <strong>${tax}</strong>
+              <strong>{formatCLP(tax)}</strong>
             </div>
             <hr />
             <div className="d-flex justify-content-between">
               <span>Total</span>
-              <strong>${total}</strong>
+              <strong>{formatCLP(total)}</strong>
             </div>
           </div>
         </div>

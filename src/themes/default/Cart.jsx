@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext.jsx';
+import { formatCLP } from '../shared/format.js';
 
 export default function Cart() {
   const {
@@ -14,7 +15,7 @@ export default function Cart() {
     removeItem,
   } = useCart();
 
-  const formatCurrency = (value) => `$${value}`;
+  const formatCurrency = (value) => formatCLP(value);
 
   return (
     <div className="container py-4">
