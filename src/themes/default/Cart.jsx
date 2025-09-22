@@ -113,8 +113,8 @@ export default function Cart() {
                   <span>Subtotal</span>
                   <strong>{formatCurrency(cartSubtotal)}</strong>
                 </div>
-                <div className="text-muted small mb-3">El envío y los impuestos se calculan en el checkout.</div>
-                <Link to="/checkout" className="btn btn-primary w-100">Proceder al pago</Link>
+                <div className="text-muted small mb-3">El envío y los impuestos se calculan al finalizar la compra.</div>
+                <Link to="/finalizar-compra" className="btn btn-primary w-100">Proceder al pago</Link>
               </div>
             </div>
           </div>

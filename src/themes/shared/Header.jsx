@@ -106,9 +106,9 @@ export default function Header() {
 
           <ul className="navbar-nav ms-auto">
             <li className="nav-item me-2">
-              <NavLink to="/cart" className="nav-link position-relative">
+              <NavLink to="/carrito" className="nav-link position-relative">
                 {t('common.cart')}
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" aria-label={`Items in cart: ${cartItemsCount}`}>
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" aria-label={`Artículos en el carrito: ${cartItemsCount}`}>
                   {cartItemsCount}
                 </span>
               </NavLink>

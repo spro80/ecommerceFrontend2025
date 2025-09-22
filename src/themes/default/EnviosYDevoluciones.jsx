@@ -74,7 +74,7 @@ export default function EnviosYDevoluciones() {
                 >
                   <div className="card-body">
                     <p className="mb-0">
-                      El costo se calcula automáticamente en el checkout según tu dirección y el peso del pedido.
+                      El costo se calcula automáticamente al finalizar la compra según tu dirección y el peso del pedido.
                       Ofrecemos envío gratis desde montos promocionales cuando estén vigentes.
                     </p>
                   </div>
