@@ -10,7 +10,7 @@ const faqs = [
   {
     question: '¿Cuánto cuesta el envío?',
     answer:
-      'El costo de envío se calcula automáticamente en el checkout según tu dirección y el peso del pedido. Ofrecemos envío gratis a partir de un monto mínimo promocional cuando esté vigente.'
+      'El costo de envío se calcula automáticamente al finalizar la compra según tu dirección y el peso del pedido. Ofrecemos envío gratis a partir de un monto mínimo promocional cuando esté vigente.'
   },
   {
     question: '¿Puedo devolver un producto?',
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: '¿Cómo solicito factura?',
     answer:
-      'Puedes solicitar tu factura ingresando los datos de facturación en el checkout o escribiéndonos luego de tu compra con tu número de pedido.'
+      'Puedes solicitar tu factura ingresando los datos de facturación al finalizar la compra o escribiéndonos luego de tu compra con tu número de pedido.'
   },
   {
     question: '¿Hay garantía?',

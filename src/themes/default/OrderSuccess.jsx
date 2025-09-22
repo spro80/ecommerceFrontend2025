@@ -21,7 +21,7 @@ export default function OrderSuccess() {
   const order = raw ? JSON.parse(raw) : null;
 
   useEffect(() => {
-    setTitle('Pedido confirmado');
+    setTitle('Confirmación de pedido');
     setDescription('Resumen de tu compra');
   }, [setTitle, setDescription]);
 

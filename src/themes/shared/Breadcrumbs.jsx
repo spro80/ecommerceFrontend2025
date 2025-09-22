@@ -4,8 +4,9 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 const nameMap = {
   '': 'Inicio',
   products: 'Productos',
-  cart: 'Carrito',
-  checkout: 'Pagar',
+  'carrito': 'Carrito',
+  'finalizar-compra': 'Finalizar compra',
+  'confirmacion-pedido': 'Confirmación de pedido',
   blog: 'Blog',
   'preguntas-frecuentes': 'Preguntas frecuentes',
   'envios-y-devoluciones': 'Envíos y devoluciones',

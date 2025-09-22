@@ -11,17 +11,23 @@ import { useLocation } from 'react-router-dom';
 export default function Layout({ children }) {
   const { title, description } = useSEO();
   const location = useLocation();
+  const baseUrl = import.meta.env.VITE_APP_SITE_URL || '';
+  const canonicalHref = baseUrl
+    ? `${String(baseUrl).replace(/\/$/, '')}${location.pathname}${location.search || ''}`
+    : null;
   const isProductDetailPage = /^\/products\/[^/]+$/.test(location.pathname);
   const isProductsListPage = location.pathname === '/products';
-  const isCartPage = location.pathname === '/cart';
-  const isCheckoutPage = location.pathname === '/checkout';
-  const isOrderSuccessPage = location.pathname === '/order/success';
+  const isCartPage = location.pathname === '/carrito';
+  const isCheckoutPage = location.pathname === '/finalizar-compra';
+  const isOrderSuccessPage = location.pathname === '/confirmacion-pedido';
 
   return (
     <div className="d-flex flex-column min-vh-100">
       <Helmet>
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
+        <meta property="og:locale" content="es_ES" />
+        {canonicalHref && <link rel="canonical" href={canonicalHref} />}
       </Helmet>
       <Header />
       <main id="main" tabIndex="-1" className="flex-grow-1 py-3" role="main">

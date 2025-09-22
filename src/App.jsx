@@ -20,9 +20,13 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/order/success" element={<OrderSuccess />} />
+        <Route path="/carrito" element={<Cart />} />
+        <Route path="/finalizar-compra" element={<Checkout />} />
+        <Route path="/confirmacion-pedido" element={<OrderSuccess />} />
+        {/* Redirecciones desde rutas antiguas (client-side) */}
+        <Route path="/cart" element={<Navigate to="/carrito" replace />} />
+        <Route path="/checkout" element={<Navigate to="/finalizar-compra" replace />} />
+        <Route path="/order/success" element={<Navigate to="/confirmacion-pedido" replace />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />

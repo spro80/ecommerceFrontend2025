@@ -32,7 +32,7 @@ export default function Checkout() {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    setTitle('Checkout');
+    setTitle('Finalizar compra');
     setDescription('Completa tu compra de forma segura.');
   }, [setTitle, setDescription]);
 
@@ -118,7 +118,7 @@ export default function Checkout() {
       sessionStorage.setItem('last_order', JSON.stringify(orderSnapshot));
     } catch {}
     clearCart();
-    navigate(`/order/success?orderId=${orderId}`);
+    navigate(`/confirmacion-pedido?orderId=${orderId}`);
   }
 
   async function handleSubmit(e) {
@@ -138,7 +138,7 @@ export default function Checkout() {
     return (
       <div className="text-center py-5">
         <h1 className="h4 mb-2">Tu carrito está vacío</h1>
-        <p className="text-muted mb-4">Agrega productos para continuar al checkout.</p>
+        <p className="text-muted mb-4">Agrega productos para continuar a finalizar compra.</p>
         <Link className="btn btn-primary" to="/products">Explorar productos</Link>
       </div>
     );
@@ -273,7 +273,7 @@ export default function Checkout() {
           </div>
 
           <div className="d-flex justify-content-end gap-2">
-            <Link to="/cart" className="btn btn-outline-secondary">Volver al carrito</Link>
+            <Link to="/carrito" className="btn btn-outline-secondary">Volver al carrito</Link>
             <button type="submit" className="btn btn-primary" disabled={isSubmitting || form.paymentMethod === 'paypal'}>
               {isSubmitting ? 'Procesando…' : 'Confirmar pedido'}
             </button>
