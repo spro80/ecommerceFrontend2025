@@ -12,7 +12,9 @@ export async function fetchJson(url, options = {}) {
       message = await safeReadJson(response);
     } else {
       const text = await response.text();
-      message = { message: (text || '').slice(0, 200) };
+      const snippet = (text || '').slice(0, 200);
+      // Include both message and snippet so fallback logic can detect HTML responses
+      message = { message: snippet, snippet };
     }
     const error = new Error(message?.message || `Request failed with status ${response.status}`);
     error.status = response.status;
