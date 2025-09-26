@@ -23,6 +23,41 @@ body {
 .navbar .navbar-toggler {
   color: var(--color-offwhite) !important;
 }
+.navbar .navbar-toggler {
+  border-color: rgba(248,245,240,0.35);
+}
+.navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 .2rem rgba(212,175,55,0.35);
+}
+/* Custom hamburger icon to ensure visibility on dark header */
+.navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 1.5rem;
+  height: 1.25rem;
+}
+.navbar .navbar-toggler .navbar-toggler-icon::before,
+.navbar .navbar-toggler .navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-gold), #c09d31);
+}
+.navbar .navbar-toggler .navbar-toggler-icon::before {
+  top: 0;
+  box-shadow: 0 7px 0 0 var(--color-offwhite);
+}
+.navbar .navbar-toggler .navbar-toggler-icon::after {
+  bottom: 0;
+}
+/* Hover state: subtle glow to make it feel interactive */
+.navbar .navbar-toggler:hover .navbar-toggler-icon::before,
+.navbar .navbar-toggler:hover .navbar-toggler-icon::after {
+  background: linear-gradient(90deg, #e3c85a, var(--color-gold));
+}
 .navbar .nav-link.active,
 .navbar .nav-link:hover {
   color: var(--color-gold) !important;
