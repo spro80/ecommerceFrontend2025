@@ -6,6 +6,15 @@ const UserContext = createContext(null);
 
 const AUTH_USER_KEY = 'auth_user';
 const REGISTERED_USERS_KEY = 'registered_users';
+const ADMIN_FLAG_KEY = 'IS_ADMIN';
+
+function deriveRole(rawUser) {
+  if (!rawUser) return null;
+  const email = String(rawUser.email || '').toLowerCase();
+  const adminFlag = typeof localStorage !== 'undefined' && localStorage.getItem(ADMIN_FLAG_KEY) === 'true';
+  const isAdmin = adminFlag || email === 'admin@example.com';
+  return { ...rawUser, role: isAdmin ? 'admin' : (rawUser.role || 'user') };
+}
 
 function readRegisteredUsers() {
   try {
@@ -28,7 +37,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(AUTH_USER_KEY);
-      if (raw) setUser(JSON.parse(raw));
+      if (raw) setUser(deriveRole(JSON.parse(raw)));
     } catch {
       // ignore
     }
@@ -57,7 +66,7 @@ export function UserProvider({ children }) {
     const newUser = { id: crypto.randomUUID(), name, email, passwordHash: password };
     const nextUsers = [...users, newUser];
     writeRegisteredUsers(nextUsers);
-    setUser({ id: newUser.id, name: newUser.name, email: newUser.email, provider: 'password' });
+    setUser(deriveRole({ id: newUser.id, name: newUser.name, email: newUser.email, provider: 'password' }));
     return newUser;
   }, []);
 
@@ -71,7 +80,7 @@ export function UserProvider({ children }) {
       error.code = 'INVALID_CREDENTIALS';
       throw error;
     }
-    setUser({ id: found.id, name: found.name, email: found.email, provider: 'password' });
+    setUser(deriveRole({ id: found.id, name: found.name, email: found.email, provider: 'password' }));
     return found;
   }, []);
 
@@ -130,14 +139,14 @@ export function UserProvider({ children }) {
         method: 'POST',
         body: JSON.stringify({ provider: 'google', credential })
       });
-      setUser({
+      setUser(deriveRole({
         id: backendUser.id || backendUser.user?.id || crypto.randomUUID(),
         name: backendUser.name || backendUser.user?.name || 'Usuario',
         email: backendUser.email || backendUser.user?.email || '',
         avatar: backendUser.avatar || backendUser.user?.avatar,
         provider: 'google',
         token: backendUser.token || backendUser.accessToken
-      });
+      }));
       return backendUser;
     } catch (backendError) {
       // Fallback: decode JWT locally to keep UX in dev/local
@@ -153,12 +162,12 @@ export function UserProvider({ children }) {
         avatar: payload.picture,
         provider: 'google'
       };
-      setUser(googleUser);
+      setUser(deriveRole(googleUser));
       return googleUser;
     } catch (e) {
       // If decoding fails, still set a minimal user
       const googleUser = { id: crypto.randomUUID(), name: 'Usuario', email: '', provider: 'google' };
-      setUser(googleUser);
+      setUser(deriveRole(googleUser));
       return googleUser;
     }
   }, []);

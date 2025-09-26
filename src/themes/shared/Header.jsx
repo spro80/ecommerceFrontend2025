@@ -105,6 +105,13 @@ export default function Header() {
           </ul>
 
           <ul className="navbar-nav ms-auto">
+            {user?.role === 'admin' && (
+              <li className="nav-item me-2">
+                <Link to="/admin" className="btn btn-primary btn-sm fw-semibold">
+                  Admin
+                </Link>
+              </li>
+            )}
             <li className="nav-item me-2">
               <NavLink to="/carrito" className="nav-link position-relative">
                 {t('common.cart')}

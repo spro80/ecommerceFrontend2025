@@ -40,11 +40,14 @@ async function safeReadJson(response) {
 }
 
 import { attachImages, attachImageToProduct } from './images.js';
+import { getCustomProducts } from '../lib/localStore.js';
 
 export async function getProducts() {
   // Force using local mock data to avoid hitting non-existent API in production
   const { products } = await import('../data/products.js');
-  return attachImages(products);
+  const custom = getCustomProducts();
+  const merged = Array.isArray(custom) && custom.length > 0 ? [...custom, ...products] : products;
+  return attachImages(merged);
 }
 
 export async function getProductByIdApi(id) {
