@@ -20,6 +20,7 @@ export default function Layout({ children }) {
   const isCartPage = location.pathname === '/carrito';
   const isCheckoutPage = location.pathname === '/finalizar-compra';
   const isOrderSuccessPage = location.pathname === '/confirmacion-pedido';
+  const isAdminPage = location.pathname.startsWith('/admin');
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -36,7 +37,7 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
-      {!isProductDetailPage && !isProductsListPage && !isCartPage && !isCheckoutPage && !isOrderSuccessPage && <ContactSection />}
+      {!isProductDetailPage && !isProductsListPage && !isCartPage && !isCheckoutPage && !isOrderSuccessPage && !isAdminPage && <ContactSection />}
       <Footer />
       <AuthModal />
     </div>

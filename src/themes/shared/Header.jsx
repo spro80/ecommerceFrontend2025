@@ -71,6 +71,14 @@ export default function Header() {
               </NavLink>
             </li>
 
+            {(APP_ENVIRONMENT !== 'prod' || user?.role === 'admin') && (
+              <li className="nav-item">
+                <NavLink to="/admin" className="nav-link">
+                  Admin
+                </NavLink>
+              </li>
+            )}
+
             {/* <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 Categorías
@@ -106,13 +114,6 @@ export default function Header() {
           </ul>
 
           <ul className="navbar-nav ms-auto">
-            {(APP_ENVIRONMENT !== 'prod' || user?.role === 'admin') && (
-              <li className="nav-item me-2">
-                <Link to="/admin" className="btn btn-primary btn-sm fw-semibold">
-                  Admin
-                </Link>
-              </li>
-            )}
             <li className="nav-item me-2">
               <NavLink to="/carrito" className="nav-link position-relative">
                 {t('common.cart')}
