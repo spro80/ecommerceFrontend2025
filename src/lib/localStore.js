@@ -39,6 +39,18 @@ export function saveCustomProduct(product) {
   return record;
 }
 
+export function getCustomProductById(productId) {
+  const list = getCustomProducts();
+  return list.find((p) => p.id === productId) || null;
+}
+
+export function deleteCustomProduct(productId) {
+  const list = getCustomProducts();
+  const next = list.filter((p) => p.id !== productId);
+  safeWrite(CUSTOM_PRODUCTS_KEY, next);
+  return next.length !== list.length;
+}
+
 export function getBranches() {
   const list = safeRead(BRANCHES_KEY, []);
   return Array.isArray(list) ? list : [];
