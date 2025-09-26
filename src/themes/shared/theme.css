@@ -206,6 +206,24 @@ main:focus {
   background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(212,175,55,0.25));
 }
 
+/* ==================================================
+   Cart quantity input visibility (legacy Android fix)
+   Ensures the number is visible on devices where the
+   default input color may be white on white.
+   ================================================== */
+.cart-qty-input {
+  color: #212529 !important; /* Bootstrap body color */
+  background-color: #fff !important;
+  -webkit-text-fill-color: #212529; /* iOS/Android WebKit */
+}
+.cart-qty-input::placeholder {
+  color: rgba(0,0,0,0.4);
+}
+input[type="number"].cart-qty-input::-webkit-outer-spin-button,
+input[type="number"].cart-qty-input::-webkit-inner-spin-button {
+  opacity: 1; /* keep visible for usability on older Android */
+}
+
 /* ==========================
    Blog styling (brand-aligned)
    ========================== */

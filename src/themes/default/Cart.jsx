@@ -60,7 +60,12 @@ export default function Cart() {
                       </div>
 
                       <div className="d-flex align-items-center mt-3 gap-2">
-                        <div className="btn-group" role="group" aria-label={`Cambiar cantidad para ${it.name}`}>
+                        <div
+                          className="input-group input-group-sm"
+                          role="group"
+                          aria-label={`Cambiar cantidad para ${it.name}`}
+                          style={{ maxWidth: 180 }}
+                        >
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
@@ -71,8 +76,9 @@ export default function Cart() {
                           </button>
                           <input
                             type="number"
-                            className="form-control text-center"
-                            style={{ maxWidth: 80 }}
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            className="form-control text-center cart-qty-input"
                             min={1}
                             value={it.quantity || 1}
                             onChange={(e) => {
