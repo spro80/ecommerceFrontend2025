@@ -42,29 +42,15 @@ async function safeReadJson(response) {
 import { attachImages, attachImageToProduct } from './images.js';
 
 export async function getProducts() {
-  try {
-    const data = await fetchJson('/api/products');
-    return attachImages(data);
-  } catch (error) {
-    if (shouldFallbackToMock(error)) {
-      const { products } = await import('../data/products.js');
-      return attachImages(products);
-    }
-    throw error;
-  }
+  // Force using local mock data to avoid hitting non-existent API in production
+  const { products } = await import('../data/products.js');
+  return attachImages(products);
 }
 
 export async function getProductByIdApi(id) {
-  try {
-    const data = await fetchJson(`/api/products/${encodeURIComponent(id)}`);
-    return attachImageToProduct(data);
-  } catch (error) {
-    if (shouldFallbackToMock(error)) {
-      const { getProductById } = await import('../data/products.js');
-      return attachImageToProduct(getProductById(id));
-    }
-    throw error;
-  }
+  // Force using local mock data to avoid hitting non-existent API in production
+  const { getProductById } = await import('../data/products.js');
+  return attachImageToProduct(getProductById(id));
 }
 
 function shouldFallbackToMock(error) {
