@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { useUser } from '../../contexts/UserContext.jsx';
+import { APP_ENVIRONMENT } from '../../lib/config.js';
 
 export default function Header() {
   const { t } = useTranslation();
@@ -105,7 +106,7 @@ export default function Header() {
           </ul>
 
           <ul className="navbar-nav ms-auto">
-            {user?.role === 'admin' && (
+            {(APP_ENVIRONMENT !== 'prod' || user?.role === 'admin') && (
               <li className="nav-item me-2">
                 <Link to="/admin" className="btn btn-primary btn-sm fw-semibold">
                   Admin
@@ -122,7 +123,7 @@ export default function Header() {
             </li>
             {!user && (
               <li className="nav-item">
-                <button type="button" className="btn btn-outline-primary" onClick={openAuthModal}>
+                <button type="button" className="btn btn-primary" onClick={openAuthModal}>
                   {t('common.login')}
                 </button>
               </li>
