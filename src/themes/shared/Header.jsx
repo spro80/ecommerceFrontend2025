@@ -133,6 +133,11 @@ export default function Header() {
                   {user.name || t('common.account')}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
+                  {user?.role === 'admin' && (
+                    <li>
+                      <Link className="dropdown-item" to="/admin">Panel de administración</Link>
+                    </li>
+                  )}
                   <li>
                     <button className="dropdown-item" onClick={logout}>{t('common.logout')}</button>
                   </li>
