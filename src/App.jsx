@@ -12,6 +12,9 @@ import BlogDetail from './themes/default/BlogDetail.jsx';
 import PreguntasFrecuentes from './themes/default/PreguntasFrecuentes.jsx';
 import EnviosYDevoluciones from './themes/default/EnviosYDevoluciones.jsx';
 import Garantia from './themes/default/Garantia.jsx';
+import RequireAdmin from './admin/RequireAdmin.jsx';
+import AdminDashboard from './admin/AdminDashboard.jsx';
+import AdminProductCreate from './admin/AdminProductCreate.jsx';
 
 export default function App() {
   return (
@@ -23,6 +26,23 @@ export default function App() {
         <Route path="/carrito" element={<Cart />} />
         <Route path="/finalizar-compra" element={<Checkout />} />
         <Route path="/confirmacion-pedido" element={<OrderSuccess />} />
+        {/* Admin */}
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <AdminDashboard />
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin/products/new"
+          element={
+            <RequireAdmin>
+              <AdminProductCreate />
+            </RequireAdmin>
+          }
+        />
         {/* Redirecciones desde rutas antiguas (client-side) */}
         <Route path="/cart" element={<Navigate to="/carrito" replace />} />
         <Route path="/checkout" element={<Navigate to="/finalizar-compra" replace />} />
