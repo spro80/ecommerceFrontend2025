@@ -1,0 +1,45 @@
+📖 Plantilla de Prompts para Imágenes de E-commerce
+
+------------------------------------------------------------------------
+
+🏷️ Imagen principal (obligatoria en Amazon / Mercado Libre) Prompt:
+“Procesa esta imagen de producto para e-commerce con fondo blanco puro
+(#FFFFFF). Recorta el exceso de fondo, centra el producto y haz que
+ocupe entre el 80% y 90% del área. Redimensiona a 600x600 píxeles en
+formato PNG, manteniendo calidad alta.”
+
+------------------------------------------------------------------------
+
+🎨 Variantes de color Prompt: “Genera variantes del mismo producto en
+los siguientes colores: [lista de colores]. Mantén la textura, reflejos
+y proporciones realistas. Fondo blanco puro (#FFFFFF).”
+
+------------------------------------------------------------------------
+
+📦 Packshots (varios productos juntos) Prompt: “Crea una composición
+donde aparezcan [número] unidades del producto juntas, alineadas y con
+buena proporción. Usa fondo blanco puro (#FFFFFF) y ajusta sombras para
+realismo profesional.”
+
+------------------------------------------------------------------------
+
+✨ Infografía de beneficios Prompt: “Genera una versión de la imagen con
+etiquetas gráficas que resalten las características principales del
+producto: [lista de beneficios, ej. Alcohol Free, 100ml, Premium
+Quality]. Usa tipografía clara, moderna y minimalista. Fondo blanco
+profesional.”
+
+------------------------------------------------------------------------
+
+🛋️ Lifestyle (imágenes secundarias) Prompt: “Coloca el producto en un
+entorno realista estilo [ej. baño elegante, spa, tocador de lujo].
+Mantén iluminación suave, realista, y asegúrate de que el producto sea
+el centro de atención. Exporta en 1200x1200 píxeles JPG para detalle.”
+
+------------------------------------------------------------------------
+
+🌐 Optimización web Prompt: “Optimiza la imagen del producto para
+e-commerce en dos versiones: 1. PNG 600x600 píxeles con fondo blanco
+puro (#FFFFFF) para miniaturas. 2. JPG 1200x1200 píxeles con compresión
+ligera para zoom en la tienda online. Mantén la máxima nitidez sin
+distorsión.”

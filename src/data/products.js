@@ -6,7 +6,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 9990,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/shampoo_collagen_plus_vinge_1000_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -17,18 +17,18 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 9990,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/acondicionador_collagen_plus_vinge_1000_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
   {
     id: "CAB-ACE-001",
-    name: "Aceite de Argan con Colageno - 1000 ml",
+    name: "Aceite de Argan con Colageno - 100 ml",
     brand: "Plus Vinge",
     category: "cabello",
     subcategory: "aceite",
     price: 5990,
-    image: "/images/categories/aceites_capilares_600x600.png",
+    image: "/images/productos/aceite_de_argan_con_colageno_plus_vinge_100ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -39,7 +39,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 5990,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/shampoo_curl_perfect_3_en_1_rocco_500_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -61,7 +61,7 @@ export const products = [
     category: "cabello",
     subcategory: "shampoo",
     price: 5390,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/shampoo_jalea_real_anticaida_rocco_400_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -72,7 +72,7 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 5390,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/acondicionador_jalea_real_anticaida_rocco_400_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -83,7 +83,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 7990,
-    image: "/images/categories/aceites_capilares_600x600.png",
+    image: "/images/productos/aceite_luxury_moroccan_argan_oil_60_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -94,7 +94,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 8990,
-    image: "/images/categories/aceites_capilares_600x600.png",
+    image: "/images/productos/aceite_extreme_caviar_hair_oil_maxcare_100_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -105,7 +105,7 @@ export const products = [
     category: "cabello",
     subcategory: "aceite",
     price: 5990,
-    image: "/images/categories/aceites_capilares_600x600.png",
+    image: "/images/productos/aceite_capilar_de_nuez_marroqui_obopekal_55_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -116,7 +116,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 24990,
-    image: "/images/categories/tazones_600x600.png",
+    image: "/images/productos/tazon_schopero_cobre_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -127,7 +127,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 24990,
-    image: "/images/categories/tazones_600x600.png",
+    image: "/images/productos/tazon_schopero_acero_inoxidable_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   }
