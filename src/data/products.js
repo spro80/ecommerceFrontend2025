@@ -50,7 +50,7 @@ export const products = [
     category: "cabello",
     subcategory: "conditioner",
     price: 5990,
-    image: "/images/categories/cabello_600x600.png",
+    image: "/images/productos/acondicionador_curl_perfect_3_en_1_rocco_500_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
