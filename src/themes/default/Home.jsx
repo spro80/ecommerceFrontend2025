@@ -34,20 +34,26 @@ export default function Home() {
   }, []);
 
   const categories = useMemo(() => {
-    const map = new Map();
+    // Contabilizar productos por categoría
+    const counts = new Map();
     for (const product of allProducts) {
       const key = String(product.category || '').toLowerCase();
       if (!key) continue;
-      if (!map.has(key)) {
-        map.set(key, { key, count: 0, image: product.image });
-      }
-      const entry = map.get(key);
-      entry.count += 1;
-      // Mantener la primera imagen como representativa
+      counts.set(key, (counts.get(key) || 0) + 1);
     }
-    const list = Array.from(map.values());
-    list.sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
-    return list;
+
+    // Definir solo las dos categorías visibles en HOME con sus imágenes públicas
+    const predefined = [
+      { key: 'cabello', image: '/assets/categories/cabello_600x600.png' },
+      { key: 'tazon', image: '/assets/categories/tazones_600x600.png' },
+    ];
+
+    // Enriquecer con conteos actuales
+    return predefined.map((item) => ({
+      key: item.key,
+      image: item.image,
+      count: counts.get(item.key) || 0,
+    }));
   }, [allProducts]);
 
   const scrollerRef = useRef(null);
