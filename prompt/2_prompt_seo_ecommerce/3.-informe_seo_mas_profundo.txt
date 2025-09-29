@@ -1,0 +1,35 @@
+Puedo armarte un informe SEO más profundo y accionable en 2 pasos:
+
+
+
+1.- Crawler + velocidad
+
+- Pasar tu web (cuando ya esté en dominio público, no staging) por herramientas como Screaming Frog / Ahrefs / SEMrush para listar todas las páginas, titles, metas, errores 404, redirecciones, canonical, enlaces internos, etc.
+
+- Testear con Google PageSpeed Insights / Lighthouse para medir Core Web Vitals y detectar bloqueos de renderizado, tamaños de imágenes, tiempos de carga.
+
+
+
+2.- Análisis de keywords y competencia
+
+
+- Usar Google Keyword Planner / Ahrefs / SEMrush para encontrar qué keywords tienen más volumen y menos competencia tanto en:
+
+  - Belleza y cuidado del cabello.
+
+  - Tazones de cobre y acero inoxidable.
+
+
+- Comparar contra tus competidores directos (tiendas online de cosmética y de cocina/hogar).
+
+
+
+RESUMEN:
+
+👉 Con esos datos ya podríamos armar:
+
+Un mapa de keywords (qué palabras asignar a categorías, a productos y al blog).
+
+Un plan de optimización técnica (qué corregir primero en el sitio).
+
+Un plan de contenidos y link building.

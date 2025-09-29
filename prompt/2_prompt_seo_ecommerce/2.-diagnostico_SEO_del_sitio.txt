@@ -1,0 +1,136 @@
+
+🛠 Diagnóstico SEO del sitio (staging.d2gni2ohnuttcu.amplifyapp.com)
+
+
+
+
+1. SEO Técnico
+
+
+Lo que observé / limitaciones
+
+- La URL que diste parece estar en modo “staging” (versión de desarrollo) con dominio de AWS Amplify. En staging muchas veces hay restricciones que limitan el rastreo por robots.txt, autenticaciones, etc.
+
+- No se logró cargar contenido visible (probablemente requiere JavaScript o está bloqueado).
+
+- No vi meta etiquetas ni estructura HTML directa accesible sin ejecutar JavaScript.
+
+
+Recomendaciones técnicas
+
+- Permitir rastreo en staging (temporalmente) para hacer pruebas SEO reales — pero asegurarse de excluir de indexación pública si no está listo (via noindex meta, o protección mediante password).
+
+- Configurar HTTPS de forma correcta (Amplify generalmente ya lo integra).
+
+- Revisar robots.txt para asegurarte de que no bloquees accidentalmente páginas clave (productos, categorías).
+
+- Generar sitemap.xml dinámico actualizado con todas las URLs válidas (productos, categorías).
+
+- Canonicalización: cada página de producto y categoría debe tener su etiqueta canonical apuntando a su URL preferida.
+
+- Core Web Vitals / velocidad: al servir desde Amplify, asegúrate de optimizar las imágenes, usar caching, lazy loading, minimización de CSS/JS.
+
+- Errores de enlace interno: cuando cargues las versiones finales, haz crawling con herramientas como Screaming Frog o Ahrefs para detectar 404, redirecciones innecesarias, enlaces rotos.
+
+
+
+
+2. On-Page SEO
+
+
+Aspectos clave que revisar
+
+- Título (title) y meta descripción: cada página (producto, categoría) debe tener un título único optimizado con palabras clave, y una descripción atractiva que incite clic.
+
+- Jerarquía de encabezados (H1, H2, H3): la página principal de producto debe tener un H1 con nombre del producto + keywords relevantes (por ejemplo “Acondicionador Curl Perfect 3 en 1 Rocco”), y subtítulos (H2, H3) para secciones de beneficios, ingredientes, instrucciones.
+
+- URLs amigables: URLs limpias, descriptivas y sin parámetros extraños. Por ejemplo /tazon-cobre-20cm en vez de /product?id=12345.
+
+- Optimización de imágenes:
+
+  - Texto alt descriptivo (por ejemplo alt="Acondicionador Curl Perfect 3 en 1 500 ml").
+
+  - Imágenes ligeras (comprimir WebP, JPG optimizado) y versiones para web.
+
+  - Atributos width / height o uso de CSS para reservar espacio y evitar cambios de layout.
+
+- Schema / datos estructurados:
+
+  - Schema de Producto (Product schema) con nombre, descripción, precio, SKU, disponibilidad.
+
+  - Si tienes reseñas, usar Review schema para mostrar estrellas en resultados de búsqueda.
+
+  - Breadcrumb schema para rutas de categorías.
+
+
+
+
+3. Contenido
+
+
+- Asegúrate de que descripciones de productos sean originales y detalladas: no copies las que trae el fabricante sin variaciones. Explica beneficios para el usuario, instrucciones, ingredientes.
+
+- Usa keywords principales y secundarias de ambos nichos (belleza / cuidado del cabello, tazones de acero, tazones de cobre). Por ejemplo “acondicionador para rizos”, “tazón de cobre para cocina saludable”, “tazón acero inoxidable premium”.
+
+- Si aún no tienes, crea una sección de blog o contenido educativo (guías de cuidado del cabello, usos del cobre en la cocina, beneficios del acero inoxidable) para atraer tráfico orgánico y posicionar en temas relacionados.
+
+- Evita contenido delgado (páginas vacías o con muy poco texto).
+
+- Verifica duplicados (productos parecidos, descripciones repetidas) y canonicaliza o agrupa cuando necesario.
+
+
+
+
+4. SEO Off-Page
+
+
+- Revisa la autoridad de dominio (cuando la versión pública esté operativa).
+
+- Genera backlinks relevantes de sitios de belleza, salud, cocina, blogs especializados.
+
+- Haz colaboraciones, reviews de productos, menciones en redes.
+
+- Asegúrate de que la marca aparezca nombrada (“Rocco”, “Curl Perfect”, etc.) en otros sitios como referencia.
+
+
+
+
+5. Competencia
+
+
+- Identifica tiendas de belleza y tiendas de artículos de cocina que vendan artículos de cobre/acero inoxidable. Analiza sus palabras clave, metadatos, estructura de productos, contenido de blog.
+
+- Mira qué productos similares rankean alto (precios, reseñas, fotos de alta calidad).
+
+- Diferénciate con fotos profesionales, descripciones detalladas, bundles, garantía, comparativas dentro de tu nicho.
+
+
+
+
+6. Acciones Prioritarias
+
+
+- Corto plazo (urgentísimas):
+
+  - Verificar que el sitio no esté bloqueado para bots (robots.txt, meta noindex).
+
+  - Crear un sitemap.xml accesible y registrar en Google Search Console.
+
+  - Configurar metas y títulos únicos para las páginas más importantes.
+
+  - Optimizar imágenes (peso, formato, alt).
+
+  - Configurar schema de producto básico.
+
+
+Mediano / largo plazo:
+
+- Crear contenido de blog y guías orientadas a tus nichos.
+
+- Campañas de link building estratégicas.
+
+- Análisis de keywords avanzado por nicho (beauty + cobre/acero).
+
+- Mejoras constantes en velocidad, UX, navegación interna.
+
+- Test A/B de textos, CTA, diseño de página de producto.

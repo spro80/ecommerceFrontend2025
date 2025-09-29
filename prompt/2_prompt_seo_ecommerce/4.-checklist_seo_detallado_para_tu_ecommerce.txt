@@ -1,0 +1,124 @@
+==================================================
+✅ CHECKLIST SEO DETALLADO PARA TU E-COMMERCE
+==================================================
+
+
+1. SEO Técnico (Base)
+---------------------
+1.1 Configurar robots.txt
+    • Permitir rastreo de productos y categorías
+    • Bloquear /cart/, /checkout/, /admin/ y duplicados
+
+1.2 Crear sitemap.xml dinámico
+    • Incluir todas las URLs indexables
+    • Subir a Google Search Console
+
+1.3 Activar HTTPS en todo el sitio
+    • Redirección 301 de HTTP → HTTPS
+
+1.4 Revisar canónicas
+    • Cada producto con <link rel="canonical">
+
+1.5 Optimizar Core Web Vitals
+    • LCP < 2.5s, CLS < 0.1, TBT bajo
+    • Lazy loading en imágenes
+
+1.6 Comprobar diseño responsive
+    • Navegación usable en móvil
+    • Botones y CTAs accesibles
+
+
+--------------------------------------------------
+
+
+2. SEO On-Page (Productos y Categorías)
+---------------------------------------
+2.1 Meta title único y optimizado (≤ 60 caracteres)
+
+2.2 Meta description atractiva (150–160 caracteres)
+
+2.3 Encabezados jerárquicos (H1, H2, H3)
+
+2.4 URLs limpias y amigables (sin parámetros)
+
+2.5 Optimización de imágenes
+    • Peso < 150 KB, formato WebP/JPG
+    • Texto ALT con keyword
+
+2.6 Schema Markup de producto y breadcrumbs
+
+
+--------------------------------------------------
+
+
+3. Contenido
+------------
+3.1 Descripciones únicas de productos
+    • No copiar al fabricante
+    • Explicar beneficios, uso, materiales
+
+3.2 Uso de palabras clave long-tail
+    • Ejemplo Belleza: “acondicionador rizos sin sulfatos”
+    • Ejemplo Cocina: “tazón de cobre para cocina saludable”
+
+3.3 Blog o sección de guías
+    • Tips de cuidado del cabello
+    • Comparativas de tazones acero vs cobre
+
+
+--------------------------------------------------
+
+
+4. SEO Off-Page
+---------------
+4.1 Crear perfiles de marca (Google, redes, marketplaces)
+
+4.2 Obtener backlinks de calidad (blogs, medios, influencers)
+
+4.3 Reseñas y testimonios con Schema
+
+
+--------------------------------------------------
+
+
+5. Competencia
+--------------
+5.1 Analizar competidores directos
+
+5.2 Detectar keywords que posicionan
+
+5.3 Mejorar fichas de producto con fotos y descripciones
+
+
+--------------------------------------------------
+
+
+6. Acciones Prioritarias
+------------------------
+Corto Plazo (1er mes)
+    1. Configurar robots.txt, sitemap.xml y Search Console
+    
+    2. Optimizar titles, metas y H1
+    
+    3. Comprimir imágenes y agregar ALT
+    
+    4. Implementar schema básico de producto
+
+Mediano Plazo (2–3 meses)
+    1. Blog con artículos orientados a SEO
+    
+    2. Estrategia de link building inicial
+    
+    3. Revisar Core Web Vitals y optimizar scripts
+
+Largo Plazo (3–6 meses)
+    1. Estrategia avanzada de contenidos (guías, videos, comparativas)
+    
+    2. Backlinks estratégicos en medios de autoridad
+    
+    3. Análisis continuo de keywords y posiciones
+
+
+==================================================
+Fin del Checklist SEO Detallado
+==================================================

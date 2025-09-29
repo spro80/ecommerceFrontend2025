@@ -1,0 +1,40 @@
+Analiza la siguiente URL como un experto en SEO técnico, de contenidos y e-commerce: [PON AQUÍ LA URL].
+
+Este es un sitio de e-commerce que vende productos de belleza y tazones de acero inoxidable y de cobre. 
+Necesito un informe SEO completo que incluya:
+
+1. **SEO Técnico**
+   - Estado de indexación y rastreo.
+   - Velocidad de carga y Core Web Vitals.
+   - Uso de HTTPS, canonical, robots.txt y sitemap.
+   - Errores de enlaces internos y externos.
+   - Responsive design y experiencia móvil.
+
+2. **On-Page SEO**
+   - Calidad y estructura de títulos (H1, H2, H3).
+   - Meta titles y meta descriptions (longitud, keywords, diferenciación).
+   - Uso correcto de URLs amigables y jerarquía de categorías.
+   - Optimización de imágenes (alt text, peso, formatos).
+   - Presencia de schema markup para e-commerce (producto, reviews, precios).
+
+3. **Contenido**
+   - Relevancia y originalidad de descripciones de producto.
+   - Presencia de keywords principales y secundarias relacionadas con belleza, tazones de acero inoxidable y de cobre.
+   - Blog o sección de contenido para atraer tráfico orgánico (guías, tips, comparativas).
+   - Nivel de duplicación o thin content.
+
+4. **SEO Off-Page**
+   - Estado de backlinks y autoridad de dominio.
+   - Estrategias de link building recomendadas.
+   - Reputación online y menciones de marca.
+
+5. **Competencia**
+   - Identificar competidores directos en ambos nichos (productos de belleza y tazones de acero/cobre).
+   - Comparar la estrategia de palabras clave.
+   - Oportunidades de diferenciación.
+
+6. **Acciones Prioritarias**
+   - Lista de tareas urgentes (corto plazo).
+   - Recomendaciones estratégicas (mediano-largo plazo).
+
+El resultado debe ser claro, accionable y adaptado a un e-commerce.
