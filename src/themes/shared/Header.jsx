@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { useUser } from '../../contexts/UserContext.jsx';
-import { APP_ENVIRONMENT } from '../../lib/config.js';
 
 export default function Header() {
   const { t } = useTranslation();
@@ -65,19 +64,7 @@ export default function Header() {
               </NavLink>
             </li>
 
-            <li className="nav-item">
-              <NavLink to="/blog" className="nav-link">
-                {t('common.blog')}
-              </NavLink>
-            </li>
-
-            {(APP_ENVIRONMENT !== 'prod' || user?.role === 'admin') && (
-              <li className="nav-item">
-                <NavLink to="/admin" className="nav-link">
-                  Admin
-                </NavLink>
-              </li>
-            )}
+            
 
             {/* <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -135,11 +122,6 @@ export default function Header() {
                   {user.name || t('common.account')}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
-                  {user?.role === 'admin' && (
-                    <li>
-                      <Link className="dropdown-item" to="/admin">Panel de administración</Link>
-                    </li>
-                  )}
                   <li>
                     <button className="dropdown-item" onClick={logout}>{t('common.logout')}</button>
                   </li>
