@@ -1,3 +1,52 @@
+Repositorio de Pruebas de Entrevistas Técnicas
+
+Este repositorio permite practicar problemas típicos de entrevistas técnicas en varios lenguajes, organizados por carpeta.
+
+Estructura propuesta:
+
+```
+problems/
+  two-sum/
+    README.md            # Enunciado
+    python/
+      solution.py
+      test_solution.py
+    javascript/
+      solution.js
+      solution.test.js
+scripts/
+  test-all.sh            # Ejecuta tests de todos los lenguajes
+  test-python.sh
+  test-js.sh
+```
+
+Requisitos
+- Python 3.10+
+- Node.js 18+
+
+Uso rápido
+
+- Ejecutar solo Python:
+  ```bash
+  bash scripts/test-python.sh
+  ```
+- Ejecutar solo JavaScript:
+  ```bash
+  bash scripts/test-js.sh
+  ```
+- Ejecutar todo:
+  ```bash
+  bash scripts/test-all.sh
+  ```
+
+Contribuir
+- Agrega una carpeta dentro de `problems/` con el nombre del problema.
+- Incluye `README.md` con el enunciado, entradas/salidas y complejidad esperada.
+- Añade soluciones y tests por lenguaje en subcarpetas (`python/`, `javascript/`, etc.).
+- Asegúrate de que los tests pasen con los scripts provistos.
+
+CI
+- Se ejecuta en GitHub Actions: `./.github/workflows/ci.yml` ejecuta `scripts/test-python.sh` y `scripts/test-js.sh`.
 # Tienda React + Vite
 
 Proyecto de tienda con carrito, checkout y confirmación de pedido.
