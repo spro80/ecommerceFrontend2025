@@ -65,12 +65,15 @@ export default function Header() {
               </NavLink>
             </li>
 
+            {/*
             <li className="nav-item">
               <NavLink to="/blog" className="nav-link">
                 {t('common.blog')}
               </NavLink>
             </li>
+            */}
 
+            {/*
             {(APP_ENVIRONMENT !== 'prod' || user?.role === 'admin') && (
               <li className="nav-item">
                 <NavLink to="/admin" className="nav-link">
@@ -78,6 +81,7 @@ export default function Header() {
                 </NavLink>
               </li>
             )}
+            */}
 
             {/* <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -129,6 +133,8 @@ export default function Header() {
                 </button>
               </li>
             )}
+
+            {/*
             {user && (
               <li className="nav-item dropdown">
                 <button className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -146,6 +152,8 @@ export default function Header() {
                 </ul>
               </li>
             )}
+            */}
+
           </ul>
         </div>
       </div>
