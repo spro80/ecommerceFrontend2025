@@ -47,9 +47,9 @@ export default function Checkout() {
   }, [user]);
 
   const shippingCost = useMemo(() => {
-    if (form.shippingMethod === 'express') return 4990;
+    if (form.shippingMethod === 'express') return 0;
     if (cartSubtotal === 0) return 0;
-    return 4990;
+    return 0;
   }, [form.shippingMethod, cartSubtotal]);
 
   const tax = useMemo(() => {
@@ -88,9 +88,9 @@ export default function Checkout() {
     const paymentMethod = paymentMethodOverride || form.paymentMethod;
     const orderId = generateOrderNumber();
     const shippingCostSnapshot = (function () {
-      if (form.shippingMethod === 'express') return 4990;
+      if (form.shippingMethod === 'express') return 0;
       if (cartSubtotal === 0) return 0;
-      return 4990;
+      return 0;
     })();
     const taxSnapshot = Math.round(cartSubtotal * IVA_RATE * 100) / 100;
     const totalSnapshot = Math.round((cartSubtotal + shippingCostSnapshot + taxSnapshot) * 100) / 100;
