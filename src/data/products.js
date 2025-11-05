@@ -79,7 +79,7 @@ export const products = [
   {
     id: "CAB-ACE-002",
     name: "Aceite Luxury Moroccan Argan Oil - 60 ml",
-    brand: "Moroccan",
+    brand: "MaxCare",
     category: "cabello",
     subcategory: "aceite",
     price: 7990,
@@ -90,7 +90,7 @@ export const products = [
   {
     id: "CAB-ACE-003",
     name: "Aceite extreme caviar Haircare Luxe Line - 100 ml",
-    brand: "Luxe Line",
+    brand: "MaxCare",
     category: "cabello",
     subcategory: "aceite",
     price: 8990,
@@ -101,7 +101,7 @@ export const products = [
   {
     id: "CAB-ACE-004",
     name: "Aceite de Nuez Marroqui Profesional - 55 ml",
-    brand: "Marca",
+    brand: "Obopekal",
     category: "cabello",
     subcategory: "aceite",
     price: 5990,
@@ -128,6 +128,72 @@ export const products = [
     subcategory: "schopero",
     price: 24990,
     image: "/images/productos/tazon_schopero_acero_inoxidable_600x600.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-STI-001",
+    name: "Tazon Disney Late Stich 450 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_lilo_y_stich_450_ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-INT-001",
+    name: "Tazon Disney Intensamente 2 Furia 500 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_intensamente_2_furia_500ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-INT-002",
+    name: "Tazon Disney Intensamente 2 Desagrado 300 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_intensamente_2_desagrado_300ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-INT-003",
+    name: "Tazon Disney Intensamente 2 Ansiedad 500 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_intensamente_2_ansiedad_500ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-INT-004",
+    name: "Tazon Disney Intensamente 2 Envidia 300 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_intensamente_2_envidia_300ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-DIS-001",
+    name: "Tazon Gotta Mickey 400 ml Nude",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_disney_gota_mickey_400ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   }
