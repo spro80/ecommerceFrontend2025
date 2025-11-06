@@ -132,6 +132,39 @@ export const products = [
     stock: 1
   },
   {
+    id: "TAZ-HAR-001",
+    name: "Tazon Harry Potter 3D 500 ml",
+    brand: "Harry Potter",
+    category: "tazon",
+    subcategory: "harry potter",
+    price: 19990,
+    image: "/images/productos/tazon_harry_potter_frontal_500ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-HAR-002",
+    name: "Tazon 3D Caldero Magico Harry Potter 550 ml",
+    brand: "Harry Potter",
+    category: "tazon",
+    subcategory: "harry potter",
+    price: 19990,
+    image: "/images/productos/tazon_3d_caldero_magico_harry_potter_frontal_550ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+    {
+    id: "TAZ-HAR-003",
+    name: "Tazon 3D Sombrero seleccionador Harry Potter 450 ml",
+    brand: "Harry Potter",
+    category: "tazon",
+    subcategory: "harry potter",
+    price: 19990,
+    image: "/images/productos/tazon_3d_sombrero_harry_potter_frontal_450ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
     id: "TAZ-STI-001",
     name: "Tazon Disney Late Stich 450 ml",
     brand: "Disney",
