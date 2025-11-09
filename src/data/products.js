@@ -229,6 +229,61 @@ export const products = [
     image: "/images/productos/tazon_disney_gota_mickey_400ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
+  },
+  {
+    id: "TAZ-DUO-001",
+    name: "Set 2 Tazones Duo mm nude 350 ml",
+    brand: "Disney",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/set_2_tazones_duo_mm_nude_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-MAR-001",
+    name: "Tazon Marvel Capitan America 350 ml",
+    brand: "Marvel",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_capitan_america_marvel_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-MAR-002",
+    name: "Tazon Marvel Hulk 350 ml",
+    brand: "Marvel",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_hulk_marvel_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-MAR-003",
+    name: "Tazon Marvel Iron Man 350 ml",
+    brand: "Marvel",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_iron_man_marvel_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-MAR-004",
+    name: "Tazon Marvel Spidey 6 - 350 ml",
+    brand: "Marvel",
+    category: "tazon",
+    subcategory: "disney",
+    price: 5490,
+    image: "/images/productos/tazon_spidey6_marvel_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
   }
 ];
 
