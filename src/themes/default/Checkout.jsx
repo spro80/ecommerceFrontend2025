@@ -56,9 +56,17 @@ export default function Checkout() {
     return Math.round(cartSubtotal * IVA_RATE * 100) / 100;
   }, [cartSubtotal]);
 
+  /*
+  //remueve la suma del iva por cada item
   const total = useMemo(() => {
-    return Math.round((cartSubtotal + shippingCost + tax) * 100) / 100;
+    return Math.round((cartSubtotal + shippingCost + tax ) * 100) / 100;
   }, [cartSubtotal, shippingCost, tax]);
+  */
+
+  //Suma sin considerar el tax por cada item
+  const total = useMemo(() => {
+    return Math.round((cartSubtotal + shippingCost) * 100) / 100;
+  }, [cartSubtotal, shippingCost]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -308,10 +316,10 @@ export default function Checkout() {
               <span>Envío</span>
               <strong>{formatCLP(shippingCost)}</strong>
             </div>
-            <div className="d-flex justify-content-between mb-2">
+            {/* <div className="d-flex justify-content-between mb-2">
               <span>IVA</span>
               <strong>{formatCLP(tax)}</strong>
-            </div>
+            </div>*/}
             <hr />
             <div className="d-flex justify-content-between">
               <span>Total</span>
