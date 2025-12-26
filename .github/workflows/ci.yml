@@ -1,0 +1,26 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-js-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install JS deps (if needed)
+        run: |
+          if [ -f package.json ]; then npm ci; fi
+      - name: Run Python tests
+        run: bash scripts/test-python.sh
+      - name: Run JS tests
+        run: bash scripts/test-js.sh
