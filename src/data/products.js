@@ -122,7 +122,7 @@ export const products = [
   },
   {
     id: "TAZ-SCH-002",
-    name: "Tazon Iron Maiden 300 ml",
+    name: "Tazon Iron Maiden 400 ml",
     brand: "Iron Maiden",
     category: "tazon",
     subcategory: "cafe y te",
@@ -133,6 +133,17 @@ export const products = [
   },
   {
     id: "TAZ-SCH-003",
+    name: "Tazon Iron Maiden 400 ml",
+    brand: "Iron Maiden",
+    category: "tazon",
+    subcategory: "cafe y te",
+    price: 35000,
+    image: "/images/productos/tazon_iron_maiden_3d_eddie_400_ml_acero_inoxidable_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-004",
     name: "Tazon Game of Thrones 400ml Acero Inoxidable Diseño Medieval 400 ml",
     brand: "tazon",
     category: "tazon",
@@ -143,7 +154,7 @@ export const products = [
     stock: 1
   },
   {
-    id: "TAZ-SCH-004",
+    id: "TAZ-SCH-005",
     name: "Tazon Espada Medieval Game Of Thrones Acero Color Negro Plata 400 ml",
     brand: "tazon",
     category: "tazon",
@@ -154,7 +165,7 @@ export const products = [
     stock: 1
   },
   {
-    id: "TAZ-SCH-005",
+    id: "TAZ-SCH-006",
     name: "Tazon Boxeo 300 ml",
     brand: "box",
     category: "tazon",
@@ -165,7 +176,7 @@ export const products = [
     stock: 1
   },
   {
-    id: "TAZ-SCH-006",
+    id: "TAZ-SCH-007",
     name: "Tazon Schopero Acero Inoxidable Kunstmann 485 ml",
     brand: "Kunstmann",
     category: "tazon",
@@ -176,7 +187,7 @@ export const products = [
     stock: 1
   },
   {
-    id: "TAZ-SCH-007",
+    id: "TAZ-SCH-008",
     name: "Tazon Schopero de Cobre Kunstmann 485 ml",
     brand: "Kunstmann",
     category: "tazon",
