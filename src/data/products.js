@@ -111,6 +111,72 @@ export const products = [
   },
   {
     id: "TAZ-SCH-001",
+    name: "Tazon Irish Pub 300 ml",
+    brand: "Irish Pub",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 35000,
+    image: "/images/productos/tazon_irish_pub_3d_300_ml_acero_inoxidable_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-002",
+    name: "Tazon Iron Maiden 300 ml",
+    brand: "Iron Maiden",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 35000,
+    image: "/images/productos/tazon_iron_maiden_3d_300_ml_acero_inoxidable_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-003",
+    name: "Tazon Game of Thrones 400ml Acero Inoxidable Diseño Medieval 400 ml",
+    brand: "tazon",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 14990,
+    image: "/images/productos/tazon_game_of_thrones_acero_inoxidable_diseno_medieval_400ml_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-004",
+    name: "Tazon Espada Medieval Game Of Thrones Acero Color Negro Plata 400 ml",
+    brand: "tazon",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 14990,
+    image: "/images/productos/tazon_espada_medieval_game_of_thrones_400_ml_acero_color_negro_plata_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-005",
+    name: "Tazon Boxeo 300 ml",
+    brand: "box",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 35000,
+    image: "/images/productos/tazon_boxeo_300_ml_acero_inoxidable_frontal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-006",
+    name: "Tazon Schopero Acero Inoxidable Kunstmann 485 ml",
+    brand: "Kunstmann",
+    category: "tazon",
+    subcategory: "schopero",
+    price: 24990,
+    image: "/images/productos/tazon_schopero_acero_inoxidable_600x600.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "TAZ-SCH-007",
     name: "Tazon Schopero de Cobre Kunstmann 485 ml",
     brand: "Kunstmann",
     category: "tazon",
@@ -121,13 +187,13 @@ export const products = [
     stock: 1
   },
   {
-    id: "TAZ-SCH-002",
-    name: "Tazon Schopero Acero Inoxidable Kunstmann 485 ml",
-    brand: "Kunstmann",
+    id: "BOT-INT-001",
+    name: "Botella Intensamente a eleccion metalica 300 ml",
+    brand: "Intensamente",
     category: "tazon",
-    subcategory: "schopero",
-    price: 24990,
-    image: "/images/productos/tazon_schopero_acero_inoxidable_600x600.png",
+    subcategory: "botella",
+    price: 7990,
+    image: "/images/productos/botellas_metalica_intensamente_hermetica_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
