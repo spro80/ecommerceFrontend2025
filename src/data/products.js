@@ -460,6 +460,50 @@ export const products = [
     image: "/images/productos/souvenirs/SouvenirsLlaveroAbridorCerveza.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
+  },
+  {
+    id: "SOU-LLAV-010",
+    name: "Llavero Arsenal Premier League",
+    brand: "Arsenal",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 19990,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroPiochaArsenal.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-BIL-011",
+    name: "Billetera De Cuero Arsenal Premier League",
+    brand: "Arsenal",
+    category: "souvenirs",
+    subcategory: "billetera",
+    price: 19990,
+    image: "/images/productos/souvenirs/SouvenirsBilleteraArsenalCuero.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-BUF-012",
+    name: "Bufanda Manchester City Champion League",
+    brand: "Puma",
+    category: "souvenirs",
+    subcategory: "bufandas",
+    price: 19990,
+    image: "/images/productos/souvenirs/SouvenirsBufandaManchesterCityPumaChampionLeague.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-BUF-013",
+    name: "Bufanda Manchester City Original Puma Premier League",
+    brand: "Puma",
+    category: "souvenirs",
+    subcategory: "bufandas",
+    price: 19990,
+    image: "/images/productos/souvenirs/SouvenirsBufandasManchesterCityPuma.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
   }
 ];
 
