@@ -46,6 +46,7 @@ export default function Home() {
     const predefined = [
       { key: 'cabello', image: '/assets/categories/cabello_600x600.png' },
       { key: 'tazon', image: '/assets/categories/tazones_600x600.png' },
+      { key: 'souvenirs', image: '/assets/categories/souvenirs_600x600.png' },
     ];
 
     // Enriquecer con conteos actuales

@@ -116,7 +116,7 @@ export const products = [
     category: "tazon",
     subcategory: "cafe y te",
     price: 35000,
-    image: "/images/productos/tazon_irish_pub_3d_300_ml_acero_inoxidable_frontal.png",
+    image: "/images/productos/tazon/tazon_irish_pub_3d_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -126,8 +126,8 @@ export const products = [
     brand: "Iron Maiden",
     category: "tazon",
     subcategory: "cafe y te",
-    price: 35000,
-    image: "/images/productos/tazon_iron_maiden_3d_300_ml_acero_inoxidable_frontal.png",
+    price: 34990,
+    image: "/images/productos/tazon/tazon_iron_maiden_3d_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -137,8 +137,8 @@ export const products = [
     brand: "Iron Maiden",
     category: "tazon",
     subcategory: "cafe y te",
-    price: 35000,
-    image: "/images/productos/tazon_iron_maiden_3d_eddie_400_ml_acero_inoxidable_frontal.png",
+    price: 34990,
+    image: "/images/productos/tazon/tazon_iron_maiden_3d_eddie_400_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -149,7 +149,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 14990,
-    image: "/images/productos/tazon_game_of_thrones_acero_inoxidable_diseno_medieval_400ml_frontal.png",
+    image: "/images/productos/tazon/tazon_game_of_thrones_acero_inoxidable_diseno_medieval_400ml_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -160,7 +160,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 14990,
-    image: "/images/productos/tazon_espada_medieval_game_of_thrones_400_ml_acero_color_negro_plata_frontal.png",
+    image: "/images/productos/tazon/tazon_espada_medieval_game_of_thrones_400_ml_acero_color_negro_plata_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -171,7 +171,7 @@ export const products = [
     category: "tazon",
     subcategory: "cafe y te",
     price: 35000,
-    image: "/images/productos/tazon_boxeo_300_ml_acero_inoxidable_frontal.png",
+    image: "/images/productos/tazon/tazon_boxeo_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -182,7 +182,7 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 24990,
-    image: "/images/productos/tazon_schopero_acero_inoxidable_600x600.png",
+    image: "/images/productos/tazon/tazon_schopero_acero_inoxidable_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -193,18 +193,18 @@ export const products = [
     category: "tazon",
     subcategory: "schopero",
     price: 24990,
-    image: "/images/productos/tazon_schopero_cobre_600x600.png",
+    image: "/images/productos/tazon/tazon_schopero_cobre_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
   {
     id: "BOT-INT-001",
     name: "Botella Intensamente a eleccion metalica 300 ml",
-    brand: "Intensamente",
+    brand: "Disney",
     category: "tazon",
-    subcategory: "botella",
+    subcategory: "botella de agua",
     price: 7990,
-    image: "/images/productos/botellas_metalica_intensamente_hermetica_300ml.png",
+    image: "/images/productos/tazon/botellas_metalica_intensamente_hermetica_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -215,7 +215,7 @@ export const products = [
     category: "tazon",
     subcategory: "harry potter",
     price: 19990,
-    image: "/images/productos/tazon_harry_potter_frontal_500ml.png",
+    image: "/images/productos/tazon/tazon_harry_potter_frontal_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -226,7 +226,7 @@ export const products = [
     category: "tazon",
     subcategory: "harry potter",
     price: 19990,
-    image: "/images/productos/tazon_3d_caldero_magico_harry_potter_frontal_550ml.png",
+    image: "/images/productos/tazon/tazon_3d_caldero_magico_harry_potter_frontal_550ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -237,7 +237,7 @@ export const products = [
     category: "tazon",
     subcategory: "harry potter",
     price: 19990,
-    image: "/images/productos/tazon_3d_sombrero_harry_potter_frontal_450ml.png",
+    image: "/images/productos/tazon/tazon_3d_sombrero_harry_potter_frontal_450ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -248,7 +248,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_lilo_y_stich_450_ml.png",
+    image: "/images/productos/tazon/tazon_lilo_y_stich_450_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -259,7 +259,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_intensamente_2_furia_500ml.png",
+    image: "/images/productos/tazon/tazon_intensamente_2_furia_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -270,7 +270,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_intensamente_2_desagrado_300ml.png",
+    image: "/images/productos/tazon/tazon_intensamente_2_desagrado_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -281,7 +281,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_intensamente_2_ansiedad_500ml.png",
+    image: "/images/productos/tazon/tazon_intensamente_2_ansiedad_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -292,7 +292,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_intensamente_2_envidia_300ml.png",
+    image: "/images/productos/tazon/tazon_intensamente_2_envidia_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -303,7 +303,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_disney_gota_mickey_400ml.png",
+    image: "/images/productos/tazon/tazon_disney_gota_mickey_400ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -314,7 +314,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/set_2_tazones_duo_mm_nude_350ml.png",
+    image: "/images/productos/tazon/set_2_tazones_duo_mm_nude_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -325,7 +325,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_capitan_america_marvel_350ml.png",
+    image: "/images/productos/tazon/tazon_capitan_america_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -336,7 +336,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_hulk_marvel_350ml.png",
+    image: "/images/productos/tazon/tazon_hulk_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -347,7 +347,7 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_iron_man_marvel_350ml.png",
+    image: "/images/productos/tazon/tazon_iron_man_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   },
@@ -358,7 +358,106 @@ export const products = [
     category: "tazon",
     subcategory: "disney",
     price: 5490,
-    image: "/images/productos/tazon_spidey6_marvel_350ml.png",
+    image: "/images/productos/tazon/tazon_spidey6_marvel_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-001",
+    name: "Llavero Espada Thundercats",
+    brand: "Thundercats",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroThundercatsEspada.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-002",
+    name: "Llavero The Punisher - Plata",
+    brand: "The Punisher",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroThePunisherPlata.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-003",
+    name: "Llavero The Punisher - Dorado",
+    brand: "The Punisher",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroThePunisherDorado.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-004",
+    name: "Llavero Stars Wars Nave Millenium Falcon",
+    brand: "Stars Wars",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroStarsWarsNaveMilleniumFalcon.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-005",
+    name: "Llavero Jason",
+    brand: "Jason",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroJason.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-006",
+    name: "Llavero Caso Guerrero Romano",
+    brand: "Thundercats",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroGuerreroCascoRomano.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-007",
+    name: "Llavero Ghostbusters",
+    brand: "Ghostbusters",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroGhostbusters.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-008",
+    name: "Llavero Futbol",
+    brand: "Futbol",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroFutbol.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1
+  },
+  {
+    id: "SOU-LLAV-009",
+    name: "Llavero Abridor Cerveza",
+    brand: "Cerveza",
+    category: "souvenirs",
+    subcategory: "llavero",
+    price: 5490,
+    image: "/images/productos/souvenirs/SouvenirsLlaveroAbridorCerveza.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
     stock: 1
   }
