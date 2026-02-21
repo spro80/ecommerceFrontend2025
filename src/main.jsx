@@ -11,7 +11,11 @@ import WhatsAppBot from './components/WhatsAppBot.jsx';
 import { UserProvider } from './contexts/UserContext.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
 import { SEOProvider } from './contexts/SEOContext.jsx';
+import { AuthProvider } from "./contexts/AuthContext";
+
 import { installDevConsoleFilter } from './utils/devConsoleFilter.js';
+
+
 
 async function enableMocks() {
   if (import.meta.env.DEV || ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
@@ -26,14 +30,16 @@ enableMocks().finally(() => {
     <React.StrictMode>
       <HelmetProvider>
         <SEOProvider>
-          <UserProvider>
-            <CartProvider>
-              <BrowserRouter>
-                <App />
-                <WhatsAppBot />
-              </BrowserRouter>
-            </CartProvider>
-          </UserProvider>
+          <AuthProvider>
+            <UserProvider>
+              <CartProvider>
+                <BrowserRouter>
+                  <App />
+                  <WhatsAppBot />
+                </BrowserRouter>
+              </CartProvider>
+            </UserProvider>
+          </AuthProvider>
         </SEOProvider>
       </HelmetProvider>
     </React.StrictMode>
