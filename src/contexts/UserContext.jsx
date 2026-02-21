@@ -71,7 +71,11 @@ export function UserProvider({ children }) {
   }, []);
 
   const loginWithEmailPassword = useCallback((email, password) => {
+    console.log("[UserContext.js] Init in loginWithEmailPassword")
     const users = readRegisteredUsers();
+    console.log("[UserContext.js] users: ", users)
+
+
     const found = users.find(
       (u) => u.email.toLowerCase() === email.toLowerCase() && u.passwordHash === password
     );
