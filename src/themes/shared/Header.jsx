@@ -1,15 +1,57 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+
+import { AuthContext } from "./../../contexts/AuthContext";
+
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../contexts/CartContext.jsx';
 import { useUser } from '../../contexts/UserContext.jsx';
 import { APP_ENVIRONMENT } from '../../lib/config.js';
+import LoginRequiredModal from './../../components/Login/LoginRequireModal';
+
+import { useNavigate } from "react-router-dom";
+
 
 export default function Header() {
+
+
   const { t } = useTranslation();
   const { cartItemsCount } = useCart();
-  const { user, openAuthModal, logout } = useUser();
+  //const { user, openAuthModal, logout } = useUser();
+  
+  const { userContext, setUserContext } = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
 
+  const navigate = useNavigate();
+
+
+
+  const handleLogout = () => {
+    
+    localStorage.removeItem("userLogin");
+    setUserContext(null);
+
+  };
+
+
+  const handleProtectedLink = (e, path) => {
+
+    e.preventDefault();
+    
+    if (userContext) {
+      //history.push(path)
+      navigate(push)
+
+    } else {
+      //setShowModal(true);
+      //history.push('inicio-de-sesion')
+      navigate('inicio-de-sesion')
+
+    }
+  }
+
+  
+  /*
   const categories = [
     {
       name: "Cabello",
@@ -40,10 +82,11 @@ export default function Header() {
         { name: "Combos", slug: "combos" }
       ]
     }
-  ];
+  ];*/
 
   return (
     <nav className="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
+
       <div className="container">
         <Link className="navbar-brand fw-bold" to="/">
           {t('common.siteName')}
@@ -126,6 +169,9 @@ export default function Header() {
                 </span>
               </NavLink>
             </li>
+
+
+{/*
             {!user && (
               <li className="nav-item">
                 <button type="button" className="btn btn-primary" onClick={openAuthModal}>
@@ -133,6 +179,7 @@ export default function Header() {
                 </button>
               </li>
             )}
+*/}            
 
             {/*
             {user && (
@@ -154,9 +201,52 @@ export default function Header() {
             )}
             */}
 
+            {userContext ? (
+                <>
+                  <li className="nav-item d-flex align-items-center ms-auto me-3">
+                    <i className="bi bi-person-circle me-2 text-white"></i>
+                    <span className="text-white text-nowrap">👤 {userContext.name}</span>
+                  </li>
+
+                  <li className="nav-item d-flex align-items-center ms-auto me-3">
+                    <i className="bi bi-person-circle me-2 text-white"></i>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleLogout();
+                        }}
+                        className="text-white text-nowrap text-decoration-none"
+                      >
+                        Cerrar sesión
+                      </a>
+
+                  </li>
+
+                </>
+              ) : (
+                <li className="nav-item d-flex align-items-center ms-auto">
+                  <i className="bi bi-person me-2 text-white"></i>
+
+                  <button
+                    className="btn btn-outline-light btn-sm"
+                    onClick={() => navigate("/inicio-de-sesion")}
+                  >
+                    {t('common.login')}
+                  </button>
+                </li>
+              )}
+
+
           </ul>
         </div>
       </div>
+
+      <LoginRequiredModal show={showModal} onClose={() => setShowModal(false)} ></LoginRequiredModal>
+
+
     </nav>
+
+    
   );
 }

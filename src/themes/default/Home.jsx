@@ -12,6 +12,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
+
   useEffect(() => {
     let isMounted = true;
     setIsLoading(true);
@@ -161,8 +163,23 @@ export default function Home() {
       <section className="text-center p-4 p-md-5 bg-light rounded-3 mb-4">
         <h1 className="h3 h-md-2 mb-2">Cuidado profesional, resultados reales</h1>
         <p className="text-muted mb-3 mb-md-4">Descubre productos seleccionados para tu rutina diaria.</p>
-        <Link to="/products" className="btn btn-primary btn-lg">Ver todos los productos</Link>
+        <Link to="/products" className="btn btn-primary btn-lg">🛍️ “Explorar la tienda”</Link>
       </section>
+
+      {/* Sticky CTA solo mobile */}
+<Link
+  to="/products"
+  className="btn btn-primary d-md-none position-fixed bottom-0 start-50 translate-middle-x px-4 py-2 shadow-lg"
+  style={{
+    zIndex: 1030,
+    borderRadius: '999px',
+    marginBottom: 'env(safe-area-inset-bottom, 1rem)',
+  }}
+>
+  🛍️ Explorar tienda
+</Link>
+
+
 
       {isLoading && (
         <div className="text-center text-muted py-5">Cargando categorías…</div>
@@ -176,6 +193,13 @@ export default function Home() {
         <section aria-labelledby="home-categories-title" className="mb-4">
           <div className="d-flex align-items-center justify-content-between mb-2">
             <h2 id="home-categories-title" className="h5 m-0">Explora por categoría</h2>
+
+            {!isDesktop && (
+              <small className="text-muted d-block mt-1">
+                Desliza para ver más →
+              </small>
+            )}
+            
             <div className="d-flex align-items-center gap-2">
               <button
                 type="button"
@@ -215,13 +239,17 @@ export default function Home() {
               ›
             </button>
 
-            <div
-              id={listId}
-              ref={scrollerRef}
-              className="d-flex gap-3 overflow-auto flex-nowrap py-2 px-1"
-              role="list"
-              aria-label="Carrusel de categorías"
-              style={{ scrollBehavior: 'smooth' }}
+          <div
+            id={listId}
+            ref={scrollerRef}
+            className="d-flex gap-3 overflow-x-auto overflow-y-hidden flex-nowrap py-2 px-2"
+            role="list"
+            aria-label="Carrusel de categorías"
+            style={{
+              scrollBehavior: 'smooth',
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch'
+            }}
               onMouseEnter={() => setIsPausedByInteraction(true)}
               onMouseLeave={() => setIsPausedByInteraction(false)}
               onFocus={() => setIsPausedByInteraction(true)}
@@ -238,13 +266,24 @@ export default function Home() {
                   >
                     <div className="card h-100 shadow-sm" style={{ width: '100%' }}>
                       <div className="position-relative" style={{ aspectRatio: '4 / 3' }}>
+
                         <img
                           src={cat.image}
                           alt={toTitle(cat.key)}
                           loading="lazy"
                           className="w-100 h-100"
-                          style={{ objectFit: 'cover', borderTopLeftRadius: '.375rem', borderTopRightRadius: '.375rem' }}
+                          style={{
+                            objectFit: 'cover',
+                            borderTopLeftRadius: '.375rem',
+                            borderTopRightRadius: '.375rem',
+                            filter: 'blur(8px)',
+                            transition: 'filter 0.4s ease'
+                          }}
+                          onLoad={(e) => {
+                            e.currentTarget.style.filter = 'blur(0)';
+                          }}
                         />
+
                         <span className="badge text-bg-primary position-absolute top-0 end-0 m-2">{cat.count}</span>
                       </div>
                       <div className="card-body">
