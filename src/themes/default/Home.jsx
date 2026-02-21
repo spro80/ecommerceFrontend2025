@@ -47,6 +47,7 @@ export default function Home() {
     // Definir solo las dos categorías visibles en HOME con sus imágenes públicas
     const predefined = [
       { key: 'cabello', image: '/assets/categories/cabello_600x600.png' },
+      { key: 'billetera', image: '/assets/categories/billeteras_600x600.png' },
       { key: 'tazon', image: '/assets/categories/tazones_600x600.png' },
       { key: 'souvenirs', image: '/assets/categories/souvenirs_600x600.png' },
     ];
