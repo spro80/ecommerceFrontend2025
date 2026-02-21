@@ -16,6 +16,8 @@ import RequireAdmin from './admin/RequireAdmin.jsx';
 import AdminDashboard from './admin/AdminDashboard.jsx';
 import AdminProductCreate from './admin/AdminProductCreate.jsx';
 
+import Login from "./themes/login";
+
 export default function App() {
   return (
     <Layout>
@@ -26,6 +28,7 @@ export default function App() {
         <Route path="/carrito" element={<Cart />} />
         <Route path="/finalizar-compra" element={<Checkout />} />
         <Route path="/confirmacion-pedido" element={<OrderSuccess />} />
+        <Route path="/inicio-de-sesion" element={<Login />} />
         {/* Admin */}
         <Route
           path="/admin"
