@@ -4,20 +4,26 @@ import { useUser } from '../contexts/UserContext.jsx';
 import './AuthModal.css';
 
 export default function AuthModal() {
+  
   const { t } = useTranslation();
+  
   const { isAuthModalOpen, closeAuthModal, loginWithEmailPassword, registerWithEmailPassword, loginWithGoogle, user } = useUser();
   const [activeTab, setActiveTab] = useState('login');
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const dialogRef = useRef(null);
+
 
   useEffect(() => {
     setError('');
     setSuccess('');
   }, [activeTab, isAuthModalOpen]);
+
 
   useEffect(() => {
     if (!dialogRef.current) return;
@@ -28,6 +34,7 @@ export default function AuthModal() {
     }
   }, [isAuthModalOpen]);
 
+  
   useEffect(() => {
     if (user && isAuthModalOpen) {
       closeAuthModal();
@@ -38,14 +45,24 @@ export default function AuthModal() {
   const canSubmitRegister = useMemo(() => email && password && name, [email, password, name]);
 
   const onLoginSubmit = (e) => {
+    alert("ALERTAAA")
+    console.log("Init in onLoginSubmit")
+    console.log("email:", email)
+    console.log("password:", password)
+
     e.preventDefault();
     setError('');
     setSuccess('');
+
     try {
       loginWithEmailPassword(email, password);
     } catch (err) {
-      if (err.code === 'INVALID_CREDENTIALS') setError(t('auth.invalidCredentials'));
-      else setError(t('common.error'));
+      console.log("Credenciales invalidas...")
+      if (err.code === 'INVALID_CREDENTIALS') {
+        setError(t('auth.invalidCredentials'));
+      } else {
+        setError(t('common.error'));
+      }
     }
   };
 
