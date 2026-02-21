@@ -8,7 +8,8 @@ export const products = [
     price: 9990,
     image: "/images/productos/shampoo_collagen_plus_vinge_1000_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACO-001",
@@ -19,7 +20,8 @@ export const products = [
     price: 9990,
     image: "/images/productos/acondicionador_collagen_plus_vinge_1000_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACE-001",
@@ -30,7 +32,8 @@ export const products = [
     price: 5990,
     image: "/images/productos/aceite_de_argan_con_colageno_plus_vinge_100ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-SHA-002",
@@ -41,7 +44,8 @@ export const products = [
     price: 5990,
     image: "/images/productos/shampoo_curl_perfect_3_en_1_rocco_500_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACO-002",
@@ -52,7 +56,8 @@ export const products = [
     price: 5990,
     image: "/images/productos/acondicionador_curl_perfect_3_en_1_rocco_500_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-SHA-003",
@@ -63,7 +68,8 @@ export const products = [
     price: 5390,
     image: "/images/productos/shampoo_jalea_real_anticaida_rocco_400_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACO-003",
@@ -74,7 +80,8 @@ export const products = [
     price: 5390,
     image: "/images/productos/acondicionador_jalea_real_anticaida_rocco_400_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACE-002",
@@ -85,7 +92,8 @@ export const products = [
     price: 7990,
     image: "/images/productos/aceite_luxury_moroccan_argan_oil_60_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACE-003",
@@ -96,7 +104,8 @@ export const products = [
     price: 8990,
     image: "/images/productos/aceite_extreme_caviar_hair_oil_maxcare_100_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "CAB-ACE-004",
@@ -107,7 +116,56 @@ export const products = [
     price: 5990,
     image: "/images/productos/aceite_capilar_de_nuez_marroqui_obopekal_55_ml_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "BIL-PRE-001",
+    name: "Billetera De Cuero Arsenal Premier League",
+    brand: "Arsenal",
+    category: "billetera",
+    subcategory: "premier league",
+    price: 34990,
+    image: "/images/productos/billetera/billetera_arsenal_cuero_premier_league.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "BIL-PRE-002",
+    name: "Billetera Liverpool Diseño estadio Premier League",
+    brand: "Liverpool",
+    category: "billetera",
+    subcategory: "premier league",
+    price: 24990,
+    image: "/images/productos/billetera/billetera_liverpool_diseño_estadio_premier_league.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "BIL-PRE-003",
+    name: "Billetera Mormaii Negra con cierre",
+    brand: "Mormaii",
+    category: "billetera",
+    subcategory: "brasil",
+    price: 14990,
+    image: "/images/productos/billetera/billetera_mormaii_negra_con_cierre.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "BIL-PRE-004",
+    name: "Billetera Mormaii Verde con cierre",
+    brand: "Mormaii",
+    category: "billetera",
+    subcategory: "brasil",
+    price: 14990,
+    image: "/images/productos/billetera/billetera_mormaii_verde_con_cierre.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-001",
@@ -118,7 +176,8 @@ export const products = [
     price: 34990,
     image: "/images/productos/tazon/tazon_irish_pub_3d_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-002",
@@ -129,7 +188,8 @@ export const products = [
     price: 34990,
     image: "/images/productos/tazon/tazon_iron_maiden_3d_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-003",
@@ -140,7 +200,8 @@ export const products = [
     price: 24990,
     image: "/images/productos/tazon/tazon_schopero_acero_inoxidable_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-004",
@@ -151,7 +212,8 @@ export const products = [
     price: 14990,
     image: "/images/productos/tazon/tazon_game_of_thrones_acero_inoxidable_diseno_medieval_400ml_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-005",
@@ -162,7 +224,8 @@ export const products = [
     price: 14990,
     image: "/images/productos/tazon/tazon_espada_medieval_game_of_thrones_400_ml_acero_color_negro_plata_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-006",
@@ -173,7 +236,8 @@ export const products = [
     price: 34990,
     image: "/images/productos/tazon/tazon_boxeo_300_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-007",
@@ -184,7 +248,8 @@ export const products = [
     price: 34990,
     image: "/images/productos/tazon/tazon_iron_maiden_3d_eddie_400_ml_acero_inoxidable_frontal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-SCH-008",
@@ -195,7 +260,56 @@ export const products = [
     price: 24990,
     image: "/images/productos/tazon/tazon_schopero_cobre_600x600.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "TAZ-CHI-001",
+    name: "Tazon Santiago Chile 350 ml",
+    brand: "Chile",
+    category: "tazon",
+    subcategory: "cafe y te",
+    price: 5990,
+    image: "/images/productos/tazon/tazon_chile_santiago_ceramica_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "TAZ-CHI-002",
+    name: "Tazon Chiloe Chile 350 ml",
+    brand: "Chile",
+    category: "tazon",
+    subcategory: "cafe y te",
+    price: 5990,
+    image: "/images/productos/tazon/tazon_chile_chiloe_ceramica_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "TAZ-CHI-003",
+    name: "Tazon Valparaiso Chile 350 ml",
+    brand: "Chile",
+    category: "tazon",
+    subcategory: "cafe y te",
+    price: 5990,
+    image: "/images/productos/tazon/tazon_chile_valparaiso_ceramica_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
+  },
+  {
+    id: "TAZ-CHI-004",
+    name: "Tazon Atacama Chile 350 ml",
+    brand: "Chile",
+    category: "tazon",
+    subcategory: "cafe y te",
+    price: 5990,
+    image: "/images/productos/tazon/tazon_chile_atacama_ceramica_350ml.png",
+    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
+    stock: 1,
+    visible: true
   },
   {
     id: "BOT-INT-001",
@@ -206,7 +320,8 @@ export const products = [
     price: 7990,
     image: "/images/productos/tazon/botellas_metalica_intensamente_hermetica_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-HAR-001",
@@ -217,7 +332,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/tazon/tazon_harry_potter_frontal_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-HAR-002",
@@ -228,7 +344,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/tazon/tazon_3d_caldero_magico_harry_potter_frontal_550ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
     {
     id: "TAZ-HAR-003",
@@ -239,7 +356,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/tazon/tazon_3d_sombrero_harry_potter_frontal_450ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-STI-001",
@@ -250,7 +368,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_lilo_y_stich_450_ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-INT-001",
@@ -261,7 +380,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_intensamente_2_furia_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-INT-002",
@@ -272,7 +392,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_intensamente_2_desagrado_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-INT-003",
@@ -283,7 +404,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_intensamente_2_ansiedad_500ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-INT-004",
@@ -294,7 +416,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_intensamente_2_envidia_300ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-DIS-001",
@@ -305,7 +428,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_disney_gota_mickey_400ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-DUO-001",
@@ -316,7 +440,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/set_2_tazones_duo_mm_nude_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-MAR-001",
@@ -327,7 +452,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_capitan_america_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-MAR-002",
@@ -338,7 +464,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_hulk_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-MAR-003",
@@ -349,7 +476,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_iron_man_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "TAZ-MAR-004",
@@ -360,7 +488,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/tazon/tazon_spidey6_marvel_350ml.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-001",
@@ -371,7 +500,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroThundercatsEspada.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-002",
@@ -382,7 +512,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroThePunisherPlata.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-003",
@@ -393,7 +524,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroThePunisherDorado.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-004",
@@ -404,7 +536,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroStarsWarsNaveMilleniumFalcon.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-005",
@@ -415,7 +548,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroJason.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-006",
@@ -426,7 +560,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroGuerreroCascoRomano.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-007",
@@ -437,7 +572,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroGhostbusters.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-008",
@@ -448,7 +584,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroFutbol.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-009",
@@ -459,7 +596,8 @@ export const products = [
     price: 5490,
     image: "/images/productos/souvenirs/SouvenirsLlaveroAbridorCerveza.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-LLAV-010",
@@ -470,18 +608,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/souvenirs/SouvenirsLlaveroPiochaArsenal.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
-  },
-  {
-    id: "SOU-BIL-011",
-    name: "Billetera De Cuero Arsenal Premier League",
-    brand: "Arsenal",
-    category: "souvenirs",
-    subcategory: "billetera",
-    price: 19990,
-    image: "/images/productos/souvenirs/SouvenirsBilleteraArsenalCuero.png",
-    description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-BUF-012",
@@ -492,7 +620,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/souvenirs/SouvenirsBufandaManchesterCityPumaChampionLeague.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   },
   {
     id: "SOU-BUF-013",
@@ -503,7 +632,8 @@ export const products = [
     price: 19990,
     image: "/images/productos/souvenirs/SouvenirsBufandasManchesterCityPuma.png",
     description: "Un producto de alta calidad con excelente diseño y rendimiento.",
-    stock: 1
+    stock: 1,
+    visible: true
   }
 ];
 
